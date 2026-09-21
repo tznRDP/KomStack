@@ -2,18 +2,24 @@
 #  Show metadata                                                        #
 #  Lives at: Kometa/Metadata/Shows.yml                                  #
 #-----------------------------------------------------------------------#
-#  Each show is 4 lines. Template name picks the behaviour:              #
-#    Seasons#  = season art only (Aura handles the show poster/bg)       #
-#    Art#      = show art + season art (Kometa handles everything)       #
-#  The number is the season count.                                       #
-#                                                                        #
-#  "folder" is the folder name under Kometa/Metadata/Shows/ —            #
-#  write it plainly, Kometa URL-encodes it.                              #
-#                                                                        #
-#  Point config.yml at this file:                                        #
-#    libraries:                                                          #
-#      TV Shows:                                                         #
-#        metadata_files:                                                 #
+#  Each show is 2 lines. The key is the show's TVDB id, so matching     #
+#  is exact — no title/year guessing:                                   #
+#                                                                       #
+#    389492:  # Show Name (Year)                                        #
+#      template: {name: Seasons4, folder: "Show Name (Year)"}           #
+#                                                                       #
+#  Template name picks the behaviour:                                   #
+#    Seasons#  = season art only (show poster/bg handled elsewhere)     #
+#    Art#      = show art + season art (Kometa handles everything)      #
+#  The number is the season count.                                      #
+#                                                                       #
+#  "folder" is the folder name under Kometa/Metadata/Shows/ —           #
+#  write it plainly, Kometa URL-encodes it.                             #
+#                                                                       #
+#  Loaded from config.yml:                                              #
+#    libraries:                                                         #
+#      TV Shows:                                                        #
+#        metadata_files:                                                #
 #          - url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows.yml
 #=======================================================================#
 
@@ -22,34 +28,15 @@ external_templates:
 
 metadata:
 
-  # 4 seasons. Show poster/background set by Aura, so season art only.
-  Monster (2022):
-    match:
-      title: Monster
-      year: 2022
+  389492:  # Monster (2022) — 4 seasons
     template: {name: Seasons4, folder: "Monster (2022)"}
 
-  # 3 seasons (The Terror, Infamy, Devil in Silver).
-  # Show poster/background set by Aura, so season art only.
-  The Terror (2018):
-    match:
-      title: The Terror
-      year: 2018
+  322191:  # The Terror (2018) — 3 seasons: The Terror, Infamy, Devil in Silver
     template: {name: Seasons3, folder: "The Terror (2018)"}
 
 #-----------------------------------------------------------------------#
-#  Examples — uncomment once the art is actually in the repo, otherwise  #
-#  every run logs 404s for files that don't exist.                       #
+#  Adding a show: copy this, uncomment, fill in the TVDB id + folder.   #
 #-----------------------------------------------------------------------#
 
-#  True Detective (2014):
-#    match:
-#      title: True Detective
-#      year: 2014
-#    template: {name: Seasons4, folder: "True Detective (2014)"}
-
-#  Fargo (2014):
-#    match:
-#      title: Fargo
-#      year: 2014
-#    template: {name: Seasons5, folder: "Fargo (2014)"}
+#  123456:  # Show Name (Year)
+#    template: {name: Seasons4, folder: "Show Name (Year)"}
