@@ -1,43 +1,67 @@
 # KomStack
 
-Personal asset repository for my [Kometa](https://kometa.wiki/) setup.
-
-This repo hosts custom posters, backgrounds, overlays, and metadata files.
-Movie and show/season/episode artwork, collection overlays, and related
-Kometa config.
+Artwork, overlays and metadata files for a [Kometa](https://kometa.wiki/) setup, served to Kometa via raw GitHub URLs.
 
 ## Structure
 
 ```
 Kometa/
+├── templates.yml              # shared art templates
 ├── Metadata/
-│   ├── Poster/
-│   │   └── <Show>/
-│   │       └── <Season>/      # Poster images, referenced by url_poster
-│   ├── Background/
-│   │   └── <Show>/
-│   │       └── <Season>/      # Background images, referenced by url_background
-│   └── <Show>.yml              # Kometa metadata file for that show
+│   ├── Shows.yml              # all shows, keyed by TVDB id
+│   └── Shows/
+│       └── <Show (Year)>/
+│           ├── Season01.png
+│           ├── Season01_background.png
+│           └── ...
 └── Overlays/
     └── Networks/
-        └── <Network>/          # Overlay assets (e.g. BBC Earth, Netflix)
+        └── <Network>/         # network overlay assets
 ```
 
-Each show gets its own metadata file under `Kometa/Metadata/`, referencing
-images from the matching `Poster/<Show>/<Season>/` and
-`Background/<Show>/<Season>/` folders via raw GitHub URLs, e.g.:
+## Usage
 
+Kometa's `config.yml` loads `Shows.yml` remotely:
+
+```yaml
+libraries:
+  TV Shows:
+    metadata_files:
+      - url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows.yml
 ```
-https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/<Show>/<Season>/<file>.png
+
+`Shows.yml` pulls in `templates.yml` via `external_templates`. Each show is keyed by its TVDB id and calls a template with its folder name:
+
+```yaml
+322191:  # The Terror (2018)
+  template: {name: Seasons3, folder: "The Terror (2018)"}
 ```
 
-Movies use the same `Poster/`/`Background/` structure without the
-`<Season>/` layer.
+The template builds every image URL from the folder name, URL-encoding it automatically. The number in the template name is the season count.
 
-## Notes
+| Template | Sets |
+| --- | --- |
+| `Seasons1`–`Seasons5` | Season posters and backgrounds |
+| `Art` | Show poster and background |
+| `Art1`–`Art5` | Show art plus season art |
 
-- This is a personal collection assembled for my own library — artwork may
-  be sourced from various community sites (e.g. MediUX) or custom-made.
-- No warranty, no support — use at your own risk if you're browsing for
-  ideas.
-- Nothing sensitive lives here; it's image assets and Kometa config only.
+## File naming
+
+Follows Kometa's asset-directory convention. Case-sensitive, PNG only.
+
+| File | Image |
+| --- | --- |
+| `poster.png` | Show poster |
+| `background.png` | Show background |
+| `Season##.png` | Season poster, zero-padded (`Season01.png`) |
+| `Season##_background.png` | Season background |
+
+## Adding a show
+
+1. Upload images to `Kometa/Metadata/Shows/<Show (Year)>/`.
+2. Add a two-line entry to `Shows.yml`: TVDB id, template, folder.
+3. More than five seasons: copy the `Seasons5` block in `templates.yml` to `Seasons6` and add a season.
+
+## Credits
+
+Artwork is custom-made or sourced from community sites such as [MediUX](https://mediux.pro), [ThePosterDB](https://theposterdb.com) and [Fanart.tv](https://fanart.tv). All credit to the original creators.
