@@ -1,6 +1,6 @@
 # KomStack
 
-Artwork, overlays and metadata files for a [Kometa](https://kometa.wiki/) setup, served to Kometa via raw GitHub URLs.
+Artwork, overlays and metadata files for a [Kometa](https://kometa.wiki/) setup, served via raw GitHub URLs.
 
 ## Structure
 
@@ -9,11 +9,16 @@ Kometa/
 ├── templates.yml              # shared art templates
 ├── Metadata/
 │   ├── Shows.yml              # all shows, keyed by TVDB id
-│   └── Shows/
-│       └── <Show (Year)>/
-│           ├── Season01.png
-│           ├── Season01_background.png
-│           └── ...
+│   ├── Movies.yml             # all movies, keyed by TMDB id
+│   ├── Shows/
+│   │   └── <Show (Year)>/
+│   │       ├── Season01.png
+│   │       ├── Season01_background.png
+│   │       └── ...
+│   └── Movies/
+│       └── <Movie (Year)>/
+│           ├── poster.png
+│           └── background.png
 └── Overlays/
     └── Networks/
         └── <Network>/         # network overlay assets
@@ -47,12 +52,12 @@ The template builds every image URL from the folder name, URL-encoding it automa
 
 ## File naming
 
-Follows Kometa's asset-directory convention. Case-sensitive, PNG only.
+Follows Kometa's asset-directory convention. Case-sensitive.
 
 | File | Image |
 | --- | --- |
-| `poster.png` | Show poster |
-| `background.png` | Show background |
+| `poster.png` | Show or movie poster |
+| `background.png` | Show or movie background |
 | `Season##.png` | Season poster, zero-padded (`Season01.png`) |
 | `Season##_background.png` | Season background |
 
