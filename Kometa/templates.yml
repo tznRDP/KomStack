@@ -1,0 +1,185 @@
+#=======================================================================#
+#  Shared art templates                                                 #
+#  Lives at: Kometa/templates.yml                                       #
+#-----------------------------------------------------------------------#
+#  <<folder_encoded>> is the "folder" variable passed by the show,       #
+#  URL-encoded by Kometa. So you write:  folder: "Fargo (2014)"          #
+#  and the URL comes out as:             Fargo%20(2014)                  #
+#  No %20 typing anywhere.                                               #
+#                                                                        #
+#  TWO SETS — pick based on whether Aura already handles the show art:   #
+#                                                                        #
+#    Seasons1..Seasons5  season art only. Use these when Aura sets the   #
+#                        show poster/background. No 404 noise.           #
+#                        Needs: Season01.png + Season01_background.png   #
+#                                                                        #
+#    Art                 show poster/background only, no seasons         #
+#    Art1..Art5          show art AND season art. Use when Kometa owns   #
+#                        everything. Also needs poster.png +             #
+#                        background.png in the show folder.              #
+#                                                                        #
+#  The number is the season count. Need 6+? Copy the last block, bump    #
+#  the name, add one more season entry.                                  #
+#=======================================================================#
+
+templates:
+
+  #--- Season art only (Aura owns the show poster/background) ---#
+
+  Seasons1:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+
+  Seasons2:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+
+  Seasons3:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+
+  Seasons4:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+      4:
+        url_poster: <<base>>/<<folder_encoded>>/Season04.png
+        url_background: <<base>>/<<folder_encoded>>/Season04_background.png
+
+  Seasons5:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+      4:
+        url_poster: <<base>>/<<folder_encoded>>/Season04.png
+        url_background: <<base>>/<<folder_encoded>>/Season04_background.png
+      5:
+        url_poster: <<base>>/<<folder_encoded>>/Season05.png
+        url_background: <<base>>/<<folder_encoded>>/Season05_background.png
+
+  #--- Show art, with or without seasons (Kometa owns everything) ---#
+
+  Art:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+
+  Art1:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+
+  Art2:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+
+  Art3:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+
+  Art4:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+      4:
+        url_poster: <<base>>/<<folder_encoded>>/Season04.png
+        url_background: <<base>>/<<folder_encoded>>/Season04_background.png
+
+  Art5:
+    default:
+      base: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows
+    url_poster: <<base>>/<<folder_encoded>>/poster.png
+    url_background: <<base>>/<<folder_encoded>>/background.png
+    seasons:
+      1:
+        url_poster: <<base>>/<<folder_encoded>>/Season01.png
+        url_background: <<base>>/<<folder_encoded>>/Season01_background.png
+      2:
+        url_poster: <<base>>/<<folder_encoded>>/Season02.png
+        url_background: <<base>>/<<folder_encoded>>/Season02_background.png
+      3:
+        url_poster: <<base>>/<<folder_encoded>>/Season03.png
+        url_background: <<base>>/<<folder_encoded>>/Season03_background.png
+      4:
+        url_poster: <<base>>/<<folder_encoded>>/Season04.png
+        url_background: <<base>>/<<folder_encoded>>/Season04_background.png
+      5:
+        url_poster: <<base>>/<<folder_encoded>>/Season05.png
+        url_background: <<base>>/<<folder_encoded>>/Season05_background.png
