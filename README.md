@@ -1,6 +1,6 @@
 # KomStack
 
-Artwork, overlays and metadata files for a [Kometa](https://kometa.wiki/) setup, served to Kometa via raw GitHub URLs.
+Artwork, overlays and metadata files for a [Kometa](https://kometa.wiki/) setup, served via raw GitHub URLs.
 
 ## Structure
 
@@ -47,7 +47,7 @@ The template builds every image URL from the folder name, URL-encoding it automa
 
 ## File naming
 
-Follows Kometa's asset-directory convention. Case-sensitive, PNG only.
+Follows Kometa's asset-directory convention. Case-sensitive.
 
 | File | Image |
 | --- | --- |
