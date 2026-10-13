@@ -5,6 +5,37 @@
 #  Overlay images live in Kometa/Overlays/Networks/<Network>/.          #
 #=======================================================================#
 
+templates:
+  # Network logos (see the NETWORKS section). The logo images are full-size
+  # 1000x1500 PNGs with the logo already placed top left.
+  NetworkLogo:          # white logo, shows not labelled Dark
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Label/<<file>>_White.png
+      group: network
+      weight: <<weight>>
+    plex_search:
+      validate: false     # skip network names this library doesn't have
+      any:
+        network: <<network>>
+    filters:
+      label.not: Dark
+
+  NetworkLogoDark:      # black logo, shows labelled Dark (light posters)
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Label/<<file>>_Black.png
+      group: network
+      weight: <<weight>>
+    plex_search:
+      validate: false
+      any:
+        network: <<network>>
+    filters:
+      label: Dark
+
 overlays:
 #╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 #       █████████  █████          ███████    ███████████    █████████   █████             ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
@@ -150,6 +181,8 @@ overlays:
     overlay:
       name: NSeries
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/Netflix/Label/NSeries_White.png
+      group: network
+      weight: 190
     plex_search: 
       all:
         label: Netfliz
@@ -159,6 +192,8 @@ overlays:
     overlay:
       name: NSeriesDark
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/Netflix/Label/NSeries_Black.png
+      group: network
+      weight: 190
     plex_search: 
       all:
         label: Dark, Netfliz
@@ -174,6 +209,8 @@ overlays:
     overlay:
       name: BBCEarthSeries
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/BBC%20Earth/Label/BBCEarth_White.png
+      group: network
+      weight: 200
     plex_search:
       all:
         label: BBCÖrt
@@ -183,9 +220,240 @@ overlays:
     overlay:
       name: BBCEarthSeriesDark
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/BBC%20Earth/Label/BBCEarth_Black.png
+      group: network
+      weight: 200
     plex_search:
       all:
         label: Dark, BBCÖrt
+
+#╔═══════════════════════════════════════════════════════════════════════════╗
+#    ███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗███████╗  ║
+#    ████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝██╔════╝  ║
+#    ██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ███████╗  ║
+#    ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ╚════██║  ║
+#    ██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗███████║  ║
+#    ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝  ║
+#╚═══════════════════════════════════════════════════════════════════════════╝
+  # One logo per show, top left. Plex's network field picks the logo; shows
+  # labelled Dark get the black version. Netflix and BBC Earth use their own
+  # labels above and win over these (higher weight in the same group).
+  # New logo: add its folder under Overlays/Networks/ and a pair of lines.
+
+  HBO:
+    template: {name: NetworkLogo, folder: HBO, file: HBO, weight: 100, network: &hbo [HBO, HBO Canada, HBO Europe, HBO Nordic, HBO Asia, HBO Latin America, HBO España, HBO Brasil, HBO Family, HBO Mundi]}
+  HBO Dark:
+    template: {name: NetworkLogoDark, folder: HBO, file: HBO, weight: 100, network: *hbo}
+
+  HBO Max:
+    template: {name: NetworkLogo, folder: HBO Max, file: HBOMax, weight: 99, network: &hbomax [HBO Max, Max, HBO Go]}
+  HBO Max Dark:
+    template: {name: NetworkLogoDark, folder: HBO Max, file: HBOMax, weight: 99, network: *hbomax}
+
+  Apple TV:
+    template: {name: NetworkLogo, folder: Apple TV, file: AppleTV, weight: 98, network: &appletv [Apple TV, Apple TV+]}
+  Apple TV Dark:
+    template: {name: NetworkLogoDark, folder: Apple TV, file: AppleTV, weight: 98, network: *appletv}
+
+  Disney+:
+    template: {name: NetworkLogo, folder: Disney Plus, file: DisneyPlus, weight: 97, network: &disney [Disney+, Disney+ Hotstar, Disney Channel, Disney Channel (UK), Disney Junior, Disney XD]}
+  Disney+ Dark:
+    template: {name: NetworkLogoDark, folder: Disney Plus, file: DisneyPlus, weight: 97, network: *disney}
+
+  Prime Video:
+    template: {name: NetworkLogo, folder: Prime Video, file: PrimeVideo, weight: 96, network: &primevideo [Prime Video, Amazon, Amazon Prime Video, Amazon Freevee]}
+  Prime Video Dark:
+    template: {name: NetworkLogoDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
+
+  Hulu:
+    template: {name: NetworkLogo, folder: Hulu, file: Hulu, weight: 95, network: &hulu [Hulu]}
+  Hulu Dark:
+    template: {name: NetworkLogoDark, folder: Hulu, file: Hulu, weight: 95, network: *hulu}
+
+  Paramount+:
+    template: {name: NetworkLogo, folder: Paramount Plus, file: ParamountPlus, weight: 94, network: &paramount [Paramount+, Paramount+ with Showtime, Paramount Network]}
+  Paramount+ Dark:
+    template: {name: NetworkLogoDark, folder: Paramount Plus, file: ParamountPlus, weight: 94, network: *paramount}
+
+  Peacock:
+    template: {name: NetworkLogo, folder: Peacock, file: Peacock, weight: 93, network: &peacock [Peacock]}
+  Peacock Dark:
+    template: {name: NetworkLogoDark, folder: Peacock, file: Peacock, weight: 93, network: *peacock}
+
+  FX:
+    template: {name: NetworkLogo, folder: FX, file: FX, weight: 92, network: &fx [FX, FXX, FX on Hulu]}
+  FX Dark:
+    template: {name: NetworkLogoDark, folder: FX, file: FX, weight: 92, network: *fx}
+
+  Starz:
+    template: {name: NetworkLogo, folder: Starz, file: Starz, weight: 91, network: &starz [Starz, Starz Encore]}
+  Starz Dark:
+    template: {name: NetworkLogoDark, folder: Starz, file: Starz, weight: 91, network: *starz}
+
+  AMC+:
+    template: {name: NetworkLogo, folder: AMC+, file: AMCPlus, weight: 90, network: &amc [AMC+, AMC]}
+  AMC+ Dark:
+    template: {name: NetworkLogoDark, folder: AMC+, file: AMCPlus, weight: 90, network: *amc}
+
+  MGM+:
+    template: {name: NetworkLogo, folder: MGM+, file: MGMPlus, weight: 89, network: &mgm [MGM+, Epix]}
+  MGM+ Dark:
+    template: {name: NetworkLogoDark, folder: MGM+, file: MGMPlus, weight: 89, network: *mgm}
+
+  Shudder:
+    template: {name: NetworkLogo, folder: Shudder, file: Shudder, weight: 88, network: &shudder [Shudder]}
+  Shudder Dark:
+    template: {name: NetworkLogoDark, folder: Shudder, file: Shudder, weight: 88, network: *shudder}
+
+  Adult Swim:
+    template: {name: NetworkLogo, folder: Adult Swim, file: AdultSwim, weight: 87, network: &adultswim [Adult Swim]}
+  Adult Swim Dark:
+    template: {name: NetworkLogoDark, folder: Adult Swim, file: AdultSwim, weight: 87, network: *adultswim}
+
+  Cartoon Network:
+    template: {name: NetworkLogo, folder: Cartoon Network, file: CartoonNetwork, weight: 86, network: &cartoonnetwork [Cartoon Network]}
+  Cartoon Network Dark:
+    template: {name: NetworkLogoDark, folder: Cartoon Network, file: CartoonNetwork, weight: 86, network: *cartoonnetwork}
+
+  Nickelodeon:
+    template: {name: NetworkLogo, folder: Nickelodeon, file: Nickelodeon, weight: 85, network: &nickelodeon [Nickelodeon, Nick Jr., Nicktoons, TeenNick, Nick at Nite]}
+  Nickelodeon Dark:
+    template: {name: NetworkLogoDark, folder: Nickelodeon, file: Nickelodeon, weight: 85, network: *nickelodeon}
+
+  discovery+:
+    template: {name: NetworkLogo, folder: discovery+, file: discoveryPlus, weight: 84, network: &discovery [discovery+, Discovery+, Discovery, Discovery Channel, Discovery Channel (AU), Discovery Channel (CA), Discovery Channel (UK), Discovery Health Channel, Discovery Kids, Discovery Life, Discovery Real Time, Discovery Turbo, Discovery Turbo UK]}
+  discovery+ Dark:
+    template: {name: NetworkLogoDark, folder: discovery+, file: discoveryPlus, weight: 84, network: *discovery}
+
+  Curiosity Stream:
+    template: {name: NetworkLogo, folder: Curiosity Stream, file: CuriosityStream, weight: 83, network: &curiositystream [Curiosity Stream, CuriosityStream]}
+  Curiosity Stream Dark:
+    template: {name: NetworkLogoDark, folder: Curiosity Stream, file: CuriosityStream, weight: 83, network: *curiositystream}
+
+  BBC iPlayer:
+    template: {name: NetworkLogo, folder: BBC iPlayer, file: BBCiPlayer, weight: 82, network: &bbciplayer [BBC iPlayer, BBC, BBC One, BBC Two, BBC Three, BBC Four, BBC America, BBC First, BBC Choice, BBC HD, BBC UKTV, CBBC, CBeebies]}
+  BBC iPlayer Dark:
+    template: {name: NetworkLogoDark, folder: BBC iPlayer, file: BBCiPlayer, weight: 82, network: *bbciplayer}
+
+  ITVX:
+    template: {name: NetworkLogo, folder: ITVX, file: ITVX, weight: 81, network: &itvx [ITVX, ITV, ITV1, ITV2, ITV3, ITV4, ITVBe, CITV]}
+  ITVX Dark:
+    template: {name: NetworkLogoDark, folder: ITVX, file: ITVX, weight: 81, network: *itvx}
+
+  BritBox:
+    template: {name: NetworkLogo, folder: BritBox, file: BritBox, weight: 80, network: &britbox [BritBox]}
+  BritBox Dark:
+    template: {name: NetworkLogoDark, folder: BritBox, file: BritBox, weight: 80, network: *britbox}
+
+  Acorn TV:
+    template: {name: NetworkLogo, folder: Acorn TV, file: AcornTV, weight: 79, network: &acorntv [Acorn TV]}
+  Acorn TV Dark:
+    template: {name: NetworkLogoDark, folder: Acorn TV, file: AcornTV, weight: 79, network: *acorntv}
+
+  Crunchyroll:
+    template: {name: NetworkLogo, folder: Crunchyroll, file: Crunchyroll, weight: 78, network: &crunchyroll [Crunchyroll]}
+  Crunchyroll Dark:
+    template: {name: NetworkLogoDark, folder: Crunchyroll, file: Crunchyroll, weight: 78, network: *crunchyroll}
+
+  SVT1:
+    template: {name: NetworkLogo, folder: SVT1, file: SVT1, weight: 77, network: &svt1 [SVT1, SVT, SVT Play]}
+  SVT1 Dark:
+    template: {name: NetworkLogoDark, folder: SVT1, file: SVT1, weight: 77, network: *svt1}
+
+  TV4:
+    template: {name: NetworkLogo, folder: TV4, file: TV4, weight: 76, network: &tv4 [TV4, TV4 Play]}
+  TV4 Dark:
+    template: {name: NetworkLogoDark, folder: TV4, file: TV4, weight: 76, network: *tv4}
+
+  C More:
+    template: {name: NetworkLogo, folder: C More, file: CMore, weight: 75, network: &cmore [C More]}
+  C More Dark:
+    template: {name: NetworkLogoDark, folder: C More, file: CMore, weight: 75, network: *cmore}
+
+  Viaplay:
+    template: {name: NetworkLogo, folder: Viaplay, file: Viaplay, weight: 74, network: &viaplay [Viaplay]}
+  Viaplay Dark:
+    template: {name: NetworkLogoDark, folder: Viaplay, file: Viaplay, weight: 74, network: *viaplay}
+
+  SkyShowtime:
+    template: {name: NetworkLogo, folder: SkyShowtime, file: SkyShowtime, weight: 73, network: &skyshowtime [SkyShowtime]}
+  SkyShowtime Dark:
+    template: {name: NetworkLogoDark, folder: SkyShowtime, file: SkyShowtime, weight: 73, network: *skyshowtime}
+
+  Crave:
+    template: {name: NetworkLogo, folder: Crave, file: Crave, weight: 72, network: &crave [Crave]}
+  Crave Dark:
+    template: {name: NetworkLogoDark, folder: Crave, file: Crave, weight: 72, network: *crave}
+
+  Stan:
+    template: {name: NetworkLogo, folder: Stan, file: Stan, weight: 71, network: &stan [Stan]}
+  Stan Dark:
+    template: {name: NetworkLogoDark, folder: Stan, file: Stan, weight: 71, network: *stan}
+
+  Rakuten TV:
+    template: {name: NetworkLogo, folder: Rakuten TV, file: RakutenTV, weight: 70, network: &rakutentv [Rakuten TV]}
+  Rakuten TV Dark:
+    template: {name: NetworkLogoDark, folder: Rakuten TV, file: RakutenTV, weight: 70, network: *rakutentv}
+
+  DAZN:
+    template: {name: NetworkLogo, folder: DAZN, file: DAZN, weight: 69, network: &dazn [DAZN]}
+  DAZN Dark:
+    template: {name: NetworkLogoDark, folder: DAZN, file: DAZN, weight: 69, network: *dazn}
+
+  fubo:
+    template: {name: NetworkLogo, folder: fubo, file: fubo, weight: 68, network: &fubo [fubo, fuboTV, Fubo]}
+  fubo Dark:
+    template: {name: NetworkLogoDark, folder: fubo, file: fubo, weight: 68, network: *fubo}
+
+#╔═════════════════════════════════════════════════════════════════════════════════╗
+#    ██╗  ██╗██████╗  ██████╗     ████████╗██╗███╗   ██╗████████╗███████╗██████╗   ║
+#    ██║  ██║██╔══██╗██╔═══██╗    ╚══██╔══╝██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗  ║
+#    ███████║██████╔╝██║   ██║       ██║   ██║██╔██╗ ██║   ██║   █████╗  ██║  ██║  ║
+#    ██╔══██║██╔══██╗██║   ██║       ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██║  ██║  ║
+#    ██║  ██║██████╔╝╚██████╔╝       ██║   ██║██║ ╚████║   ██║   ███████╗██████╔╝  ║
+#    ╚═╝  ╚═╝╚═════╝  ╚═════╝        ╚═╝   ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═════╝   ║
+#╚═════════════════════════════════════════════════════════════════════════════════╝
+  # Show-coloured HBO logos for these four, instead of the plain one.
+
+  HBO Chernobyl:
+    overlay:
+      name: HBO Chernobyl
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_chernobyl.png
+      group: network
+      weight: 180
+    plex_search:
+      all:
+        title: Chernobyl
+
+  HBO Euphoria:
+    overlay:
+      name: HBO Euphoria
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_euphoria.png
+      group: network
+      weight: 180
+    plex_search:
+      all:
+        title: Euphoria
+
+  HBO Succession:
+    overlay:
+      name: HBO Succession
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_succession.png
+      group: network
+      weight: 180
+    plex_search:
+      all:
+        title: Succession
+
+  HBO The Last of Us:
+    overlay:
+      name: HBO The Last of Us
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_thelastofus.png
+      group: network
+      weight: 180
+    plex_search:
+      all:
+        title: The Last of Us
+
 
 ######################################################
 # 🟣 TV-SHOWS PREMIERES & FINALES(THIS SHI DONT WORK)#

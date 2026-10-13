@@ -3,6 +3,30 @@
 #  Lives at: Kometa/Overlays/Movies.yml                                 #
 #=======================================================================#
 
+templates:
+  # Streaming-originals logos, same images and Dark rule as the show logos.
+  StudioLogo:           # white logo, movies not labelled Dark
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Label/<<file>>_White.png
+      group: topleft
+      weight: <<weight>>
+    tmdb_company: <<company>>
+    filters:
+      label.not: Dark
+
+  StudioLogoDark:       # black logo, movies labelled Dark (light posters)
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Label/<<file>>_Black.png
+      group: topleft
+      weight: <<weight>>
+    tmdb_company: <<company>>
+    filters:
+      label: Dark
+
 overlays:
   ######################################################
   # 🟢 GLOBAL OVERLAYS
@@ -42,6 +66,8 @@ overlays:
     overlay:
       name: Trending
       url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/trending.png
+      group: topleft   # same corner as the streaming logos; Trending wins while it lasts
+      weight: 100
     plex_search:
       all:
         collection: Trending Movies
@@ -61,3 +87,23 @@ overlays:
     plex_search:
       all:
         collection: Festival de Cannes Palme d'Or
+
+  ######################################################
+  # 🔵 STREAMING ORIGINALS (top left)
+  ######################################################
+  # Was the Netflix / AppleTV+ / Amazon Originals collections. Same TMDb
+  # companies, now a logo on the poster instead.
+  Netflix:
+    template: {name: StudioLogo, folder: Netflix, file: Netflix, weight: 90, company: &netflix [178464, 198834, 185004, 171251, 145174]}
+  Netflix Dark:
+    template: {name: StudioLogoDark, folder: Netflix, file: Netflix, weight: 90, company: *netflix}
+
+  Apple TV:
+    template: {name: StudioLogo, folder: Apple TV, file: AppleTV, weight: 89, company: &appletv [194232]}
+  Apple TV Dark:
+    template: {name: StudioLogoDark, folder: Apple TV, file: AppleTV, weight: 89, company: *appletv}
+
+  Prime Video:
+    template: {name: StudioLogo, folder: Prime Video, file: PrimeVideo, weight: 88, company: &primevideo [210099]}
+  Prime Video Dark:
+    template: {name: StudioLogoDark, folder: Prime Video, file: PrimeVideo, weight: 88, company: *primevideo}
