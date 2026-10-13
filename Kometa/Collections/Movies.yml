@@ -36,9 +36,7 @@ collections:
 
   Trending Movies:
     sort_title: "'*Trending"
-    trakt_chart:
-      chart: trending
-      limit: 30
+    tmdb_trending_weekly: 30
     collection_order: custom
     sync_mode: sync
     summary: Movies that are currently Trending
@@ -49,14 +47,26 @@ collections:
 
   Oscars Best Picture Winners:
     sort_title: '*Oscars Best Picture Winners'
-    trakt_list: https://trakt.tv/users/pjcob/lists/1970-2025-oscars-best-picture-winners?sort=rank,asc
+    imdb_award:
+      event_id: ev0000003
+      event_year: all
+      category_filter:
+        - best motion picture of the year
+        - best picture
+        - best picture, production
+        - best picture, unique and artistic production
+      winning: true
     summary: The Academy Award for Best Picture is one of the Academy Awards presented annually by the Academy of Motion Picture Arts and Sciences since the awards debuted in 1929
     url_poster: https://theposterdb.com/api/assets/589966
-    collection_order: custom
+    collection_order: release
 
   "Festival de Cannes Palme d'Or":
     sort_title: "'*Festival de Cannes Palme d'Or'"
-    trakt_list: https://trakt.tv/users/seboop/lists/festival-de-cannes-palme-d-or?sort=rank,asc
+    imdb_award:
+      event_id: ev0000147
+      event_year: all
+      award_filter: palme d'or
+      winning: true
     summary: "The Palme d'Or is the highest prize awarded at the Cannes Film Festival. It was introduced in 1955 by the festival's organizing committee.Previously, from 1939 to 1954, the highest prize at the festival was the Grand Prix du Festival International du Film. In 1964, The Palme d'Or was replaced again by the Grand Prix, before being reintroduced in 1975.The Palme d'Or is widely considered to be one of the most prestigious awards in the film industry"
     url_poster: https://theposterdb.com/api/assets/579819
 
@@ -93,11 +103,9 @@ collections:
     summary: Movies directed by Makoto Shinkai
     url_poster: https://theposterdb.com/api/assets/433619
 
-######################################################
-#                        TRAKT                       #
-######################################################
-
   The Wizarding World:
-    trakt_list: https://trakt.tv/users/veliwut/lists/the-wizarding-world?sort=rank,asc
+    tmdb_collection:
+      - https://www.themoviedb.org/collection/1241-harry-potter-collection
+      - https://www.themoviedb.org/collection/435259-fantastic-beasts-collection
     summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
     url_poster: https://theposterdb.com/api/assets/112286
