@@ -1,9 +1,22 @@
 #=======================================================================#
-#  Movie collections, loaded by the Movies library (with Studios.yml)   #
+#  Movie collections, loaded by the Movies library                      #
 #  Lives at: Kometa/Collections/Movies.yml                              #
 #-----------------------------------------------------------------------#
 #  Collection art lives in Kometa/Collections/<Collection Name>/.       #
 #=======================================================================#
+
+templates:
+  Director:
+    default:
+      style: signature    # poster style: bw, signature, rainier, diiivoy or diiivoycolor
+    tmdb_director: <<tmdb>>
+    minimum_items: 3      # no collection until you have 3 of their films
+    delete_below_minimum: true
+    sync_mode: sync
+    collection_order: release
+    sort_title: +04_<<collection_name>>
+    summary: Movies directed by <<collection_name>>
+    url_poster: https://raw.githubusercontent.com/Kometa-Team/People-Images-<<style>>/master/<<key_name_first_letter>>/Images/<<key_name_encoded>>.jpg
 
 collections:
 ######################################################
@@ -98,14 +111,45 @@ collections:
     url_poster: https://api.mediux.pro/assets/ab4d8cb2-621d-4b90-8fbf-b5dc2c1c389d
     url_background: https://api.mediux.pro/assets/d3da3723-2ae5-4a40-8686-c8f789da9939
 
-  Makoto Shinkai:
-    tmdb_director: https://www.themoviedb.org/person/74091
-    summary: Movies directed by Makoto Shinkai
-    url_poster: https://theposterdb.com/api/assets/433619
-
   The Wizarding World:
     tmdb_collection:
       - https://www.themoviedb.org/collection/1241-harry-potter-collection
       - https://www.themoviedb.org/collection/435259-fantastic-beasts-collection
     summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
     url_poster: https://theposterdb.com/api/assets/112286
+
+######################################################
+#                     DIRECTORS                      #
+######################################################
+# key_name picks the poster, tmdb is the TMDb person id
+# (themoviedb.org/person/<id>). One line per director.
+
+  David Fincher:
+    template: {name: Director, key_name: David Fincher, tmdb: 7467}
+  Denis Villeneuve:
+    template: {name: Director, key_name: Denis Villeneuve, tmdb: 137427}
+  Christopher Nolan:
+    template: {name: Director, key_name: Christopher Nolan, tmdb: 525}
+  Martin Scorsese:
+    template: {name: Director, key_name: Martin Scorsese, tmdb: 1032}
+  Quentin Tarantino:
+    template: {name: Director, key_name: Quentin Tarantino, tmdb: 138}
+  Ari Aster:
+    template: {name: Director, key_name: Ari Aster, tmdb: 1145520}
+  Robert Eggers:
+    template: {name: Director, key_name: Robert Eggers, tmdb: 138781}
+  Paul Thomas Anderson:
+    template: {name: Director, key_name: Paul Thomas Anderson, tmdb: 4762}
+  Bong Joon-ho:
+    template: {name: Director, key_name: Bong Joon-ho, tmdb: 21684}
+  Na Hong-jin:
+    template: {name: Director, key_name: Na Hong-jin, tmdb: 75915}
+  Greta Gerwig:
+    template: {name: Director, key_name: Greta Gerwig, tmdb: 45400}
+  Yorgos Lanthimos:
+    template: {name: Director, key_name: Yorgos Lanthimos, tmdb: 122423}
+
+  Makoto Shinkai:
+    tmdb_director: https://www.themoviedb.org/person/74091
+    summary: Movies directed by Makoto Shinkai
+    url_poster: https://theposterdb.com/api/assets/433619
