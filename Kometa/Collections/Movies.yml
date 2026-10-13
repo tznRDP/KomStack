@@ -1,3 +1,10 @@
+#=======================================================================#
+#  Movie collections, loaded by the Movies library (with Studios.yml)   #
+#  Lives at: Kometa/Collections/Movies.yml                              #
+#-----------------------------------------------------------------------#
+#  Collection art lives in Kometa/Collections/<Collection Name>/.       #
+#=======================================================================#
+
 collections:
 ######################################################
 #                     Collections                    #
@@ -22,7 +29,7 @@ collections:
     collection_order: release
     sync_mode: sync
     summary: Movies that contain Swedish audio
-    url_poster: https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/Filmer%20med%20Svenskt%20Tal/poster.png
     visible_home: true
     visible_shared: true
     visible_library: false
@@ -94,4 +101,3 @@ collections:
     trakt_list: https://trakt.tv/users/veliwut/lists/the-wizarding-world?sort=rank,asc
     summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
     url_poster: https://theposterdb.com/api/assets/112286
-

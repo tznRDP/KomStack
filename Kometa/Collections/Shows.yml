@@ -1,7 +1,20 @@
-######################################################
-#              Network Collections                   #
-######################################################
+#=======================================================================#
+#  TV collections, loaded by the TV Shows library (with Studios.yml)    #
+#  Lives at: Kometa/Collections/Shows.yml                               #
+#-----------------------------------------------------------------------#
+#  Sections: collections / network labels / network collections         #
+#  Network collections are TV only: Kometa's network filter only        #
+#  works in show libraries.                                             #
+#  Collection art lives in Kometa/Collections/<Collection Name>/.       #
+#=======================================================================#
+
 templates:
+  network_labeler:
+    tmdb_network:
+      network_id: <<network_id>>
+    collection_mode: hide
+    item_label: <<label_name>>
+    sort_title: _z_sorted_<<collection_name>>
 
   network:
     smart_filter:
@@ -15,6 +28,80 @@ templates:
 #    schedule: weekly (sunday)
 
 collections:
+######################################################
+#                     Collections                    #
+######################################################
+
+  Trending Series:
+    sort_title: "'*Trending"
+    trakt_chart:
+      chart: trending
+      limit: 30
+    collection_order: custom
+    sync_mode: sync
+    summary: Series that are currently Trending
+    url_poster: https://theposterdb.com/api/assets/259814
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+
+  Emmy Award Winning Series:
+    sort_title: '*Emmy Award Winning Series'
+    trakt_list:
+      - https://trakt.tv/users/pd_review/lists/emmy-award-best-drama
+      - https://trakt.tv/users/pd_review/lists/emmy-award-best-comedy
+    sync_mode: sync
+    summary: Emmy winners for Outstanding Drama & Comedy Series
+    url_poster: https://theposterdb.com/api/assets/579817
+
+  Marvel Cinematic Universe:
+    imdb_list: 
+      list_id: ls029032797
+      sort_by: custom.asc
+    collection_order: custom.asc
+    sync_mode: sync
+    summary: "The Marvel Cinematic Universe (MCU) is an American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios. The films are based on characters that appear in American comic books published by Marvel Comics. The franchise also includes several television series, short films, digital series, and literature. The shared universe, much like the original Marvel Universe in comic books, was established by crossing over common plot elements, settings, cast, and characters"
+    url_poster: https://theposterdb.com/api/assets/18648
+    url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
+
+######################################################
+#    Network labels (used by Overlays/Shows.yml)     #
+######################################################
+
+  Netflix Label:
+    template: { name: network_labeler, network_id: 213, label_name: "Netfliz" }
+    filters:
+      title.not:
+        - Our Planet (2019)
+    plex_search:
+      title:
+        - The Haunting of Hill House
+        - The Haunting of Bly Manor
+        - Monster (2022)
+        - "The End of the F***ing World"
+      title.not:
+        - Our Planet (2019)
+
+  BBC Earth:
+    imdb_list:
+      list_id: ls085429769
+      sort_by: custom.asc
+      title.not:
+        - Cosmos (2014)
+    plex_search:
+      title:
+        - Prehistoric Planet
+      title.not:
+        - Cosmos (2014)
+    sync_mode: sync
+    item_label: BBCÖrt
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png
+
+######################################################
+#              Network Collections                   #
+######################################################
+
   "A&E":
     template: { name: network, network: "A&E" }
     summary: A&E is an American basic cable network, the flagship television property of A&E Networks. The network was originally founded in 1984 as the Arts & Entertainment Network, initially focusing on fine arts, documentaries, dramas, and educational entertainment.
@@ -259,7 +346,7 @@ collections:
     url_poster: https://theposterdb.com/api/assets/121696
 
   TV Land:
-    template: { name: network, network: " TV Land" }
+    template: { name: network, network: "TV Land" }
     summary: TV Land is an American pay television channel owned by Paramount Global through its networks division.
     url_poster: https://theposterdb.com/api/assets/489853
 

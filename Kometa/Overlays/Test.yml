@@ -1,3 +1,10 @@
+#=======================================================================#
+#  Test overlays, loaded by the TVTestBench library                     #
+#  Lives at: Kometa/Overlays/Test.yml                                   #
+#-----------------------------------------------------------------------#
+#  Try overlays here first, then move them into Overlays/Shows.yml.     #
+#=======================================================================#
+
 overlays:
   ######################################################
   # 🟢 GLOBAL OVERLAYS                                 #
@@ -30,7 +37,7 @@ overlays:
     tmdb_network: 213
     overlay:
       name: NSeries
-      url: https://raw.githubusercontent.com/tznRDP/PlexStack/refs/heads/main/NSeries_White.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/Netflix/Label/NSeries_White.png
 
   NewSeason:
     overlay:

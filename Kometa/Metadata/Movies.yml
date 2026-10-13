@@ -1,3 +1,10 @@
+#=======================================================================#
+#  Movie metadata, loaded by the Movies library                         #
+#  Lives at: Kometa/Metadata/Movies.yml                                 #
+#-----------------------------------------------------------------------#
+#  One entry per movie, keyed by its TMDB id (digits only).             #
+#=======================================================================#
+
 metadata:
 
 #╔══════════════════════════════════════════════════════════════════════════════╗
@@ -810,10 +817,10 @@ metadata:
     url_poster: https://api.mediux.pro/assets/7fa0eeb7-f4b8-4d55-ba8d-014c5aa4d81e
 
 
-  126963-z: # Dragon Ball Z: Battle of Gods (2013) Poster by Hikari on MediUX. https://mediux.pro/sets/40742
+  126963: # Dragon Ball Z: Battle of Gods (2013) Poster by Hikari on MediUX. https://mediux.pro/sets/40742
     url_poster: https://api.mediux.pro/assets/55378e16-a4b7-4c02-8ce4-e09dc2b27540
 
-  303857-z-f: # Dragon Ball Z: Resurrection 'F' (2015) Poster by Hikari on MediUX. https://mediux.pro/sets/40742
+  303857: # Dragon Ball Z: Resurrection 'F' (2015) Poster by Hikari on MediUX. https://mediux.pro/sets/40742
     url_poster: https://api.mediux.pro/assets/677ff6cc-841b-45db-af31-d0d371172dd8
 
   503314: # Dragon Ball Super: Broly (2018) Poster by Hikari on MediUX. https://mediux.pro/sets/40742
@@ -1124,4 +1131,3 @@ metadata:
 
   348350: # Solo: A Star Wars Story (2018) Poster by Pejamas on MediUX. https://mediux.pro/sets/8087
     url_poster: https://api.mediux.pro/assets/80c77057-f2c9-47d4-9b81-534ba2060330
-
