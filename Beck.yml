@@ -1,0 +1,187 @@
+metadata:
+  82506: # TVDB id for Beck.
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_Poster.png
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_BG.png
+    seasons:
+      1:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_01.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_02.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_03.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_04.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_05.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_05.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_06.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_06.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_07.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_07.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_08.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_08.png
+      2:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_09.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_09.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_10.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_10.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_11.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_11.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_12.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_12.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_13.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_13.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_14.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_14.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_15.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_15.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_16.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_16.png
+      3:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_17.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_17.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_18.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_18.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_19.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_19.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_20.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_20.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_21.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_21.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_22.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_22.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_23.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_23.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_24.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_24.png
+      4:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_25.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_25.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_26.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_26.png
+      5:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_27.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_27.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_28.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_28.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_29.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_29.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_30.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_30.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_31.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_31.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_32.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_32.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_33.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_33.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_34.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_34.png
+      6:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_35.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_35.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_36.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_36.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_37.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_37.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_38.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_38.png
+      7:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_39.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_39.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_40.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_40.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_41.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_41.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_42.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_42.png
+      8:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_43.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_43.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_44.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_44.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_45.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_45.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_46.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_46.png
+      9:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_47.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_47.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_48.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_48.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_49.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_49.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_50.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_50.png
+      10:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_51.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_51.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_52.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_52.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_53.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_53.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Poster/Beck/Beck_54.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Background/Beck/Beck_54.png

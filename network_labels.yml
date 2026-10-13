@@ -1,0 +1,38 @@
+templates:
+  network_labeler:
+    tmdb_network:
+      network_id: <<network_id>>
+    collection_mode: hide
+    item_label: <<label_name>>
+    sort_title: _z_sorted_<<collection_name>>
+
+collections:
+  Netflix Label:
+    template: { name: network_labeler, network_id: 213, label_name: "Netfliz" }
+    filters:
+      title.not:
+        - Our Planet (2019)
+    plex_search:
+      title:
+        - The Haunting of Hill House
+        - The Haunting of Bly Manor
+        - Monster (2022)
+        - "The End of the F***ing World"
+      title.not:
+        - Our Planet (2019)
+
+  BBC Earth:
+    imdb_list:
+      list_id: ls085429769
+      sort_by: custom.asc
+      title.not:
+        - Cosmos (2014)
+    plex_search:
+      title:
+        - Prehistoric Planet
+      title.not:
+        - Cosmos (2014)
+    sync_mode: sync
+    item_label: BBCÖrt
+    url_poster: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/BBC%20Earth/Poster/Cyan.png
+    url_background: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/BBC%20Earth/Background/Green.png

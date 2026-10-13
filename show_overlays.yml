@@ -1,0 +1,359 @@
+overlays:
+#╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+#       █████████  █████          ███████    ███████████    █████████   █████             ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
+#      ███▒▒▒▒▒███▒▒███         ███▒▒▒▒▒███ ▒▒███▒▒▒▒▒███  ███▒▒▒▒▒███ ▒▒███            ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███ ▒▒███         ███▒▒▒▒▒███ ▒▒███ ▒▒███  ███▒▒▒▒▒███  ║
+#     ███     ▒▒▒  ▒███        ███     ▒▒███ ▒███    ▒███ ▒███    ▒███  ▒███           ███     ▒▒███ ▒███    ▒███  ▒███  █ ▒  ▒███    ▒███  ▒███        ▒███    ▒███  ▒▒███ ███  ▒███    ▒▒▒   ║
+#    ▒███          ▒███       ▒███      ▒███ ▒██████████  ▒███████████  ▒███          ▒███      ▒███ ▒███    ▒███  ▒██████    ▒██████████   ▒███        ▒███████████   ▒▒█████   ▒▒█████████   ║
+#    ▒███    █████ ▒███       ▒███      ▒███ ▒███▒▒▒▒▒███ ▒███▒▒▒▒▒███  ▒███          ▒███      ▒███ ▒▒███   ███   ▒███▒▒█    ▒███▒▒▒▒▒███  ▒███        ▒███▒▒▒▒▒███    ▒▒███     ▒▒▒▒▒▒▒▒███  ║
+#    ▒▒███  ▒▒███  ▒███      █▒▒███     ███  ▒███    ▒███ ▒███    ▒███  ▒███      █   ▒▒███     ███   ▒▒▒█████▒    ▒███ ▒   █ ▒███    ▒███  ▒███      █ ▒███    ▒███     ▒███     ███    ▒███  ║
+#     ▒▒█████████  ███████████ ▒▒▒███████▒   ███████████  █████   █████ ███████████    ▒▒▒███████▒      ▒▒███      ██████████ █████   █████ ███████████ █████   █████    █████   ▒▒█████████   ║
+#      ▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒       ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒    ║
+#                                                                                                                                                                                              ║
+#                                                   Main Header Art: https://patorjk.com/software/taag/#p=display&f=Rebel&t=&x=none&v=4&h=4&w=80&we=false                                      ║
+#                                                                                                                                                                                              ║
+#╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  #Resolution:
+  #  default: resolution
+  #  template_variables:
+  #    horizontal_align: right
+  #    vertical_align: bottom
+
+  #Audio:
+  #  default: audio_codec
+  #  template_variables:
+  #    horizontal_align: left
+  #    vertical_align: bottom
+
+  #4K:
+  #  overlay:
+  #    name: 4K
+  #    url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/4k.png
+  #  plex_search:
+  #    all:
+  #      resolution: 4K
+
+#╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+#      █████████  ███████████   █████████   ███████████ █████  █████  █████████        ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
+#     ███▒▒▒▒▒███▒█▒▒▒███▒▒▒█  ███▒▒▒▒▒███ ▒█▒▒▒███▒▒▒█▒▒███  ▒▒███  ███▒▒▒▒▒███     ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███ ▒▒███         ███▒▒▒▒▒███ ▒▒███ ▒▒███  ███▒▒▒▒▒███  ║
+#    ▒███    ▒▒▒ ▒   ▒███  ▒  ▒███    ▒███ ▒   ▒███  ▒  ▒███   ▒███ ▒███    ▒▒▒     ███     ▒▒███ ▒███    ▒███  ▒███  █ ▒  ▒███    ▒███  ▒███        ▒███    ▒███  ▒▒███ ███  ▒███    ▒▒▒   ║
+#    ▒▒█████████     ▒███     ▒███████████     ▒███     ▒███   ▒███ ▒▒█████████    ▒███      ▒███ ▒███    ▒███  ▒██████    ▒██████████   ▒███        ▒███████████   ▒▒█████   ▒▒█████████   ║
+#     ▒▒▒▒▒▒▒▒███    ▒███     ▒███▒▒▒▒▒███     ▒███     ▒███   ▒███  ▒▒▒▒▒▒▒▒███   ▒███      ▒███ ▒▒███   ███   ▒███▒▒█    ▒███▒▒▒▒▒███  ▒███        ▒███▒▒▒▒▒███    ▒▒███     ▒▒▒▒▒▒▒▒███  ║
+#     ███    ▒███    ▒███     ▒███    ▒███     ▒███     ▒███   ▒███  ███    ▒███   ▒▒███     ███   ▒▒▒█████▒    ▒███ ▒   █ ▒███    ▒███  ▒███      █ ▒███    ▒███     ▒███     ███    ▒███  ║
+#    ▒▒█████████     █████    █████   █████    █████    ▒▒████████  ▒▒█████████     ▒▒▒███████▒      ▒▒███      ██████████ █████   █████ ███████████ █████   █████    █████   ▒▒█████████   ║
+#     ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒    ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒      ▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒    ║
+#╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+  NewSeason:
+    overlay:
+      name: NewSeason
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/new_season2.png
+      group: FRESH
+      weight: 980
+    plex_all: true
+    filters:
+      added.not: 30
+      seasons:
+        percentage: 1
+        added: 21
+        title.not: Specials
+
+  Airing:
+    overlay:
+      name: airing
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/airing_small.png
+      group: STATUS
+      weight: 950
+    tmdb_on_the_air: 2000
+
+  Returning:
+    overlay:
+      name: returning
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/returning_small.png
+      group: STATUS
+      weight: 800
+    plex_all: true
+    filters:
+      tmdb_status:
+        - returning
+        - planned
+        - production
+
+  Ended:
+    overlay:
+      name: ended
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
+      group: STATUS
+      weight: 700
+    plex_all: true
+    filters:
+      tmdb_status: ended
+
+  EndedForced:
+    overlay:
+      name: endedForced
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
+      group: STATUS
+      weight: 700
+    plex_search:
+      title:
+       - The Haunting of Bly Manor
+       - The Stranger (2020)
+       - The Haunting of Hill House
+
+  Canceled:
+    overlay:
+      name: canceled
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/canceled_minimal.png
+      group: STATUS
+      weight: 600
+    plex_all: true
+    filters:
+      tmdb_status: canceled
+
+  Emmy:
+    overlay:
+      name: Emmy
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/emmy.png
+    plex_search:
+      all:
+        collection: Emmy Award Winning Series
+
+#╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+#     █████         █████████   ███████████  ██████████ █████             ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
+#    ▒▒███         ███▒▒▒▒▒███ ▒▒███▒▒▒▒▒███▒▒███▒▒▒▒▒█▒▒███            ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███ ▒▒███         ███▒▒▒▒▒███ ▒▒███ ▒▒███  ███▒▒▒▒▒███  ║
+#     ▒███        ▒███    ▒███  ▒███    ▒███ ▒███  █ ▒  ▒███           ███     ▒▒███ ▒███    ▒███  ▒███  █ ▒  ▒███    ▒███  ▒███        ▒███    ▒███  ▒▒███ ███  ▒███    ▒▒▒   ║
+#     ▒███        ▒███████████  ▒██████████  ▒██████    ▒███          ▒███      ▒███ ▒███    ▒███  ▒██████    ▒██████████   ▒███        ▒███████████   ▒▒█████   ▒▒█████████   ║
+#     ▒███        ▒███▒▒▒▒▒███  ▒███▒▒▒▒▒███ ▒███▒▒█    ▒███          ▒███      ▒███ ▒▒███   ███   ▒███▒▒█    ▒███▒▒▒▒▒███  ▒███        ▒███▒▒▒▒▒███    ▒▒███     ▒▒▒▒▒▒▒▒███  ║
+#     ▒███      █ ▒███    ▒███  ▒███    ▒███ ▒███ ▒   █ ▒███      █   ▒▒███     ███   ▒▒▒█████▒    ▒███ ▒   █ ▒███    ▒███  ▒███      █ ▒███    ▒███     ▒███     ███    ▒███  ║
+#     ███████████ █████   █████ ███████████  ██████████ ███████████    ▒▒▒███████▒      ▒▒███      ██████████ █████   █████ ███████████ █████   █████    █████   ▒▒█████████   ║
+#    ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒       ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒    ║
+#                                                                                                                                                                              ║
+#                                        Network Label Art: https://patorjk.com/software/taag/#p=display&f=ANSI+Shadow&t=&x=none&v=4&h=4&w=80&we=false                         ║
+#                                                                                                                                                                              ║
+#╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+#╔═══════════════════════════════════════════════════════════╗
+#    ███╗   ██╗███████╗████████╗███████╗██╗     ██╗██╗  ██╗  ║
+#    ████╗  ██║██╔════╝╚══██╔══╝██╔════╝██║     ██║╚██╗██╔╝  ║
+#    ██╔██╗ ██║█████╗     ██║   █████╗  ██║     ██║ ╚███╔╝   ║
+#    ██║╚██╗██║██╔══╝     ██║   ██╔══╝  ██║     ██║ ██╔██╗   ║
+#    ██║ ╚████║███████╗   ██║   ██║     ███████╗██║██╔╝ ██╗  ║
+#    ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝     ╚══════╝╚═╝╚═╝  ╚═╝  ║
+#╚═══════════════════════════════════════════════════════════╝
+  NetflixSeries:
+    overlay:
+      name: NSeries
+      url: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/Netflix/Label/NSeries_White.png
+    plex_search: 
+      all:
+        label: Netfliz
+        label.not: Dark
+
+  NetflixSeriesDark:
+    overlay:
+      name: NSeriesDark
+      url: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/Netflix/Label/NSeries_Black.png
+    plex_search: 
+      all:
+        label: Dark, Netfliz
+#╔══════════════════════════════════════════════════════════════════════════╗
+#    ██████╗ ██████╗  ██████╗    ███████╗ █████╗ ██████╗ ████████╗██╗  ██╗  ║
+#    ██╔══██╗██╔══██╗██╔════╝    ██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██║  ██║  ║
+#    ██████╔╝██████╔╝██║         █████╗  ███████║██████╔╝   ██║   ███████║  ║
+#    ██╔══██╗██╔══██╗██║         ██╔══╝  ██╔══██║██╔══██╗   ██║   ██╔══██║  ║
+#    ██████╔╝██████╔╝╚██████╗    ███████╗██║  ██║██║  ██║   ██║   ██║  ██║  ║
+#    ╚═════╝ ╚═════╝  ╚═════╝    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝  ║
+#╚══════════════════════════════════════════════════════════════════════════╝
+  BBCEarthSeries:
+    overlay:
+      name: BBCEarthSeries
+      url: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/BBC%20Earth/Label/BBCEarth_White.png
+    plex_search:
+      all:
+        label: BBCÖrt
+        label.not: Dark
+
+  BBCEarthSeriesDark:
+    overlay:
+      name: BBCEarthSeriesDark
+      url: https://raw.githubusercontent.com/tznRDP/PlexStack/main/Kometa/Overlays/Networks/BBC%20Earth/Label/BBCEarth_Black.png
+    plex_search:
+      all:
+        label: Dark, BBCÖrt
+
+######################################################
+# 🟣 TV-SHOWS PREMIERES & FINALES(THIS SHI DONT WORK)#
+######################################################
+
+#  SeriesPremiere_Episode:
+#    overlay:
+#      name: text(Series Premiere Episode)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  SeriesPremiere_Season:
+#    overlay:
+#      name: text(Series Premiere Season)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  SeriesPremiere_Show:
+#    overlay:
+#      name: text(Series Premiere Show)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  # Season Premiere (Ep1 of S2+)
+#  SeasonPremiere_Episode:
+#    overlay:
+#      name: text(Season Premiere Episode)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number.not: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  SeasonPremiere_Season:
+#    overlay:
+#      name: text(Season Premiere Season)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season.not: 1
+#      episodes:
+#        episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  SeasonPremiere_Show:
+#    overlay:
+#      name: text(Season Premiere Show)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season.not: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  # Season Finale (last episode of all but final season)
+#  SeasonFinale:
+#    overlay:
+#      name: text(Season Finale)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#B2222295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season.not: last
+#      episode: last
+#      title.not: Specials
+#      label: Season Finale
+
+#  # Series Finale (last episode of final season)
+#  SeriesFinale:
+#    overlay:
+#      name: text(Series Finale)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#8B008B95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season: last
+#      episode: last
+#      title.not: Specials
+#      label: Series Finale

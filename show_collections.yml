@@ -1,0 +1,37 @@
+collections:
+######################################################
+#                     Collections                    #
+######################################################
+
+  Trending Series:
+    sort_title: "'*Trending"
+    trakt_chart:
+      chart: trending
+      limit: 30
+    collection_order: custom
+    sync_mode: sync
+    summary: Series that are currently Trending
+    url_poster: https://theposterdb.com/api/assets/259814
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+
+  Emmy Award Winning Series:
+    sort_title: '*Emmy Award Winning Series'
+    trakt_list:
+      - https://trakt.tv/users/pd_review/lists/emmy-award-best-drama
+      - https://trakt.tv/users/pd_review/lists/emmy-award-best-comedy
+    sync_mode: sync
+    summary: Emmy winners for Outstanding Drama & Comedy Series
+    url_poster: https://theposterdb.com/api/assets/579817
+
+  Marvel Cinematic Universe:
+    imdb_list: 
+      list_id: ls029032797
+      sort_by: custom.asc
+    collection_order: custom.asc
+    sync_mode: sync
+    summary: "The Marvel Cinematic Universe (MCU) is an American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios. The films are based on characters that appear in American comic books published by Marvel Comics. The franchise also includes several television series, short films, digital series, and literature. The shared universe, much like the original Marvel Universe in comic books, was established by crossing over common plot elements, settings, cast, and characters"
+    url_poster: https://theposterdb.com/api/assets/18648
+    url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
+

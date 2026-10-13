@@ -1,0 +1,30 @@
+collections:
+######################################################
+#                     Collections                    #
+######################################################
+
+  Trending Series:
+    sort_title: "'*Trending"
+    trakt_chart:
+      chart: trending
+      limit: 30
+    collection_order: custom
+    sync_mode: sync
+    summary: Series that are currently Trending
+    url_poster: https://theposterdb.com/api/assets/259814
+    visible_home: false
+    visible_shared: false
+    visible_library: false
+
+  Top Series in Anime:
+    sort_title: "'*Top Series in Anime"
+    smart_filter:
+      all:
+        audience_rating.gte: 7.0
+      sort_by: random
+    sync_mode: sync
+    summary: The highest rated anime series in your library
+    visible_home: true
+    visible_shared: true
+    visible_library: false
+

@@ -1,0 +1,266 @@
+overlays:
+  ######################################################
+  # 🟢 GLOBAL OVERLAYS                                 #
+  ######################################################
+  #Resolution:
+  #  default: resolution
+  #  template_variables:
+  #    horizontal_align: right
+  #    vertical_align: bottom
+
+  #Audio:
+  #  default: audio_codec
+  #  template_variables:
+  #    horizontal_align: left
+  #    vertical_align: bottom
+
+  #4K:
+  #  overlay:
+  #    name: 4K
+  #    url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/4k.png
+  #  plex_search:
+  #    all:
+  #      resolution: 4K
+
+  ######################################################
+  # 🟣 TV-SHOWS                                        #
+  ######################################################
+
+  NetflixSeries:
+    tmdb_network: 213
+    overlay:
+      name: NSeries
+      url: https://raw.githubusercontent.com/tznRDP/PlexStack/refs/heads/main/NSeries_White.png
+
+  NewSeason:
+    overlay:
+      name: NewSeason
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/new_season2.png
+      group: FRESH
+      weight: 900
+    plex_all: true
+    filters:
+      added.not: 30
+      seasons:
+        percentage: 1
+        added: 21
+        title.not: Specials
+
+  Airing:
+    overlay:
+      name: airing
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/airing_small.png
+      group: STATUS
+      weight: 950
+    tmdb_on_the_air: 2000
+
+  Returning:
+    overlay:
+      name: returning
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/returning_small.png
+      group: STATUS
+      weight: 800
+    plex_all: true
+    filters:
+      tmdb_status:
+        - returning
+        - planned
+        - production
+
+  Ended:
+    overlay:
+      name: ended
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/ended_small.png
+      group: STATUS
+      weight: 700
+    plex_all: true
+    filters:
+      tmdb_status: ended
+
+  Canceled:
+    overlay:
+      name: canceled
+      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/canceled_small.png
+      group: STATUS
+      weight: 600
+    plex_all: true
+    filters:
+      tmdb_status: canceled
+
+######################################################
+# 🟣 TV-SHOWS PREMIERES & FINALES                    #
+######################################################
+
+#  SeriesPremiere_Episode:
+#    overlay:
+#      name: text(Series Premiere Episode)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  SeriesPremiere_Season:
+#    overlay:
+#      name: text(Series Premiere Season)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  SeriesPremiere_Show:
+#    overlay:
+#      name: text(Series Premiere Show)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#1E90FF95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Series Premiere
+
+#  # Season Premiere (Ep1 of S2+)
+#  SeasonPremiere_Episode:
+#    overlay:
+#      name: text(Season Premiere Episode)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season_number.not: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  SeasonPremiere_Season:
+#    overlay:
+#      name: text(Season Premiere Season)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season.not: 1
+#      episodes:
+#        episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  SeasonPremiere_Show:
+#    overlay:
+#      name: text(Season Premiere Show)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#228B2295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      seasons:
+#        season.not: 1
+#        episodes:
+#          episode_number: 1
+#      title.not: Specials
+#      label: Season Premiere
+
+#  # Season Finale (last episode of all but final season)
+#  SeasonFinale:
+#    overlay:
+#      name: text(Season Finale)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#B2222295"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season.not: last
+#      episode: last
+#      title.not: Specials
+#      label: Season Finale
+
+#  # Series Finale (last episode of final season)
+#  SeriesFinale:
+#    overlay:
+#      name: text(Series Finale)
+#      font_size: 36
+#      font_color: "#FFFFFF"
+#      horizontal_align: center
+#      horizontal_offset: 0
+#      vertical_align: top
+#      vertical_offset: 0
+#      back_color: "#8B008B95"
+#      back_width: 100
+#      back_height: 100
+#      back_align: top
+#    run_definition: show
+#    filters:
+#      season: last
+#      episode: last
+#      title.not: Specials
+#      label: Series Finale

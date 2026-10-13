@@ -1,0 +1,97 @@
+collections:
+######################################################
+#                     Collections                    #
+######################################################
+
+  Random Unwatched Movies:
+    sort_title: "'*Unwatched"
+    libraries: Movies
+    smart_filter:
+      all:
+        audience_rating.gte: 7.0
+        plays.lt: 1
+      sort_by: random
+      limit: 20
+
+  Filmer med Svenskt Tal:
+    sort_title: "'*Swedish"
+    plex_search:
+      any:
+        audio_language:
+          - sv
+    collection_order: release
+    sync_mode: sync
+    summary: Movies that contain Swedish audio
+    url_poster: https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg
+    visible_home: true
+    visible_shared: true
+    visible_library: false
+
+  Trending Movies:
+    sort_title: "'*Trending"
+    trakt_chart:
+      chart: trending
+      limit: 30
+    collection_order: custom
+    sync_mode: sync
+    summary: Movies that are currently Trending
+    url_poster: https://theposterdb.com/api/assets/259815
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+
+  Oscars Best Picture Winners:
+    sort_title: '*Oscars Best Picture Winners'
+    trakt_list: https://trakt.tv/users/pjcob/lists/1970-2025-oscars-best-picture-winners?sort=rank,asc
+    summary: The Academy Award for Best Picture is one of the Academy Awards presented annually by the Academy of Motion Picture Arts and Sciences since the awards debuted in 1929
+    url_poster: https://theposterdb.com/api/assets/589966
+    collection_order: custom
+
+  "Festival de Cannes Palme d'Or":
+    sort_title: "'*Festival de Cannes Palme d'Or'"
+    trakt_list: https://trakt.tv/users/seboop/lists/festival-de-cannes-palme-d-or?sort=rank,asc
+    summary: "The Palme d'Or is the highest prize awarded at the Cannes Film Festival. It was introduced in 1955 by the festival's organizing committee.Previously, from 1939 to 1954, the highest prize at the festival was the Grand Prix du Festival International du Film. In 1964, The Palme d'Or was replaced again by the Grand Prix, before being reintroduced in 1975.The Palme d'Or is widely considered to be one of the most prestigious awards in the film industry"
+    url_poster: https://theposterdb.com/api/assets/579819
+
+######################################################
+#                       IMDB                         #
+######################################################
+
+  Marvel Cinematic Universe:
+    imdb_list: 
+      list_id: ls029032797
+      sort_by: custom.asc
+    collection_order: custom.asc
+    sync_mode: sync
+    summary: "The Marvel Cinematic Universe (MCU) is an American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios. The films are based on characters that appear in American comic books published by Marvel Comics. The franchise also includes several television series, short films, digital series, and literature. The shared universe, much like the original Marvel Universe in comic books, was established by crossing over common plot elements, settings, cast, and characters"
+    url_poster: https://theposterdb.com/api/assets/18648
+    url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
+
+######################################################
+#                       TMDB                         #
+######################################################
+
+  Star Wars:
+    tmdb_collection: https://www.themoviedb.org/collection/10-star-wars-collection
+    tmdb_list: https://www.themoviedb.org/list/8136-the-entire-star-wars-collection
+    url_poster: https://theposterdb.com/api/assets/266052
+
+  Mission Impossible:
+    tmdb_collection: https://www.themoviedb.org/collection/87359-mission-impossible-collection
+    url_poster: https://api.mediux.pro/assets/ab4d8cb2-621d-4b90-8fbf-b5dc2c1c389d
+    url_background: https://api.mediux.pro/assets/d3da3723-2ae5-4a40-8686-c8f789da9939
+
+  Makoto Shinkai:
+    tmdb_director: https://www.themoviedb.org/person/74091
+    summary: Movies directed by Makoto Shinkai
+    url_poster: https://theposterdb.com/api/assets/433619
+
+######################################################
+#                        TRAKT                       #
+######################################################
+
+  The Wizarding World:
+    trakt_list: https://trakt.tv/users/veliwut/lists/the-wizarding-world?sort=rank,asc
+    summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
+    url_poster: https://theposterdb.com/api/assets/112286
+
