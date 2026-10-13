@@ -77,6 +77,22 @@ collections:
     url_poster: https://theposterdb.com/api/assets/18648
     url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
 
+  BBC Earth:  # also labels its shows BBCÖrt for the BBC Earth overlay
+    imdb_list:
+      list_id: ls085429769
+      sort_by: custom.asc
+    plex_search:
+      any:
+        title:
+          - Prehistoric Planet
+    filters:
+      title.not:
+        - Cosmos (2014)
+    sync_mode: sync
+    item_label: BBCÖrt
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png
+
 ######################################################
 #    Network labels (used by Overlays/Shows.yml)     #
 ######################################################
@@ -94,22 +110,6 @@ collections:
         - "The End of the F***ing World"
       title.not:
         - Our Planet (2019)
-
-  BBC Earth:
-    imdb_list:
-      list_id: ls085429769
-      sort_by: custom.asc
-      title.not:
-        - Cosmos (2014)
-    plex_search:
-      title:
-        - Prehistoric Planet
-      title.not:
-        - Cosmos (2014)
-    sync_mode: sync
-    item_label: BBCÖrt
-    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
-    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png
 
 ######################################################
 #              Network Collections                   #

@@ -12,7 +12,7 @@
 #  the season count, "folder" the folder under Kometa/Metadata/Shows/.  #
 #                                                                       #
 #  Sections: art hosted in this repo / MediUX and ThePosterDB sets /    #
-#            BBC Earth posters (inactive, commented out)                #
+#            BBC Earth posters                                          #
 #=======================================================================#
 
 external_templates:
@@ -2517,87 +2517,85 @@ metadata:
             url_poster: https://api.mediux.pro/assets/81251a2c-31c5-447e-b33a-eec575b8dbd4
 
 #-----------------------------------------------------------------------#
-#  INACTIVE: BBC Earth posters from the old BBC_Earth.yml, which was    #
-#  never loaded. Remove the leading # to turn one on. These are keyed   #
-#  by title, so swap in the TVDB id when you do.                        #
+#  BBC Earth posters (ThePosterDB set, was BBC_Earth.yml)               #
 #-----------------------------------------------------------------------#
 
-#  A Perfect Planet:
-#    url_poster: https://theposterdb.com/api/assets/238230
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238230
+  359365: # TVDB id for A Perfect Planet (2021)
+    url_poster: https://theposterdb.com/api/assets/238230
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238230
 
-#  Blue Planet:
-#    url_poster: https://theposterdb.com/api/assets/238240
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238240
+  74372: # TVDB id for The Blue Planet (2001)
+    url_poster: https://theposterdb.com/api/assets/238240
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238240
 
-#  Blue Planet II:
-#    url_poster: https://theposterdb.com/api/assets/238231
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238231
+  330942: # TVDB id for Blue Planet II (2017)
+    url_poster: https://theposterdb.com/api/assets/238231
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238231
 
-#  Dynasties:
-#    url_poster: https://theposterdb.com/api/assets/238156
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238156
+  352054: # TVDB id for Dynasties (2018)
+    url_poster: https://theposterdb.com/api/assets/238156
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238156
 
-#  Frozen Planet:
-#    url_poster: https://theposterdb.com/api/assets/238232
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238232
+  251418: # TVDB id for Frozen Planet (2011)
+    url_poster: https://theposterdb.com/api/assets/238232
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238232
 
-#  Frozen Planet II:
-#    url_poster: https://theposterdb.com/api/assets/238233
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238233
+  417395: # TVDB id for Frozen Planet II (2022)
+    url_poster: https://theposterdb.com/api/assets/238233
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238233
 
-#  Our Planet:
-#    url_poster: https://theposterdb.com/api/assets/238234
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238211
-#      2:
-#        url_poster: https://theposterdb.com/api/assets/372126
+  355229: # TVDB id for Our Planet (2019)
+    url_poster: https://theposterdb.com/api/assets/238234
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238211
+      2:
+        url_poster: https://theposterdb.com/api/assets/372126
 
-#  Planet Earth:
-#    url_poster: https://theposterdb.com/api/assets/238235
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238235
+  79257: # TVDB id for Planet Earth (2006)
+    url_poster: https://theposterdb.com/api/assets/238235
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238235
 
-#  Planet Earth II:
-#    url_poster: https://theposterdb.com/api/assets/238236
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238236
+  318408: # TVDB id for Planet Earth II (2016)
+    url_poster: https://theposterdb.com/api/assets/238236
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238236
 
-#  Planet Earth III:
-#    url_poster: https://theposterdb.com/api/assets/238237
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238237
+  413197: # TVDB id for Planet Earth III (2023)
+    url_poster: https://theposterdb.com/api/assets/238237
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238237
 
-#  Prehistoric Planet:
-#    url_poster: https://theposterdb.com/api/assets/238238
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238238
+  418505: # TVDB id for Prehistoric Planet (2022)
+    url_poster: https://theposterdb.com/api/assets/238238
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238238
 
-#  Seven Worlds, One Planet:
-#    url_poster: https://theposterdb.com/api/assets/238239
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238239
+  359251: # TVDB id for Seven Worlds, One Planet (2019)
+    url_poster: https://theposterdb.com/api/assets/238239
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238239
 
-#  The Green Planet:
-#    url_poster: https://theposterdb.com/api/assets/238241
-#    seasons:
-#      1:
-#        url_poster: https://theposterdb.com/api/assets/238241
+  359250: # TVDB id for The Green Planet (2022)
+    url_poster: https://theposterdb.com/api/assets/238241
+    seasons:
+      1:
+        url_poster: https://theposterdb.com/api/assets/238241
