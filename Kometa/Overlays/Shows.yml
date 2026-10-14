@@ -482,8 +482,9 @@ overlays:
 #    ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒        ▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒▒       ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒     ║
 #╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
   # Premiere and finale badges on episode title cards. Bookends (its own
-  # container) labels the episodes from TMDb data, and each overlay here
-  # matches one label. Specials and excluded shows (Beck) get no labels.
+  # container) labels the episodes from TheTVDB or TMDb data, whichever the
+  # show's episode ordering in Plex uses, and each overlay here matches one
+  # label. Specials and excluded shows (Beck) get no labels.
   # If an episode somehow has two labels, the higher weight wins.
 
   Series Premiere:
