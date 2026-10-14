@@ -2,10 +2,26 @@
 #  Movie collections, loaded by the Movies library                      #
 #  Lives at: Kometa/Collections/Movies.yml                              #
 #-----------------------------------------------------------------------#
+#  Sections: home rows / collections / directors                        #
 #  Collection art lives in Kometa/Collections/<Collection Name>/.       #
 #=======================================================================#
 
 templates:
+  DailyRow:              # a genre row that only exists on its day
+    schedule: weekly(<<day>>)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      all:
+        genre: <<genre>>
+        unplayed: true
+    collection_filtering: user    # "unplayed" = unplayed by whoever is looking
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
   Director:
     default:
       style: signature    # poster style: bw, signature, rainier, diiivoy or diiivoycolor
@@ -20,18 +36,72 @@ templates:
 
 collections:
 ######################################################
-#                     Collections                    #
+#                       HOME                         #
 ######################################################
+# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
+# hub_priority, lowest first; Plex's own rows (Continue Watching,
+# Recently Added) sit below these.
 
-  Random Unwatched Movies:
-    sort_title: "'*Unwatched"
-    libraries: Movies
+  Top 10 Movies on Plexflix:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide # keeps Home-only rows out of the library grid
+    summary: The most watched movies on Plexflix over the last two weeks.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 1
+
+  New Releases:
     smart_filter:
+      sort_by: release.desc
+      limit: 40
       all:
-        audience_rating.gte: 7.0
-        plays.lt: 1
-      sort_by: random
-      limit: 20
+        release: 90
+    collection_mode: hide
+    summary: Movies released in the last 90 days.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 2
+
+  Trending Movies:
+    sort_title: "'*Trending"
+    tmdb_trending_weekly: 40
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide
+    summary: Trending on TMDb this week.
+    url_poster: https://theposterdb.com/api/assets/259815
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+    hub_priority: 3
+
+  # One genre row a day, built on its day only. Tuesday and Thursday are in Collections/Shows.yml.
+  Sci-Fi Monday:
+    template: {name: DailyRow, genre: Science Fiction, day: monday}
+  Wednesday Thrillers:
+    template: {name: DailyRow, genre: Thriller, day: wednesday}
+  Friday Night Horror:
+    template: {name: DailyRow, genre: Horror, day: friday}
+  Saturday Action:
+    template: {name: DailyRow, genre: Action, day: saturday}
+  Sunday Family Movies:
+    template: {name: DailyRow, genre: Family, day: sunday}
+
+  Watch It Again:
+    smart_filter:
+      sort_by: viewed.desc
+      limit: 40
+      all:
+        plays.gte: 1
+    collection_filtering: user    # each person sees their own history
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 5
 
   Filmer med Svenskt Tal:
     sort_title: "'*Swedish"
@@ -46,17 +116,21 @@ collections:
     visible_home: true
     visible_shared: true
     visible_library: false
+    hub_priority: 6
 
-  Trending Movies:
-    sort_title: "'*Trending"
-    tmdb_trending_weekly: 30
-    collection_order: custom
-    sync_mode: sync
-    summary: Movies that are currently Trending
-    url_poster: https://theposterdb.com/api/assets/259815
-    visible_home: true
-    visible_shared: true
-    visible_library: true
+######################################################
+#                     Collections                    #
+######################################################
+
+  Random Unwatched Movies:
+    sort_title: "'*Unwatched"
+    libraries: Movies
+    smart_filter:
+      all:
+        audience_rating.gte: 7.0
+        plays.lt: 1
+      sort_by: random
+      limit: 20
 
   Oscars Best Picture Winners:
     sort_title: '*Oscars Best Picture Winners'

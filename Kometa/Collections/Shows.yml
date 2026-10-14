@@ -2,12 +2,27 @@
 #  TV collections, loaded by the TV Shows library                       #
 #  Lives at: Kometa/Collections/Shows.yml                               #
 #-----------------------------------------------------------------------#
-#  Sections: collections / network labels                               #
+#  Sections: home rows / collections / network labels                   #
 #  Networks are overlays now (Overlays/Shows.yml), not collections.     #
 #  Collection art lives in Kometa/Collections/<Collection Name>/.       #
 #=======================================================================#
 
 templates:
+  DailyRow:              # a genre row that only exists on its day
+    schedule: weekly(<<day>>)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      all:
+        genre: <<genre>>
+        unplayed_episodes: true   # shows with episodes left, for whoever is looking
+    collection_filtering: user
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
   network_labeler:
     tmdb_network:
       network_id: <<network_id>>
@@ -17,19 +32,65 @@ templates:
 
 collections:
 ######################################################
-#                     Collections                    #
+#                       HOME                         #
 ######################################################
+# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
+# hub_priority, lowest first; Plex's own rows (Continue Watching,
+# Recently Added) sit below these.
+
+  Top 10 Shows on Plexflix:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide # keeps Home-only rows out of the library grid
+    summary: The most watched shows on Plexflix over the last two weeks.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 1
 
   Trending Series:
     sort_title: "'*Trending"
-    tmdb_trending_weekly: 30
+    tmdb_trending_weekly: 40
     collection_order: custom
     sync_mode: sync
-    summary: Series that are currently Trending
+    collection_mode: hide
+    summary: Trending on TMDb this week.
     url_poster: https://theposterdb.com/api/assets/259814
     visible_home: true
     visible_shared: true
     visible_library: true
+    hub_priority: 3
+
+  # One genre row a day, built on its day only. The other days are in Collections/Movies.yml.
+  Tuesday Comedies:
+    template: {name: DailyRow, genre: Comedy, day: tuesday}
+
+  Nordic Noir Thursday:   # no unplayed filter here, the pool is small
+    schedule: weekly(thursday)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      validate: false     # skip countries with no shows in the library
+      all:
+        genre: Crime
+        any:
+          country:
+            - Sweden
+            - Denmark
+            - Norway
+            - Finland
+            - Iceland
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
+######################################################
+#                     Collections                    #
+######################################################
 
   Emmy Award Winning Series:
     sort_title: '*Emmy Award Winning Series'

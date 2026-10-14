@@ -22,8 +22,8 @@ Kometa/
 │           ├── poster.png
 │           └── background.png
 ├── Collections/
-│   ├── Shows.yml              # TV collections, BBC Earth, Netflix label
-│   ├── Movies.yml             # movie collections, directors
+│   ├── Shows.yml              # TV home rows, collections, BBC Earth, Netflix label
+│   ├── Movies.yml             # movie home rows, collections, directors
 │   └── <Collection Name>/
 │       ├── poster.png
 │       └── background.png
@@ -81,6 +81,10 @@ Files ending in `_alt` (or a colour, in collection folders) are unused alternate
 1. Upload images to `Kometa/Metadata/Shows/<Show (Year)>/`.
 2. Add an entry to `Metadata/Shows.yml`, keyed by TVDB id. One entry per show: if it already has one (a MediUX set, say), add the new art to that entry.
 3. More than five seasons: copy the `Seasons5` block in `templates.yml` to `Seasons6` and add a season.
+
+## Home rows
+
+The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 on Plexflix (from Tracearr), New Releases, Trending, Watch It Again and one genre row a day. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
 
 ## Network logos
 
