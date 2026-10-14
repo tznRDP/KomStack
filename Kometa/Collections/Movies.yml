@@ -22,6 +22,13 @@ templates:
     visible_shared: true
     hub_priority: 4
 
+  PlexCollectionArt:     # art for a collection Plex makes itself; skipped until it exists
+    plex_search:
+      validate: false
+      any:
+        collection: <<collection_name>>
+    ignore_blank_results: true
+
   Director:
     default:
       style: signature    # poster style: bw, signature, rainier, diiivoy or diiivoycolor
@@ -42,7 +49,7 @@ collections:
 # hub_priority, lowest first; Plex's own rows (Continue Watching,
 # Recently Added) sit below these.
 
-  Top 10 Movies on Plexflix:
+  Top 10 Movies Weekly:
     tracearr_watched:
       list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
       list_size: 10
@@ -91,7 +98,7 @@ collections:
   Sunday Family Movies:
     template: {name: DailyRow, genre: Family, day: sunday}
 
-  Watch It Again:
+  Watch Again:
     smart_filter:
       sort_by: viewed.desc
       limit: 40
@@ -172,25 +179,42 @@ collections:
     url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
 
 ######################################################
-#                       TMDB                         #
+#              FRANCHISES (Plex's own)               #
 ######################################################
+# Plex makes these collections itself once you have enough of the movies.
+# These entries only add the art: they're skipped until Plex's collection
+# exists and never add or remove movies. Names must match Plex's exactly.
 
-  Star Wars:
-    tmdb_collection: https://www.themoviedb.org/collection/10-star-wars-collection
-    tmdb_list: https://www.themoviedb.org/list/8136-the-entire-star-wars-collection
+  Star Wars Collection:
+    template: {name: PlexCollectionArt}
     url_poster: https://theposterdb.com/api/assets/266052
 
-  Mission Impossible:
-    tmdb_collection: https://www.themoviedb.org/collection/87359-mission-impossible-collection
+  "Mission: Impossible Collection":
+    template: {name: PlexCollectionArt}
     url_poster: https://api.mediux.pro/assets/ab4d8cb2-621d-4b90-8fbf-b5dc2c1c389d
     url_background: https://api.mediux.pro/assets/d3da3723-2ae5-4a40-8686-c8f789da9939
 
-  The Wizarding World:
-    tmdb_collection:
-      - https://www.themoviedb.org/collection/1241-harry-potter-collection
-      - https://www.themoviedb.org/collection/435259-fantastic-beasts-collection
-    summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
+  Harry Potter Collection:  # the old Wizarding World poster
+    template: {name: PlexCollectionArt}
     url_poster: https://theposterdb.com/api/assets/112286
+
+# The Kometa-built versions, off now that Plex makes them:
+#  Star Wars:
+#    tmdb_collection: https://www.themoviedb.org/collection/10-star-wars-collection
+#    tmdb_list: https://www.themoviedb.org/list/8136-the-entire-star-wars-collection
+#    url_poster: https://theposterdb.com/api/assets/266052
+
+#  Mission Impossible:
+#    tmdb_collection: https://www.themoviedb.org/collection/87359-mission-impossible-collection
+#    url_poster: https://api.mediux.pro/assets/ab4d8cb2-621d-4b90-8fbf-b5dc2c1c389d
+#    url_background: https://api.mediux.pro/assets/d3da3723-2ae5-4a40-8686-c8f789da9939
+
+#  The Wizarding World:
+#    tmdb_collection:
+#      - https://www.themoviedb.org/collection/1241-harry-potter-collection
+#      - https://www.themoviedb.org/collection/435259-fantastic-beasts-collection
+#    summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
+#    url_poster: https://theposterdb.com/api/assets/112286
 
 ######################################################
 #                     DIRECTORS                      #

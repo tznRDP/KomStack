@@ -84,7 +84,7 @@ Files ending in `_alt` (or a colour, in collection folders) are unused alternate
 
 ## Home rows
 
-The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 on Plexflix (from Tracearr), New Releases, Trending, Watch It Again and one genre row a day. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
+The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 Weekly (from Tracearr), New Releases, Trending, Watch Again and one genre row a day. Star Wars, Mission: Impossible and Harry Potter are Plex's own collections; Kometa only puts the posters on them. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
 
 ## Network logos
 
