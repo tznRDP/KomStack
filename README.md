@@ -29,7 +29,7 @@ Kometa/
 │       └── background.png
 └── Overlays/
     ├── Shows.yml              # TV overlays, network logos
-    ├── Movies.yml             # movie overlays, streaming logos
+    ├── Movies.yml             # movie overlays
     ├── Test.yml               # TVTestBench overlays
     └── Networks/
         └── <Network>/
@@ -88,9 +88,9 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies from Netflix, Apple TV+ and Amazon get one from their TMDb companies (`Overlays/Movies.yml`). Netflix and BBC Earth shows use labels set by their collections instead, so single shows can be added or left out.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. Netflix and BBC Earth shows use labels set by their collections instead, so single shows can be added or left out.
 
-Label a show or movie `Dark` in Plex to get the black logo, for light posters.
+Label a show `Dark` in Plex to get the black logo, for light posters.
 
 To add a network: upload `<Name>_White.png` and `<Name>_Black.png` (1000x1500, logo top left) to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section.
 
