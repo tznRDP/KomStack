@@ -28,9 +28,10 @@ Kometa/
 │       ├── poster.png
 │       └── background.png
 └── Overlays/
-    ├── Shows.yml              # TV overlays, network logos
+    ├── Shows.yml              # TV overlays, network logos, episode badges
     ├── Movies.yml             # movie overlays
     ├── Test.yml               # TVTestBench overlays
+    ├── Episodes/              # premiere and finale badges, 1920x1080
     └── Networks/
         └── <Network>/
             └── Label/         # <Name>_White.png, _Black.png, _Color.png
@@ -84,7 +85,7 @@ Files ending in `_alt` (or a colour, in collection folders) are unused alternate
 
 ## Home rows
 
-The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 on Plexflix (from Tracearr), New Releases, Trending, Watch It Again and one genre row a day. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
+The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 Weekly (from Tracearr), New Releases, Trending, Watch Again and one genre row a day. Star Wars, Mission: Impossible and Harry Potter are Plex's own collections; Kometa only puts the posters on them. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
 
 ## Network logos
 
@@ -93,6 +94,10 @@ Shows get a logo in the top-left corner from Plex's network field (`Overlays/Sho
 Label a show `Dark` in Plex to get the black logo, for light posters.
 
 To add a network: upload `<Name>_White.png` and `<Name>_Black.png` (1000x1500, logo top left) to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section.
+
+## Episode badges
+
+Title cards get a badge on premieres and finales: Series Premiere, Season Premiere, Mid-Season Finale, Season Finale and Series Finale. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
 
 ## Adding a director
 

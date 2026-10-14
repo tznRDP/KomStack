@@ -38,7 +38,7 @@ collections:
 # hub_priority, lowest first; Plex's own rows (Continue Watching,
 # Recently Added) sit below these.
 
-  Top 10 Shows on Plexflix:
+  Top 10 Shows Weekly:
     tracearr_watched:
       list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
       list_size: 10
