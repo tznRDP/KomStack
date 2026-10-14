@@ -1,0 +1,229 @@
+#=======================================================================#
+#  Movie collections, loaded by the Movies library                      #
+#  Lives at: Kometa/Collections/Movies.yml                              #
+#-----------------------------------------------------------------------#
+#  Sections: home rows / collections / directors                        #
+#  Collection art lives in Kometa/Collections/<Collection Name>/.       #
+#=======================================================================#
+
+templates:
+  DailyRow:              # a genre row that only exists on its day
+    schedule: weekly(<<day>>)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      all:
+        genre: <<genre>>
+        unplayed: true
+    collection_filtering: user    # "unplayed" = unplayed by whoever is looking
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
+  Director:
+    default:
+      style: signature    # poster style: bw, signature, rainier, diiivoy or diiivoycolor
+    tmdb_director: <<tmdb>>
+    minimum_items: 3      # no collection until you have 3 of their films
+    delete_below_minimum: true
+    sync_mode: sync
+    collection_order: release
+    sort_title: +04_<<collection_name>>
+    summary: Movies directed by <<collection_name>>
+    url_poster: https://raw.githubusercontent.com/Kometa-Team/People-Images-<<style>>/master/<<key_name_first_letter>>/Images/<<key_name_encoded>>.jpg
+
+collections:
+######################################################
+#                       HOME                         #
+######################################################
+# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
+# hub_priority, lowest first; Plex's own rows (Continue Watching,
+# Recently Added) sit below these.
+
+  Top 10 Movies on Plexflix:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide # keeps Home-only rows out of the library grid
+    summary: The most watched movies on Plexflix over the last two weeks.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 1
+
+  New Releases:
+    smart_filter:
+      sort_by: release.desc
+      limit: 40
+      all:
+        release: 90
+    collection_mode: hide
+    summary: Movies released in the last 90 days.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 2
+
+  Trending Movies:
+    sort_title: "'*Trending"
+    tmdb_trending_weekly: 40
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide
+    summary: Trending on TMDb this week.
+    url_poster: https://theposterdb.com/api/assets/259815
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+    hub_priority: 3
+
+  # One genre row a day, built on its day only. Tuesday and Thursday are in Collections/Shows.yml.
+  Sci-Fi Monday:
+    template: {name: DailyRow, genre: Science Fiction, day: monday}
+  Wednesday Thrillers:
+    template: {name: DailyRow, genre: Thriller, day: wednesday}
+  Friday Night Horror:
+    template: {name: DailyRow, genre: Horror, day: friday}
+  Saturday Action:
+    template: {name: DailyRow, genre: Action, day: saturday}
+  Sunday Family Movies:
+    template: {name: DailyRow, genre: Family, day: sunday}
+
+  Watch It Again:
+    smart_filter:
+      sort_by: viewed.desc
+      limit: 40
+      all:
+        plays.gte: 1
+    collection_filtering: user    # each person sees their own history
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 5
+
+  Filmer med Svenskt Tal:
+    sort_title: "'*Swedish"
+    plex_search:
+      any:
+        audio_language:
+          - sv
+    collection_order: release
+    sync_mode: sync
+    summary: Movies that contain Swedish audio
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/Filmer%20med%20Svenskt%20Tal/poster.png
+    visible_home: true
+    visible_shared: true
+    visible_library: false
+    hub_priority: 6
+
+######################################################
+#                     Collections                    #
+######################################################
+
+  Random Unwatched Movies:
+    sort_title: "'*Unwatched"
+    libraries: Movies
+    smart_filter:
+      all:
+        audience_rating.gte: 7.0
+        plays.lt: 1
+      sort_by: random
+      limit: 20
+
+  Oscars Best Picture Winners:
+    sort_title: '*Oscars Best Picture Winners'
+    imdb_award:
+      event_id: ev0000003
+      event_year: all
+      category_filter:
+        - best motion picture of the year
+        - best picture
+        - best picture, production
+        - best picture, unique and artistic production
+      winning: true
+    summary: The Academy Award for Best Picture is one of the Academy Awards presented annually by the Academy of Motion Picture Arts and Sciences since the awards debuted in 1929
+    url_poster: https://theposterdb.com/api/assets/589966
+    collection_order: release
+
+  "Festival de Cannes Palme d'Or":
+    sort_title: "'*Festival de Cannes Palme d'Or'"
+    imdb_award:
+      event_id: ev0000147
+      event_year: all
+      award_filter: palme d'or
+      winning: true
+    summary: "The Palme d'Or is the highest prize awarded at the Cannes Film Festival. It was introduced in 1955 by the festival's organizing committee.Previously, from 1939 to 1954, the highest prize at the festival was the Grand Prix du Festival International du Film. In 1964, The Palme d'Or was replaced again by the Grand Prix, before being reintroduced in 1975.The Palme d'Or is widely considered to be one of the most prestigious awards in the film industry"
+    url_poster: https://theposterdb.com/api/assets/579819
+
+######################################################
+#                       IMDB                         #
+######################################################
+
+  Marvel Cinematic Universe:
+    imdb_list: 
+      list_id: ls029032797
+      sort_by: custom.asc
+    collection_order: custom.asc
+    sync_mode: sync
+    summary: "The Marvel Cinematic Universe (MCU) is an American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios. The films are based on characters that appear in American comic books published by Marvel Comics. The franchise also includes several television series, short films, digital series, and literature. The shared universe, much like the original Marvel Universe in comic books, was established by crossing over common plot elements, settings, cast, and characters"
+    url_poster: https://theposterdb.com/api/assets/18648
+    url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
+
+######################################################
+#                       TMDB                         #
+######################################################
+
+  Star Wars:
+    tmdb_collection: https://www.themoviedb.org/collection/10-star-wars-collection
+    tmdb_list: https://www.themoviedb.org/list/8136-the-entire-star-wars-collection
+    url_poster: https://theposterdb.com/api/assets/266052
+
+  Mission Impossible:
+    tmdb_collection: https://www.themoviedb.org/collection/87359-mission-impossible-collection
+    url_poster: https://api.mediux.pro/assets/ab4d8cb2-621d-4b90-8fbf-b5dc2c1c389d
+    url_background: https://api.mediux.pro/assets/d3da3723-2ae5-4a40-8686-c8f789da9939
+
+  The Wizarding World:
+    tmdb_collection:
+      - https://www.themoviedb.org/collection/1241-harry-potter-collection
+      - https://www.themoviedb.org/collection/435259-fantastic-beasts-collection
+    summary: The Wizarding World is a fantasy media franchise and shared fictional universe centred on a series of films, based on the Harry Potter novel series by J. K. Rowling
+    url_poster: https://theposterdb.com/api/assets/112286
+
+######################################################
+#                     DIRECTORS                      #
+######################################################
+# key_name picks the poster, tmdb is the TMDb person id
+# (themoviedb.org/person/<id>). One line per director.
+
+  David Fincher:
+    template: {name: Director, key_name: David Fincher, tmdb: 7467}
+  Denis Villeneuve:
+    template: {name: Director, key_name: Denis Villeneuve, tmdb: 137427}
+  Christopher Nolan:
+    template: {name: Director, key_name: Christopher Nolan, tmdb: 525}
+  Martin Scorsese:
+    template: {name: Director, key_name: Martin Scorsese, tmdb: 1032}
+  Quentin Tarantino:
+    template: {name: Director, key_name: Quentin Tarantino, tmdb: 138}
+  Ari Aster:
+    template: {name: Director, key_name: Ari Aster, tmdb: 1145520}
+  Robert Eggers:
+    template: {name: Director, key_name: Robert Eggers, tmdb: 138781}
+  Paul Thomas Anderson:
+    template: {name: Director, key_name: Paul Thomas Anderson, tmdb: 4762}
+  Bong Joon-ho:
+    template: {name: Director, key_name: Bong Joon-ho, tmdb: 21684}
+  Na Hong-jin:
+    template: {name: Director, key_name: Na Hong-jin, tmdb: 75915}
+  Greta Gerwig:
+    template: {name: Director, key_name: Greta Gerwig, tmdb: 45400}
+  Yorgos Lanthimos:
+    template: {name: Director, key_name: Yorgos Lanthimos, tmdb: 122423}
+
+  Makoto Shinkai:
+    tmdb_director: https://www.themoviedb.org/person/74091
+    summary: Movies directed by Makoto Shinkai
+    url_poster: https://theposterdb.com/api/assets/433619

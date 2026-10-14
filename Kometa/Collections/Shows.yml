@@ -1,0 +1,161 @@
+#=======================================================================#
+#  TV collections, loaded by the TV Shows library                       #
+#  Lives at: Kometa/Collections/Shows.yml                               #
+#-----------------------------------------------------------------------#
+#  Sections: home rows / collections / network labels                   #
+#  Networks are overlays now (Overlays/Shows.yml), not collections.     #
+#  Collection art lives in Kometa/Collections/<Collection Name>/.       #
+#=======================================================================#
+
+templates:
+  DailyRow:              # a genre row that only exists on its day
+    schedule: weekly(<<day>>)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      all:
+        genre: <<genre>>
+        unplayed_episodes: true   # shows with episodes left, for whoever is looking
+    collection_filtering: user
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
+  network_labeler:
+    tmdb_network:
+      network_id: <<network_id>>
+    collection_mode: hide
+    item_label: <<label_name>>
+    sort_title: _z_sorted_<<collection_name>>
+
+collections:
+######################################################
+#                       HOME                         #
+######################################################
+# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
+# hub_priority, lowest first; Plex's own rows (Continue Watching,
+# Recently Added) sit below these.
+
+  Top 10 Shows on Plexflix:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide # keeps Home-only rows out of the library grid
+    summary: The most watched shows on Plexflix over the last two weeks.
+    visible_home: true
+    visible_shared: true
+    hub_priority: 1
+
+  Trending Series:
+    sort_title: "'*Trending"
+    tmdb_trending_weekly: 40
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide
+    summary: Trending on TMDb this week.
+    url_poster: https://theposterdb.com/api/assets/259814
+    visible_home: true
+    visible_shared: true
+    visible_library: true
+    hub_priority: 3
+
+  # One genre row a day, built on its day only. The other days are in Collections/Movies.yml.
+  Tuesday Comedies:
+    template: {name: DailyRow, genre: Comedy, day: tuesday}
+
+  Nordic Noir Thursday:   # no unplayed filter here, the pool is small
+    schedule: weekly(thursday)
+    delete_not_scheduled: true
+    smart_filter:
+      sort_by: random
+      limit: 40
+      validate: false     # skip countries with no shows in the library
+      all:
+        genre: Crime
+        any:
+          country:
+            - Sweden
+            - Denmark
+            - Norway
+            - Finland
+            - Iceland
+    collection_mode: hide
+    visible_home: true
+    visible_shared: true
+    hub_priority: 4
+
+######################################################
+#                     Collections                    #
+######################################################
+
+  Emmy Award Winning Series:
+    sort_title: '*Emmy Award Winning Series'
+    imdb_award:
+      event_id: ev0000223
+      event_year: all
+      category_filter:
+        - outstanding drama series
+        - outstanding drama series - continuing
+        - outstanding dramatic series
+        - outstanding dramatic program
+        - outstanding series - drama
+        - best dramatic series
+        - best dramatic series - less than one hour
+        - best dramatic series - one hour or longer
+        - best dramatic program
+        - outstanding comedy series
+        - outstanding series - comedy
+        - best comedy series
+        - best comedy show
+      winning: true
+    sync_mode: sync
+    summary: Emmy winners for Outstanding Drama & Comedy Series
+    url_poster: https://theposterdb.com/api/assets/579817
+
+  Marvel Cinematic Universe:
+    imdb_list: 
+      list_id: ls029032797
+      sort_by: custom.asc
+    collection_order: custom.asc
+    sync_mode: sync
+    summary: "The Marvel Cinematic Universe (MCU) is an American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios. The films are based on characters that appear in American comic books published by Marvel Comics. The franchise also includes several television series, short films, digital series, and literature. The shared universe, much like the original Marvel Universe in comic books, was established by crossing over common plot elements, settings, cast, and characters"
+    url_poster: https://theposterdb.com/api/assets/18648
+    url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
+
+  BBC Earth:  # also labels its shows BBCÖrt for the BBC Earth overlay
+    imdb_list:
+      list_id: ls085429769
+      sort_by: custom.asc
+    plex_search:
+      any:
+        title:
+          - Prehistoric Planet
+    filters:
+      title.not:
+        - Cosmos (2014)
+    sync_mode: sync
+    item_label: BBCÖrt
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png
+
+######################################################
+#    Network labels (used by Overlays/Shows.yml)     #
+######################################################
+
+  Netflix Label:
+    template: { name: network_labeler, network_id: 213, label_name: "Netfliz" }
+    filters:
+      title.not:
+        - Our Planet (2019)
+    plex_search:
+      title:
+        - The Haunting of Hill House
+        - The Haunting of Bly Manor
+        - Monster (2022)
+        - "The End of the F***ing World"
+      title.not:
+        - Our Planet (2019)
