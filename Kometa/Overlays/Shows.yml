@@ -36,6 +36,22 @@ templates:
     filters:
       label: Dark
 
+  # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
+  # episodes; each overlay puts the badge for its label on the title card.
+  # The badges are full-size 1920x1080 PNGs with the badge at the bottom.
+  EpisodeBadge:
+    builder_level: episode
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Episodes/<<file>>.png
+      group: episode_badge
+      weight: <<weight>>
+    plex_search:
+      validate: false     # skip labels Bookends hasn't used yet
+      all:
+        episode_label: <<overlay_name>>
+
 overlays:
 #╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 #       █████████  █████          ███████    ███████████    █████████   █████             ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
@@ -455,180 +471,32 @@ overlays:
         title: The Last of Us
 
 
-######################################################
-# 🟣 TV-SHOWS PREMIERES & FINALES(THIS SHI DONT WORK)#
-######################################################
+#╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+#     ██████████ ███████████  █████  █████████     ███████    ██████████   ██████████       ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████    ║
+#    ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███▒▒███  ███▒▒▒▒▒███  ███▒▒▒▒▒███ ▒▒███▒▒▒▒███ ▒▒███▒▒▒▒▒█     ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███ ▒▒███         ███▒▒▒▒▒███ ▒▒███ ▒▒███  ███▒▒▒▒▒███   ║
+#     ▒███  █ ▒  ▒███    ▒███ ▒███ ▒███    ▒▒▒  ███     ▒▒███ ▒███   ▒▒███ ▒███  █ ▒     ███     ▒▒███ ▒███    ▒███  ▒███  █ ▒  ▒███    ▒███  ▒███        ▒███    ▒███  ▒▒███ ███  ▒███    ▒▒▒    ║
+#     ▒██████    ▒██████████  ▒███ ▒▒█████████ ▒███      ▒███ ▒███    ▒███ ▒██████      ▒███      ▒███ ▒███    ▒███  ▒██████    ▒██████████   ▒███        ▒███████████   ▒▒█████   ▒▒█████████    ║
+#     ▒███▒▒█    ▒███▒▒▒▒▒▒   ▒███  ▒▒▒▒▒▒▒▒███▒███      ▒███ ▒███    ▒███ ▒███▒▒█      ▒███      ▒███ ▒▒███   ███   ▒███▒▒█    ▒███▒▒▒▒▒███  ▒███        ▒███▒▒▒▒▒███    ▒▒███     ▒▒▒▒▒▒▒▒███   ║
+#     ▒███ ▒   █ ▒███         ▒███  ███    ▒███▒▒███     ███  ▒███    ███  ▒███ ▒   █   ▒▒███     ███   ▒▒▒█████▒    ▒███ ▒   █ ▒███    ▒███  ▒███      █ ▒███    ▒███     ▒███     ███    ▒███   ║
+#     ██████████ █████        █████▒▒█████████  ▒▒▒███████▒   ██████████   ██████████    ▒▒▒███████▒      ▒▒███      ██████████ █████   █████ ███████████ █████   █████    █████   ▒▒█████████    ║
+#    ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒        ▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒▒       ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒     ║
+#╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  # Premiere and finale badges on episode title cards. Bookends (its own
+  # container) labels the episodes from TMDb data, and each overlay here
+  # matches one label. Specials and excluded shows (Beck) get no labels.
+  # If an episode somehow has two labels, the higher weight wins.
 
-#  SeriesPremiere_Episode:
-#    overlay:
-#      name: text(Series Premiere Episode)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#1E90FF95"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      seasons:
-#        season_number: 1
-#        episodes:
-#          episode_number: 1
-#      title.not: Specials
-#      label: Series Premiere
+  Series Premiere:
+    template: {name: EpisodeBadge, file: series_premiere, weight: 40}
 
-#  SeriesPremiere_Season:
-#    overlay:
-#      name: text(Series Premiere Season)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#1E90FF95"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      seasons:
-#        season_number: 1
-#        episodes:
-#          episode_number: 1
-#      title.not: Specials
-#      label: Series Premiere
+  Season Premiere:
+    template: {name: EpisodeBadge, file: season_premiere, weight: 30}
 
-#  SeriesPremiere_Show:
-#    overlay:
-#      name: text(Series Premiere Show)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#1E90FF95"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      seasons:
-#        season_number: 1
-#        episodes:
-#          episode_number: 1
-#      title.not: Specials
-#      label: Series Premiere
+  Mid-Season Finale:
+    template: {name: EpisodeBadge, file: midseason_finale, weight: 10}
 
-#  # Season Premiere (Ep1 of S2+)
-#  SeasonPremiere_Episode:
-#    overlay:
-#      name: text(Season Premiere Episode)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#228B2295"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      seasons:
-#        season_number.not: 1
-#        episodes:
-#          episode_number: 1
-#      title.not: Specials
-#      label: Season Premiere
+  Season Finale:
+    template: {name: EpisodeBadge, file: season_finale, weight: 20}
 
-#  SeasonPremiere_Season:
-#    overlay:
-#      name: text(Season Premiere Season)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#228B2295"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      season.not: 1
-#      episodes:
-#        episode_number: 1
-#      title.not: Specials
-#      label: Season Premiere
-
-#  SeasonPremiere_Show:
-#    overlay:
-#      name: text(Season Premiere Show)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#228B2295"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      seasons:
-#        season.not: 1
-#        episodes:
-#          episode_number: 1
-#      title.not: Specials
-#      label: Season Premiere
-
-#  # Season Finale (last episode of all but final season)
-#  SeasonFinale:
-#    overlay:
-#      name: text(Season Finale)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#B2222295"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      season.not: last
-#      episode: last
-#      title.not: Specials
-#      label: Season Finale
-
-#  # Series Finale (last episode of final season)
-#  SeriesFinale:
-#    overlay:
-#      name: text(Series Finale)
-#      font_size: 36
-#      font_color: "#FFFFFF"
-#      horizontal_align: center
-#      horizontal_offset: 0
-#      vertical_align: top
-#      vertical_offset: 0
-#      back_color: "#8B008B95"
-#      back_width: 100
-#      back_height: 100
-#      back_align: top
-#    run_definition: show
-#    filters:
-#      season: last
-#      episode: last
-#      title.not: Specials
-#      label: Series Finale
+  Series Finale:
+    template: {name: EpisodeBadge, file: series_finale, weight: 50}
