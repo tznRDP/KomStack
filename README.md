@@ -86,6 +86,11 @@ Files ending in `_alt` (or a colour, in collection folders) are unused alternate
 2. Add an entry to `Metadata/Shows.yml`, keyed by TVDB id. One entry per show: if it already has one (a MediUX set, say), add the new art to that entry.
 3. More than five seasons: copy the `Seasons5` block in `templates.yml` to `Seasons6` and add a season.
 
+## Adding a movie
+
+1. Upload `poster.png` (and `background.png` if there is one) to `Kometa/Metadata/Movies/<Movie (Year)>/`.
+2. Add an entry to `Metadata/Movies.yml`, keyed by TMDB id, with `url_poster` (and `url_background`) pointing at the file's raw URL. A space in the folder name becomes `%20`, as in Hope's entry: `.../Kometa/Metadata/Movies/Hope%20(2026)/poster.png`.
+
 ## Home rows
 
 The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: New Releases (by digital release date, or physical when there's no digital one), Trending, one genre row a day, Most Popular (from Tracearr) and Watch Again. Star Wars, Mission: Impossible and Harry Potter are Plex's own collections; Kometa only puts the posters on them. The rows need Plex Pass, and Most Popular needs a `tracearr:` block in config.yml.

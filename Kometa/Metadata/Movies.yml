@@ -7,6 +7,7 @@
 #  SWITCHED OFF FOR A POSTER REVIEW: every entry line starts with "# ". #
 #  To switch an entry back on, remove those two characters: select its  #
 #  lines, then Ctrl+/ in GitHub's editor or Ctrl+Shift+K in Notepad++.  #
+#  Back on after the review: Hope (2026).                               #
 #=======================================================================#
 
 metadata:
@@ -21,6 +22,9 @@ metadata:
 #     █████     █████ ▒▒▒███████▒      ▒▒███      █████ ██████████▒▒█████████   ║
 #    ▒▒▒▒▒     ▒▒▒▒▒    ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒    ║
 #╚══════════════════════════════════════════════════════════════════════════════╝
+
+  1058424: # Hope (2026) Poster made here from the textless poster, white title
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Movies/Hope%20(2026)/poster.png
 
 #   1316092: # "Wuthering Heights" (2026) Poster by willtong93 on MediUX. https://mediux.pro/sets/44139
 #     url_poster: https://api.mediux.pro/assets/a9679794-2981-4ee8-a1d9-643723401c78
