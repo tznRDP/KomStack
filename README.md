@@ -91,7 +91,7 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so it goes by the BBC Earth list on IMDb. Any network line can add or leave out single shows with `add_titles` and `skip_titles`.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`.
 
 Label a show `Dark` in Plex to get the black logo, for light posters, or `Color` for the colour logo. Color works on Crunchyroll, fubo, Hulu, Paramount+, Peacock, Prime Video, Rakuten TV and Viaplay; on other networks the show keeps its plain logo.
 

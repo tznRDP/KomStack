@@ -16,11 +16,20 @@ templates:
   # logo, and Color on a network with no colour logo just keeps the plain one.
   #
   # Optional, for logos that aren't a Plex network or need a few extra shows:
-  #   imdb_list:   shows on this IMDb list
+  #   tvdb:        shows by TVDB id
   #   add_titles:  shows added by title
   #   skip_titles: shows left out by title
+  # validate is only set when there's a network or title to search for, so a
+  # line with just tvdb ids skips the Plex search altogether.
   NetworkLogo:          # white logo
-    optional: [network, imdb_list, add_titles, skip_titles]
+    optional: [network, tvdb, add_titles, skip_titles]
+    conditionals:
+      validate:
+        conditions:
+          - network.exists: true
+            value: false
+          - add_titles.exists: true
+            value: false
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
@@ -28,16 +37,23 @@ templates:
       group: network
       weight: <<weight>>0
     plex_search:
-      validate: false     # skip network names this library doesn't have
+      validate: <<validate>>  # false: skip network names this library doesn't have
       any:
         network: <<network>>
         title: <<add_titles>>
-    imdb_list: <<imdb_list>>
+    tvdb_show: <<tvdb>>
     filters:
       title.not: <<skip_titles>>
 
   NetworkLogoDark:      # black logo, shows labelled Dark
-    optional: [network, imdb_list, add_titles, skip_titles]
+    optional: [network, tvdb, add_titles, skip_titles]
+    conditionals:
+      validate:
+        conditions:
+          - network.exists: true
+            value: false
+          - add_titles.exists: true
+            value: false
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
@@ -45,17 +61,24 @@ templates:
       group: network
       weight: <<weight>>1
     plex_search:
-      validate: false
+      validate: <<validate>>
       any:
         network: <<network>>
         title: <<add_titles>>
-    imdb_list: <<imdb_list>>
+    tvdb_show: <<tvdb>>
     filters:
       label: Dark
       title.not: <<skip_titles>>
 
   NetworkLogoColor:     # colour logo, shows labelled Color
-    optional: [network, imdb_list, add_titles, skip_titles]
+    optional: [network, tvdb, add_titles, skip_titles]
+    conditionals:
+      validate:
+        conditions:
+          - network.exists: true
+            value: false
+          - add_titles.exists: true
+            value: false
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
@@ -63,11 +86,11 @@ templates:
       group: network
       weight: <<weight>>2
     plex_search:
-      validate: false
+      validate: <<validate>>
       any:
         network: <<network>>
         title: <<add_titles>>
-    imdb_list: <<imdb_list>>
+    tvdb_show: <<tvdb>>
     filters:
       label: Color
       title.not: <<skip_titles>>
@@ -235,11 +258,15 @@ overlays:
   # one where the network has a Color line (see the templates at the top).
   # New logo: add its folder under Overlays/Networks/ and a pair of lines.
 
-  # BBC Earth isn't a network in Plex, so it goes by the BBC Earth list on IMDb.
+  # BBC Earth isn't a network in Plex (these are BBC One and friends there), so
+  # it goes by TVDB id: the shows in the BBC Earth section of Metadata/Shows.yml.
+  # A Perfect Planet, The Blue Planet, Blue Planet II, Dynasties, Frozen Planet,
+  # Frozen Planet II, Our Planet, Planet Earth, Planet Earth II, Planet Earth III,
+  # Prehistoric Planet, Seven Worlds One Planet, The Green Planet
   BBC Earth:
-    template: {name: NetworkLogo, folder: BBC Earth, file: BBCEarth, weight: 200, imdb_list: &bbcearth {list_id: ls085429769}, add_titles: &bbcearth_add [Prehistoric Planet], skip_titles: &bbcearth_skip [Cosmos (2014)]}
+    template: {name: NetworkLogo, folder: BBC Earth, file: BBCEarth, weight: 200, tvdb: &bbcearth [359365, 74372, 330942, 352054, 251418, 417395, 355229, 79257, 318408, 413197, 418505, 359251, 359250]}
   BBC Earth Dark:
-    template: {name: NetworkLogoDark, folder: BBC Earth, file: BBCEarth, weight: 200, imdb_list: *bbcearth, add_titles: *bbcearth_add, skip_titles: *bbcearth_skip}
+    template: {name: NetworkLogoDark, folder: BBC Earth, file: BBCEarth, weight: 200, tvdb: *bbcearth}
 
   # The N SERIES logo, plus a few Netflix shows Plex may list under another network.
   Netflix:
