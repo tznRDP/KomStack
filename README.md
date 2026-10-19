@@ -22,7 +22,7 @@ Kometa/
 │           ├── poster.png
 │           └── background.png
 ├── Collections/
-│   ├── Shows.yml              # TV home rows, collections, BBC Earth, Netflix label
+│   ├── Shows.yml              # TV home rows and collections
 │   ├── Movies.yml             # movie home rows, collections, directors
 │   └── <Collection Name>/
 │       ├── poster.png
@@ -85,15 +85,17 @@ Files ending in `_alt` (or a colour, in collection folders) are unused alternate
 
 ## Home rows
 
-The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: Top 10 Weekly (from Tracearr), New Releases, Trending, Watch Again and one genre row a day. Star Wars, Mission: Impossible and Harry Potter are Plex's own collections; Kometa only puts the posters on them. They need Plex Pass, and Top 10 needs a `tracearr:` block in config.yml. `hub_priority` sets the order, lowest first.
+The HOME section at the top of each collections file builds Netflix-style rows on Plex Home: New Releases (by digital release date, or physical when there's no digital one), Trending, one genre row a day, Most Popular (from Tracearr) and Watch Again. Star Wars, Mission: Impossible and Harry Potter are Plex's own collections; Kometa only puts the posters on them. The rows need Plex Pass, and Most Popular needs a `tracearr:` block in config.yml.
+
+`hub_priority` sets each row's place in Manage Recommendations, lowest first. Kometa only moves its own rows and always puts them above Plex's built-in ones (Recently Added, Seasonal), so the gaps in the numbering are where those would go. Row-only collections get a `ZZZ_` sort title, which puts them at the bottom of the Collections tab, since Plex can't hide a collection from it.
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. Netflix and BBC Earth shows use labels set by their collections instead, so single shows can be added or left out.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so it goes by the BBC Earth list on IMDb. Any network line can add or leave out single shows with `add_titles` and `skip_titles`.
 
-Label a show `Dark` in Plex to get the black logo, for light posters.
+Label a show `Dark` in Plex to get the black logo, for light posters, or `Color` for the colour logo. Color works on Crunchyroll, fubo, Hulu, Paramount+, Peacock, Prime Video, Rakuten TV and Viaplay; on other networks the show keeps its plain logo.
 
-To add a network: upload `<Name>_White.png` and `<Name>_Black.png` (1000x1500, logo top left) to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section.
+To add a network: upload `<Name>_White.png` and `<Name>_Black.png` to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section, or three with a `<Name>_Color.png`. The images are 1000x1500 with the logo's top-left corner at 55,55. Logos are sized by area rather than height, so a square logo is about 68x68, a 2:1 one about 100x52 and a 4:1 one about 155x39.
 
 ## Episode badges
 

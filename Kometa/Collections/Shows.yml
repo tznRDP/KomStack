@@ -2,7 +2,7 @@
 #  TV collections, loaded by the TV Shows library                       #
 #  Lives at: Kometa/Collections/Shows.yml                               #
 #-----------------------------------------------------------------------#
-#  Sections: home rows / collections / network labels                   #
+#  Sections: home rows / collections                                    #
 #  Networks are overlays now (Overlays/Shows.yml), not collections.     #
 #  Collection art lives in Kometa/Collections/<Collection Name>/.       #
 #=======================================================================#
@@ -19,36 +19,23 @@ templates:
         unplayed_episodes: true   # shows with episodes left, for whoever is looking
     collection_filtering: user
     collection_mode: hide
+    sort_title: ZZZ_<<collection_name>>   # bottom of the Collections tab
+    visible_library: true
     visible_home: true
     visible_shared: true
-    hub_priority: 4
-
-  network_labeler:
-    tmdb_network:
-      network_id: <<network_id>>
-    collection_mode: hide
-    item_label: <<label_name>>
-    sort_title: _z_sorted_<<collection_name>>
+    hub_priority: 3
 
 collections:
 ######################################################
 #                       HOME                         #
 ######################################################
-# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
-# hub_priority, lowest first; Plex's own rows (Continue Watching,
-# Recently Added) sit below these.
-
-  Top 10 Shows Weekly:
-    tracearr_watched:
-      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
-      list_size: 10
-    collection_order: custom
-    sync_mode: sync
-    collection_mode: hide # keeps Home-only rows out of the library grid
-    summary: The most watched shows on Plexflix over the last two weeks.
-    visible_home: true
-    visible_shared: true
-    hub_priority: 1
+# Netflix-style rows on Plex Home (needs Plex Pass). hub_priority is the
+# row's place in Manage Recommendations, lowest first. 2 is Plex's own
+# Recently Added TV: Kometa can't move it, so after every run it sits
+# below all of these rows instead.
+#
+# Row-only collections get a ZZZ_ sort title. Plex can't hide a collection
+# from the Collections tab, so this puts them at the very bottom of it.
 
   Trending Series:
     sort_title: "'*Trending"
@@ -61,9 +48,10 @@ collections:
     visible_home: true
     visible_shared: true
     visible_library: true
-    hub_priority: 3
+    hub_priority: 1
 
-  # One genre row a day, built on its day only. The other days are in Collections/Movies.yml.
+  # One genre row a day, built on its day only (hub_priority 3).
+  # The other days are in Collections/Movies.yml.
   Tuesday Comedies:
     template: {name: DailyRow, genre: Comedy, day: tuesday}
 
@@ -84,6 +72,22 @@ collections:
             - Finland
             - Iceland
     collection_mode: hide
+    sort_title: ZZZ_Nordic Noir Thursday
+    visible_library: true
+    visible_home: true
+    visible_shared: true
+    hub_priority: 3
+
+  Most Popular Shows:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
+    collection_mode: hide # keeps Home-only rows out of the library grid
+    sort_title: ZZZ_Most Popular Shows
+    summary: The most watched shows on Plexflix over the last two weeks.
+    visible_library: true
     visible_home: true
     visible_shared: true
     hub_priority: 4
@@ -126,7 +130,7 @@ collections:
     url_poster: https://theposterdb.com/api/assets/18648
     url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
 
-  BBC Earth:  # also labels its shows BBCÖrt for the BBC Earth overlay
+  BBC Earth:
     imdb_list:
       list_id: ls085429769
       sort_by: custom.asc
@@ -138,24 +142,5 @@ collections:
       title.not:
         - Cosmos (2014)
     sync_mode: sync
-    item_label: BBCÖrt
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
     url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png
-
-######################################################
-#    Network labels (used by Overlays/Shows.yml)     #
-######################################################
-
-  Netflix Label:
-    template: { name: network_labeler, network_id: 213, label_name: "Netfliz" }
-    filters:
-      title.not:
-        - Our Planet (2019)
-    plex_search:
-      title:
-        - The Haunting of Hill House
-        - The Haunting of Bly Manor
-        - Monster (2022)
-        - "The End of the F***ing World"
-      title.not:
-        - Our Planet (2019)
