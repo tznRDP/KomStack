@@ -102,6 +102,8 @@ A single show can have its logo in its own colour, usually its poster's title co
 
 The images are 1000x1500 with the logo's top-left corner at 43,43, sized like the network logos on MediUX posters: HBO is 108x45, hulu 99x33, prime video 172x53 and square logos 58x58. `Overlays/Networks/build.py` makes every one of them from the original in the network's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. A new tint or network is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and the matching lines in `Overlays/Shows.yml`: a pair in NETWORKS plus one per colour version, or one in TINTED.
 
+Kometa keeps its own copy of each overlay image and reuses it for up to 60 days, so after changing a logo or badge image, delete those copies on the server before the next run: `sudo rm /home/plxsrv/docker/appdata/kometa/config/overlays/*.png`.
+
 ## Episode badges
 
 Title cards get a badge on premieres and finales: Series Premiere, Season Premiere, Mid-Season Finale, Season Finale and Series Finale. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
