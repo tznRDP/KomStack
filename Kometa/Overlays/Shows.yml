@@ -11,9 +11,12 @@ templates:
   #
   # Every show on the network gets the white logo. Label a show Dark (light
   # poster) for the black one, or Color for the colour one on networks that
-  # have a Color line. Each template adds a digit to the weight, so for
-  # weight 95: 950 white, 951 Dark, 952 Color. A label always beats the plain
-  # logo, and Color on a network with no colour logo just keeps the plain one.
+  # have a Color line. Both labels give the colour logo with black text where
+  # there's a Color Dark line (Prime Video, Peacock), and the colour one
+  # elsewhere. Each template adds a digit to the weight, so for weight 96:
+  # 960 white, 961 Dark, 962 Color, 963 Color + Dark. A label always beats
+  # the plain logo, and Color on a network with no colour logo just keeps the
+  # plain one.
   #
   # Optional, for logos that aren't a Plex network or need a few extra shows:
   #   tvdb:        shows by TVDB id
@@ -94,6 +97,43 @@ templates:
     filters:
       label: Color
       title.not: <<skip_titles>>
+
+  NetworkLogoColorDark: # colour logo with black text, shows labelled Color and Dark
+    optional: [network, tvdb, add_titles, skip_titles]
+    conditionals:
+      validate:
+        conditions:
+          - network.exists: true
+            value: false
+          - add_titles.exists: true
+            value: false
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Label/<<file>>_ColorDark.png
+      group: network
+      weight: <<weight>>3
+    plex_search:
+      validate: <<validate>>
+      any:
+        network: <<network>>
+        title: <<add_titles>>
+    tvdb_show: <<tvdb>>
+    filters:
+      label: Color
+      label.regex: ^Dark$   # and Dark (a filter can only name label once)
+      title.not: <<skip_titles>>
+
+  TintedLogo:           # one show's logo in its own colour (see the TINTED section)
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Tinted/<<file>>.png
+      group: network
+      weight: 3000
+    plex_search:
+      all:
+        title.is: <<title>>
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
@@ -255,8 +295,10 @@ overlays:
   # One logo per show, top left. Plex's network field picks the logo, and
   # when a show has more than one network, the highest weight wins.
   # Shows labelled Dark get the black logo, shows labelled Color the colour
-  # one where the network has a Color line (see the templates at the top).
-  # New logo: add its folder under Overlays/Networks/ and a pair of lines.
+  # one where the network has a Color line, and shows labelled both the Color
+  # Dark one (see the templates at the top).
+  # New logo: put the original in Overlays/Networks/<Network>/Source/, add it
+  # to build.py there and run it (see the README), then add a pair of lines.
 
   # BBC Earth isn't a network in Plex (these are BBC One and friends there), so
   # it goes by TVDB id: the shows in the BBC Earth section of Metadata/Shows.yml.
@@ -300,6 +342,8 @@ overlays:
     template: {name: NetworkLogoDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
   Prime Video Color:
     template: {name: NetworkLogoColor, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
+  Prime Video Color Dark:
+    template: {name: NetworkLogoColorDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
 
   Hulu:
     template: {name: NetworkLogo, folder: Hulu, file: Hulu, weight: 95, network: &hulu [Hulu]}
@@ -321,6 +365,8 @@ overlays:
     template: {name: NetworkLogoDark, folder: Peacock, file: Peacock, weight: 93, network: *peacock}
   Peacock Color:
     template: {name: NetworkLogoColor, folder: Peacock, file: Peacock, weight: 93, network: *peacock}
+  Peacock Color Dark:
+    template: {name: NetworkLogoColorDark, folder: Peacock, file: Peacock, weight: 93, network: *peacock}
 
   FX:
     template: {name: NetworkLogo, folder: FX, file: FX, weight: 92, network: &fx [FX, FXX, FX on Hulu]}
@@ -332,10 +378,10 @@ overlays:
   Starz Dark:
     template: {name: NetworkLogoDark, folder: Starz, file: Starz, weight: 91, network: *starz}
 
-  AMC+:
-    template: {name: NetworkLogo, folder: AMC+, file: AMCPlus, weight: 90, network: &amc [AMC+, AMC]}
-  AMC+ Dark:
-    template: {name: NetworkLogoDark, folder: AMC+, file: AMCPlus, weight: 90, network: *amc}
+  AMC:
+    template: {name: NetworkLogo, folder: AMC, file: AMC, weight: 90, network: &amc [AMC, AMC+]}
+  AMC Dark:
+    template: {name: NetworkLogoDark, folder: AMC, file: AMC, weight: 90, network: *amc}
 
   MGM+:
     template: {name: NetworkLogo, folder: MGM+, file: MGMPlus, weight: 89, network: &mgm [MGM+, Epix]}
@@ -372,10 +418,10 @@ overlays:
   Curiosity Stream Dark:
     template: {name: NetworkLogoDark, folder: Curiosity Stream, file: CuriosityStream, weight: 83, network: *curiositystream}
 
-  BBC iPlayer:
-    template: {name: NetworkLogo, folder: BBC iPlayer, file: BBCiPlayer, weight: 82, network: &bbciplayer [BBC iPlayer, BBC, BBC One, BBC Two, BBC Three, BBC Four, BBC America, BBC First, BBC Choice, BBC HD, BBC UKTV, CBBC, CBeebies]}
-  BBC iPlayer Dark:
-    template: {name: NetworkLogoDark, folder: BBC iPlayer, file: BBCiPlayer, weight: 82, network: *bbciplayer}
+  BBC:
+    template: {name: NetworkLogo, folder: BBC, file: BBC, weight: 82, network: &bbc [BBC, BBC One, BBC Two, BBC Three, BBC Four, BBC iPlayer, BBC America, BBC First, BBC Choice, BBC HD, BBC UKTV, CBBC, CBeebies]}
+  BBC Dark:
+    template: {name: NetworkLogoDark, folder: BBC, file: BBC, weight: 82, network: *bbc}
 
   ITVX:
     template: {name: NetworkLogo, folder: ITVX, file: ITVX, weight: 81, network: &itvx [ITVX, ITV, ITV1, ITV2, ITV3, ITV4, ITVBe, CITV]}
@@ -455,56 +501,35 @@ overlays:
   fubo Color:
     template: {name: NetworkLogoColor, folder: fubo, file: fubo, weight: 68, network: *fubo}
 
-#╔═════════════════════════════════════════════════════════════════════════════════╗
-#    ██╗  ██╗██████╗  ██████╗     ████████╗██╗███╗   ██╗████████╗███████╗██████╗   ║
-#    ██║  ██║██╔══██╗██╔═══██╗    ╚══██╔══╝██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗  ║
-#    ███████║██████╔╝██║   ██║       ██║   ██║██╔██╗ ██║   ██║   █████╗  ██║  ██║  ║
-#    ██╔══██║██╔══██╗██║   ██║       ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██║  ██║  ║
-#    ██║  ██║██████╔╝╚██████╔╝       ██║   ██║██║ ╚████║   ██║   ███████╗██████╔╝  ║
-#    ╚═╝  ╚═╝╚═════╝  ╚═════╝        ╚═╝   ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═════╝   ║
-#╚═════════════════════════════════════════════════════════════════════════════════╝
-  # Show-coloured HBO logos for these four, instead of the plain one.
-  # Weight 1800 beats the plain HBO logo (1000-1002).
+  Showtime:
+    template: {name: NetworkLogo, folder: Showtime, file: Showtime, weight: 67, network: &showtime [Showtime, SHOWTIME, Showtime Anytime]}
+  Showtime Dark:
+    template: {name: NetworkLogoDark, folder: Showtime, file: Showtime, weight: 67, network: *showtime}
+
+#╔════════════════════════════════════════════════════╗
+#    ████████╗██╗███╗   ██╗████████╗███████╗██████╗   ║
+#    ╚══██╔══╝██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗  ║
+#       ██║   ██║██╔██╗ ██║   ██║   █████╗  ██║  ██║  ║
+#       ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██║  ██║  ║
+#       ██║   ██║██║ ╚████║   ██║   ███████╗██████╔╝  ║
+#       ╚═╝   ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═════╝   ║
+#╚════════════════════════════════════════════════════╝
+  # One show's logo in its own colour, usually the colour of its poster's
+  # title. The images are in Overlays/Networks/<Network>/Tinted/, made by
+  # the tints in build.py there. Weight 3000 beats every other logo.
 
   HBO Chernobyl:
-    overlay:
-      name: HBO Chernobyl
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_chernobyl.png
-      group: network
-      weight: 1800
-    plex_search:
-      all:
-        title: Chernobyl
-
+    template: {name: TintedLogo, folder: HBO, file: HBO_chernobyl, title: Chernobyl}
   HBO Euphoria:
-    overlay:
-      name: HBO Euphoria
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_euphoria.png
-      group: network
-      weight: 1800
-    plex_search:
-      all:
-        title: Euphoria
-
+    template: {name: TintedLogo, folder: HBO, file: HBO_euphoria, title: Euphoria}
   HBO Succession:
-    overlay:
-      name: HBO Succession
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_succession.png
-      group: network
-      weight: 1800
-    plex_search:
-      all:
-        title: Succession
-
+    template: {name: TintedLogo, folder: HBO, file: HBO_succession, title: Succession}
   HBO The Last of Us:
-    overlay:
-      name: HBO The Last of Us
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/HBO/Tinted/HBO_thelastofus.png
-      group: network
-      weight: 1800
-    plex_search:
-      all:
-        title: The Last of Us
+    template: {name: TintedLogo, folder: HBO, file: HBO_thelastofus, title: The Last of Us}
+  HBO Max Peacemaker:
+    template: {name: TintedLogo, folder: HBO Max, file: HBOMax_peacemaker, title: Peacemaker}
+  FX The Bear:
+    template: {name: TintedLogo, folder: FX, file: FX_thebear, title: The Bear}
 
 
 #╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗

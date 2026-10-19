@@ -33,8 +33,11 @@ Kometa/
     ├── Test.yml               # TVTestBench overlays
     ├── Episodes/              # premiere and finale badges, 1920x1080
     └── Networks/
+        ├── build.py           # makes Label/ and Tinted/ from Source/
         └── <Network>/
-            └── Label/         # <Name>_White.png, _Black.png, _Color.png
+            ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
+            ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
+            └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
 ```
 
 ## Usage
@@ -93,9 +96,11 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`.
 
-Label a show `Dark` in Plex to get the black logo, for light posters, or `Color` for the colour logo. Color works on Crunchyroll, fubo, Hulu, Paramount+, Peacock, Prime Video, Rakuten TV and Viaplay; on other networks the show keeps its plain logo.
+Label a show `Dark` in Plex to get the black logo, for light posters, or `Color` for the colour logo. Color works on Crunchyroll, fubo, Hulu, Paramount+, Peacock, Prime Video, Rakuten TV and Viaplay; on other networks the show keeps its plain logo. Both labels together give the colour logo with black text on Prime Video and Peacock, and the colour logo on the rest.
 
-To add a network: upload `<Name>_White.png` and `<Name>_Black.png` to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section, or three with a `<Name>_Color.png`. The images are 1000x1500 with the logo's top-left corner at 55,55. Logos are sized by area rather than height, so a square logo is about 68x68, a 2:1 one about 100x52 and a 4:1 one about 155x39.
+A single show can have its logo in its own colour, usually its poster's title colour: a `Tinted/<Name>_<show>.png` in the network's folder and one line in the TINTED section. Peacemaker's HBO Max logo is yellow and The Bear's FX logo cream, for example.
+
+The images are 1000x1500 with the logo's top-left corner at 43,43, sized like the network logos on MediUX posters: HBO is 108x45, hulu 99x33, prime video 172x53 and square logos 58x58. `Overlays/Networks/build.py` makes every one of them from the original in the network's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. A new tint or network is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and the matching lines in `Overlays/Shows.yml`: a pair in NETWORKS plus one per colour version, or one in TINTED.
 
 ## Episode badges
 
