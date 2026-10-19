@@ -22,7 +22,7 @@ Kometa/
 │           ├── poster.png
 │           └── background.png
 ├── Collections/
-│   ├── Shows.yml              # TV home rows, collections, BBC Earth, Netflix label
+│   ├── Shows.yml              # TV home rows and collections
 │   ├── Movies.yml             # movie home rows, collections, directors
 │   └── <Collection Name>/
 │       ├── poster.png
@@ -91,11 +91,11 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. Netflix and BBC Earth shows use labels set by their collections instead, so single shows can be added or left out.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so it goes by the BBC Earth list on IMDb. Any network line can add or leave out single shows with `add_titles` and `skip_titles`.
 
-Label a show `Dark` in Plex to get the black logo, for light posters.
+Label a show `Dark` in Plex to get the black logo, for light posters, or `Color` for the colour logo. Color works on Crunchyroll, fubo, Hulu, Paramount+, Peacock, Prime Video, Rakuten TV and Viaplay; on other networks the show keeps its plain logo.
 
-To add a network: upload `<Name>_White.png` and `<Name>_Black.png` (1000x1500, logo top left) to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section.
+To add a network: upload `<Name>_White.png` and `<Name>_Black.png` to `Overlays/Networks/<Network>/Label/`, then add a pair of lines to the NETWORKS section, or three with a `<Name>_Color.png`. The images are 1000x1500 with the logo's top-left corner at 55,55. Logos are sized by area rather than height, so a square logo is about 68x68, a 2:1 one about 100x52 and a 4:1 one about 155x39.
 
 ## Episode badges
 
