@@ -133,7 +133,7 @@ templates:
       weight: 3000
     plex_search:
       all:
-        title.is: <<title>>
+        title.begins: <<title>>   # so "Euphoria" also finds "Euphoria (US)"
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
@@ -517,6 +517,8 @@ overlays:
   # One show's logo in its own colour, usually the colour of its poster's
   # title. The images are in Overlays/Networks/<Network>/Tinted/, made by
   # the tints in build.py there. Weight 3000 beats every other logo.
+  # title: how the show's title in Plex starts, so a suffix like (US) or
+  # (2022) doesn't stop it matching.
 
   HBO Chernobyl:
     template: {name: TintedLogo, folder: HBO, file: HBO_chernobyl, title: Chernobyl}
