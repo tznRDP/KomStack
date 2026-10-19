@@ -18,6 +18,8 @@ templates:
         unplayed: true
     collection_filtering: user    # "unplayed" = unplayed by whoever is looking
     collection_mode: hide
+    sort_title: ZZZ_<<collection_name>>   # bottom of the Collections tab
+    visible_library: true
     visible_home: true
     visible_shared: true
     hub_priority: 4
@@ -45,33 +47,30 @@ collections:
 ######################################################
 #                       HOME                         #
 ######################################################
-# Netflix-style rows on Plex Home (needs Plex Pass). Order on Home is
-# hub_priority, lowest first; Plex's own rows (Continue Watching,
-# Recently Added) sit below these.
+# Netflix-style rows on Plex Home (needs Plex Pass). hub_priority is the
+# row's place in Manage Recommendations, lowest first. 3 and 5 are Plex's
+# own Recently Added Movies and Seasonal Movies: Kometa can't move those,
+# so after every run they sit below all of these rows instead.
+#
+# Row-only collections get a ZZZ_ sort title. Plex can't hide a collection
+# from the Collections tab, so this puts them at the very bottom of it.
 
-  Top 10 Movies Weekly:
-    tracearr_watched:
-      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
-      list_size: 10
+  New Releases:
+    tmdb_discover:
+      with_release_type: 4|5     # TMDb release types: 4 = digital, 5 = physical
+      region: US                 # whose dates count; US has the most complete digital dates
+      release_date.lte: today    # skip announced dates that haven't happened yet
+      sort_by: release_date.desc
+      limit: 1000                # the newest 1000 digital/physical releases on TMDb; only the ones in the library make the row
     collection_order: custom
     sync_mode: sync
-    collection_mode: hide # keeps Home-only rows out of the library grid
-    summary: The most watched movies on Plexflix over the last two weeks.
+    collection_mode: hide        # keeps Home-only rows out of the library grid
+    sort_title: ZZZ_New Releases
+    summary: The newest movies out on streaming, digital or disc.
+    visible_library: true
     visible_home: true
     visible_shared: true
     hub_priority: 1
-
-  New Releases:
-    smart_filter:
-      sort_by: release.desc
-      limit: 40
-      all:
-        release: 90
-    collection_mode: hide
-    summary: Movies released in the last 90 days.
-    visible_home: true
-    visible_shared: true
-    hub_priority: 2
 
   Trending Movies:
     sort_title: "'*Trending"
@@ -84,9 +83,10 @@ collections:
     visible_home: true
     visible_shared: true
     visible_library: true
-    hub_priority: 3
+    hub_priority: 2
 
-  # One genre row a day, built on its day only. Tuesday and Thursday are in Collections/Shows.yml.
+  # One genre row a day, built on its day only (hub_priority 4, in the template).
+  # Tuesday and Thursday are in Collections/Shows.yml.
   Sci-Fi Monday:
     template: {name: DailyRow, genre: Science Fiction, day: monday}
   Wednesday Thrillers:
@@ -98,19 +98,21 @@ collections:
   Sunday Family Movies:
     template: {name: DailyRow, genre: Family, day: sunday}
 
-  Watch Again:
-    smart_filter:
-      sort_by: viewed.desc
-      limit: 40
-      all:
-        plays.gte: 1
-    collection_filtering: user    # each person sees their own history
+  Most Popular Movies:
+    tracearr_watched:
+      list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
+      list_size: 10
+    collection_order: custom
+    sync_mode: sync
     collection_mode: hide
+    sort_title: ZZZ_Most Popular Movies
+    summary: The most watched movies on Plexflix over the last two weeks.
+    visible_library: true
     visible_home: true
     visible_shared: true
-    hub_priority: 5
+    hub_priority: 6
 
-  Filmer med Svenskt Tal:
+  Filmer med Svenskt Tal:   # the library's Recommended tab only, not Home
     sort_title: "'*Swedish"
     plex_search:
       any:
@@ -120,10 +122,24 @@ collections:
     sync_mode: sync
     summary: Movies that contain Swedish audio
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/Filmer%20med%20Svenskt%20Tal/poster.png
+    visible_library: true
+    visible_home: false
+    visible_shared: false
+    hub_priority: 7
+
+  Watch Again:
+    smart_filter:
+      sort_by: viewed.desc
+      limit: 40
+      all:
+        plays.gte: 1
+    collection_filtering: user    # each person sees their own history
+    collection_mode: hide
+    sort_title: ZZZ_Watch Again
+    visible_library: true
     visible_home: true
     visible_shared: true
-    visible_library: false
-    hub_priority: 6
+    hub_priority: 8
 
 ######################################################
 #                     Collections                    #
