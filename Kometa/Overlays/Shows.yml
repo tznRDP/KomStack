@@ -516,22 +516,45 @@ overlays:
 #╚════════════════════════════════════════════════════╝
   # One show's logo in its own colour, usually the colour of its poster's
   # title. The images are in Overlays/Networks/<Network>/Tinted/, made by
-  # the tints in build.py there. Weight 3000 beats every other logo.
+  # the TINTS in build.py there. Weight 3000 beats every other logo.
   # title: how the show's title in Plex starts, so a suffix like (US) or
-  # (2022) doesn't stop it matching.
+  # (2022) doesn't stop it matching. It stops before an apostrophe, since
+  # Plex can have ' or ’ there (Widow's Bay is title: Widow).
 
+  AMC Breaking Bad:
+    template: {name: TintedLogo, folder: AMC, file: AMC_breakingbad, title: Breaking Bad}
+  Apple TV Widow's Bay:
+    template: {name: TintedLogo, folder: Apple TV, file: AppleTV_widowsbay, title: Widow}
+  BritBox Why Didn't They Ask Evans:
+    template: {name: TintedLogo, folder: BritBox, file: BritBox_whydidnttheyaskevans, title: Why Didn}
+  FX Fargo:
+    template: {name: TintedLogo, folder: FX, file: FX_fargo, title: Fargo}
+  FX Grotesquerie:
+    template: {name: TintedLogo, folder: FX, file: FX_grotesquerie, title: Grotesquerie}
+  FX The Bear:
+    template: {name: TintedLogo, folder: FX, file: FX_thebear, title: The Bear}
   HBO Chernobyl:
     template: {name: TintedLogo, folder: HBO, file: HBO_chernobyl, title: Chernobyl}
   HBO Euphoria:
     template: {name: TintedLogo, folder: HBO, file: HBO_euphoria, title: Euphoria}
+  HBO House of the Dragon:
+    template: {name: TintedLogo, folder: HBO, file: HBO_houseofthedragon, title: House of the Dragon}
   HBO Succession:
     template: {name: TintedLogo, folder: HBO, file: HBO_succession, title: Succession}
   HBO The Last of Us:
     template: {name: TintedLogo, folder: HBO, file: HBO_thelastofus, title: The Last of Us}
+  HBO Max Full Circle:
+    template: {name: TintedLogo, folder: HBO Max, file: HBOMax_fullcircle, title: Full Circle}
   HBO Max Peacemaker:
     template: {name: TintedLogo, folder: HBO Max, file: HBOMax_peacemaker, title: Peacemaker}
-  FX The Bear:
-    template: {name: TintedLogo, folder: FX, file: FX_thebear, title: The Bear}
+  Hulu Shōgun:
+    template: {name: TintedLogo, folder: Hulu, file: Hulu_shogun, title: Shōgun}
+  Paramount Plus Yellowjackets:
+    template: {name: TintedLogo, folder: Paramount Plus, file: ParamountPlus_yellowjackets, title: Yellowjackets}
+  Peacock Crystal Lake:
+    template: {name: TintedLogo, folder: Peacock, file: Peacock_crystallake, title: Crystal Lake}
+  Showtime Dexter:
+    template: {name: TintedLogo, folder: Showtime, file: Showtime_dexter, title: Dexter}
 
 
 #╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
