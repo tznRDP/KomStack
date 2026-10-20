@@ -17,6 +17,7 @@
 #  SWITCHED OFF FOR A POSTER REVIEW: every entry line starts with "# ". #
 #  To switch an entry back on, remove those two characters: select its  #
 #  lines, then Ctrl+/ in GitHub's editor or Ctrl+Shift+K in Notepad++.  #
+#  Back on after the review: Crystal Lake (2026).                       #
 #=======================================================================#
 
 external_templates:
@@ -38,6 +39,9 @@ metadata:
 #-----------------------------------------------------------------------#
 #  Art hosted in this repo: Kometa/Metadata/Shows/<Show (Year)>/        #
 #-----------------------------------------------------------------------#
+
+  426669: # TVDB id for Crystal Lake (2026). Poster made here from the original key art.
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Crystal%20Lake%20(2026)/poster.png
 
 #   322191: # TVDB id for The Terror (2018). 3 seasons: The Terror, Infamy, Devil in Silver.
 #     template: {name: Seasons3, folder: "The Terror (2018)"}
