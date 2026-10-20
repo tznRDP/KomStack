@@ -113,6 +113,10 @@ Kometa keeps its own copy of each overlay image and reuses it for up to 60 days,
 
 Title cards get a badge on premieres and finales: Series Premiere, Season Premiere, Mid-Season Finale, Season Finale and Series Finale. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
 
+## MCU phases
+
+`Collections/Movies.yml` has a collection for each MCU phase, Phase One to Phase Six, with the movies in release order, Marvel's specials like Werewolf by Night included. They sit right after Marvel Cinematic Universe in the Collections tab. Movies are listed by TMDb id, so the ones still to come (Avengers: Doomsday, Avengers: Secret Wars) join by themselves once they're in the library. Phase Seven is one more entry like the others.
+
 ## Adding a director
 
 One line in the DIRECTORS section of `Collections/Movies.yml` with the name and the TMDb person id from `themoviedb.org/person/<id>`. The collection appears once you have 3 of their films.
