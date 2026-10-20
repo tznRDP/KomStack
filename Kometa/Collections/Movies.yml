@@ -300,7 +300,7 @@ collections:
         - 969681    # Spider-Man: Brand New Day (2026)
         - 1003596   # Avengers: Doomsday (Dec 2026)
         - 1003598   # Avengers: Secret Wars (Dec 2027)
-    # url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/MCU%20Phase%20Six/poster.png   # on once the hooded poster is picked
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/MCU%20Phase%20Six/poster.png
 
 ######################################################
 #              FRANCHISES (Plex's own)               #
