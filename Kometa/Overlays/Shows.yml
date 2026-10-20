@@ -131,9 +131,7 @@ templates:
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Networks/<<folder_encoded>>/Tinted/<<file>>.png
       group: network
       weight: 3000
-    plex_search:
-      all:
-        title.begins: <<title>>   # so "Euphoria" also finds "Euphoria (US)"
+    tvdb_show: <<tvdb>>
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
@@ -516,22 +514,43 @@ overlays:
 #╚════════════════════════════════════════════════════╝
   # One show's logo in its own colour, usually the colour of its poster's
   # title. The images are in Overlays/Networks/<Network>/Tinted/, made by
-  # the tints in build.py there. Weight 3000 beats every other logo.
-  # title: how the show's title in Plex starts, so a suffix like (US) or
-  # (2022) doesn't stop it matching.
+  # the TINTS in build.py there. Weight 3000 beats every other logo.
+  # tvdb: the show's TVDB id, the same number Metadata/Shows.yml uses.
 
-  HBO Chernobyl:
-    template: {name: TintedLogo, folder: HBO, file: HBO_chernobyl, title: Chernobyl}
-  HBO Euphoria:
-    template: {name: TintedLogo, folder: HBO, file: HBO_euphoria, title: Euphoria}
-  HBO Succession:
-    template: {name: TintedLogo, folder: HBO, file: HBO_succession, title: Succession}
-  HBO The Last of Us:
-    template: {name: TintedLogo, folder: HBO, file: HBO_thelastofus, title: The Last of Us}
-  HBO Max Peacemaker:
-    template: {name: TintedLogo, folder: HBO Max, file: HBOMax_peacemaker, title: Peacemaker}
+  AMC Breaking Bad:
+    template: {name: TintedLogo, folder: AMC, file: AMC_breakingbad, tvdb: 81189}
+  Apple TV Widow's Bay:
+    template: {name: TintedLogo, folder: Apple TV, file: AppleTV_widowsbay, tvdb: 454109}
+  BritBox Why Didn't They Ask Evans:
+    template: {name: TintedLogo, folder: BritBox, file: BritBox_whydidnttheyaskevans, tvdb: 404602}
+  FX Fargo:
+    template: {name: TintedLogo, folder: FX, file: FX_fargo, tvdb: 269613}
+  FX Grotesquerie:
+    template: {name: TintedLogo, folder: FX, file: FX_grotesquerie, tvdb: 446581}
   FX The Bear:
-    template: {name: TintedLogo, folder: FX, file: FX_thebear, title: The Bear}
+    template: {name: TintedLogo, folder: FX, file: FX_thebear, tvdb: 403294}
+  HBO Chernobyl:
+    template: {name: TintedLogo, folder: HBO, file: HBO_chernobyl, tvdb: 360893}
+  HBO Euphoria:
+    template: {name: TintedLogo, folder: HBO, file: HBO_euphoria, tvdb: 360261}
+  HBO House of the Dragon:
+    template: {name: TintedLogo, folder: HBO, file: HBO_houseofthedragon, tvdb: 371572}
+  HBO Succession:
+    template: {name: TintedLogo, folder: HBO, file: HBO_succession, tvdb: 338186}
+  HBO The Last of Us:
+    template: {name: TintedLogo, folder: HBO, file: HBO_thelastofus, tvdb: 392256}
+  HBO Max Full Circle:
+    template: {name: TintedLogo, folder: HBO Max, file: HBOMax_fullcircle, tvdb: 409142}
+  HBO Max Peacemaker:
+    template: {name: TintedLogo, folder: HBO Max, file: HBOMax_peacemaker, tvdb: 391153}
+  Hulu Shōgun:
+    template: {name: TintedLogo, folder: Hulu, file: Hulu_shogun, tvdb: 392573}
+  Paramount Plus Yellowjackets:
+    template: {name: TintedLogo, folder: Paramount Plus, file: ParamountPlus_yellowjackets, tvdb: 399731}
+  Peacock Crystal Lake:
+    template: {name: TintedLogo, folder: Peacock, file: Peacock_crystallake, tvdb: 426669}
+  Showtime Dexter:
+    template: {name: TintedLogo, folder: Showtime, file: Showtime_dexter, tvdb: 79349}
 
 
 #╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
