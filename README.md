@@ -29,8 +29,13 @@ Kometa/
 │       └── background.png
 └── Overlays/
     ├── Shows.yml              # TV overlays, network logos, episode badges
-    ├── Movies.yml             # movie overlays
+    ├── Movies.yml             # movie overlays, Oscars badges
     ├── Test.yml               # TVTestBench overlays
+    ├── Awards/
+    │   └── Oscars/
+    │       ├── build.py       # makes BestPicture/ from Source/
+    │       ├── Source/        # the badge's parts, taken from Best Picture posters
+    │       └── BestPicture/   # <year>_Gold.png and <year>_Dark.png, 1929 to 2035
     ├── Episodes/              # premiere and finale badges, 1920x1080
     └── Networks/
         ├── build.py           # makes Label/ and Tinted/ from Source/
@@ -116,6 +121,12 @@ Title cards get a badge on premieres and finales: Series Premiere, Season Premie
 ## MCU phases
 
 `Collections/Movies.yml` has a collection for each MCU phase, Phase One to Phase Six, with the movies in release order, Marvel's specials like Werewolf by Night included. They sit right after Marvel Cinematic Universe in the Collections tab. Movies are listed by TMDb id, so the ones still to come (Avengers: Doomsday, Avengers: Secret Wars) join by themselves once they're in the library. Phase Seven is one more entry like the others.
+
+## Oscars badge
+
+A Best Picture winner whose poster is one of your own can get the Oscars badge at the top, as on the Best Picture posters: the gold Academy triangle, the ceremony year and BEST PICTURE WINNER. The OSCARS section of `Overlays/Movies.yml` has a line for every ceremony, all switched off; take the `# ` off a line to switch it on. The year is the ceremony's, usually the year after the film's, and Kometa finds that year's winner in IMDb's Oscars data. Add `color: Dark` after the year for the darker gold, for light posters.
+
+`Overlays/Awards/Oscars/build.py` makes the badges, `BestPicture/<year>_Gold.png` and `_Dark.png` for every year from 1929 to 2035, out of the parts in `Source/`: the triangle, the divider, BEST PICTURE / WINNER and the digits 0 to 9, all taken from the Best Picture posters. The divider always sits under the middle of the triangle, with the year to its left and the text to its right; years those posters show keep their exact digit spacing. `python3 build.py 2036` makes another year (needs Pillow and numpy).
 
 ## Adding a director
 
