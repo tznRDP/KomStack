@@ -3,6 +3,28 @@
 #  Lives at: Kometa/Overlays/Movies.yml                                 #
 #=======================================================================#
 
+templates:
+  # The Oscars Best Picture badge at the top (see the OSCARS section). The
+  # images are full-size 1000x1500 PNGs with the badge already placed, one per
+  # ceremony year. Kometa finds that year's winner from IMDb's Oscars data.
+  BestPicture:
+    default:
+      color: Gold         # Dark: darker gold, for light posters
+      event: <<year>>     # IMDb's name for the ceremony, if it isn't just the year
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Awards/Oscars/BestPicture/<<year>>_<<color>>.png
+    imdb_award:
+      event_id: ev0000003
+      event_year: <<event>>
+      category_filter:
+        - best motion picture of the year
+        - best picture
+        - best picture, production
+        - best picture, unique and artistic production
+      winning: true
+
 overlays:
   ######################################################
   # 🟢 GLOBAL OVERLAYS
@@ -61,3 +83,110 @@ overlays:
     plex_search:
       all:
         collection: Festival de Cannes Palme d'Or
+
+  ######################################################
+  # 🟡 OSCARS
+  ######################################################
+  # The Oscars Best Picture badge at the top, for a winner whose poster is one
+  # of your own (the Best Picture posters have it already). One line per
+  # ceremony, all off: take the "# " off the start of a line to switch it on.
+  # The year is the ceremony's, usually the year after the film's. For the
+  # darker gold on a light poster, add color: Dark after the year.
+#   Best Picture 1929: {template: {name: BestPicture, year: 1929}}                 # Wings, and Sunrise for Unique and Artistic Production
+#   Best Picture 1930: {template: {name: BestPicture, year: 1930}}                 # The Broadway Melody
+#   Best Picture 1930-2: {template: {name: BestPicture, year: 1930, event: 1930-2}} # All Quiet on the Western Front
+#   Best Picture 1931: {template: {name: BestPicture, year: 1931}}                 # Cimarron
+#   Best Picture 1932: {template: {name: BestPicture, year: 1932}}                 # Grand Hotel
+#   Best Picture 1934: {template: {name: BestPicture, year: 1934}}                 # Cavalcade
+#   Best Picture 1935: {template: {name: BestPicture, year: 1935}}                 # It Happened One Night
+#   Best Picture 1936: {template: {name: BestPicture, year: 1936}}                 # Mutiny on the Bounty
+#   Best Picture 1937: {template: {name: BestPicture, year: 1937}}                 # The Great Ziegfeld
+#   Best Picture 1938: {template: {name: BestPicture, year: 1938}}                 # The Life of Emile Zola
+#   Best Picture 1939: {template: {name: BestPicture, year: 1939}}                 # You Can't Take It with You
+#   Best Picture 1940: {template: {name: BestPicture, year: 1940}}                 # Gone with the Wind
+#   Best Picture 1941: {template: {name: BestPicture, year: 1941}}                 # Rebecca
+#   Best Picture 1942: {template: {name: BestPicture, year: 1942}}                 # How Green Was My Valley
+#   Best Picture 1943: {template: {name: BestPicture, year: 1943}}                 # Mrs. Miniver
+#   Best Picture 1944: {template: {name: BestPicture, year: 1944}}                 # Casablanca
+#   Best Picture 1945: {template: {name: BestPicture, year: 1945}}                 # Going My Way
+#   Best Picture 1946: {template: {name: BestPicture, year: 1946}}                 # The Lost Weekend
+#   Best Picture 1947: {template: {name: BestPicture, year: 1947}}                 # The Best Years of Our Lives
+#   Best Picture 1948: {template: {name: BestPicture, year: 1948}}                 # Gentleman's Agreement
+#   Best Picture 1949: {template: {name: BestPicture, year: 1949}}                 # Hamlet
+#   Best Picture 1950: {template: {name: BestPicture, year: 1950}}                 # All the King's Men
+#   Best Picture 1951: {template: {name: BestPicture, year: 1951}}                 # All About Eve
+#   Best Picture 1952: {template: {name: BestPicture, year: 1952}}                 # An American in Paris
+#   Best Picture 1953: {template: {name: BestPicture, year: 1953}}                 # The Greatest Show on Earth
+#   Best Picture 1954: {template: {name: BestPicture, year: 1954}}                 # From Here to Eternity
+#   Best Picture 1955: {template: {name: BestPicture, year: 1955}}                 # On the Waterfront
+#   Best Picture 1956: {template: {name: BestPicture, year: 1956}}                 # Marty
+#   Best Picture 1957: {template: {name: BestPicture, year: 1957}}                 # Around the World in 80 Days
+#   Best Picture 1958: {template: {name: BestPicture, year: 1958}}                 # The Bridge on the River Kwai
+#   Best Picture 1959: {template: {name: BestPicture, year: 1959}}                 # Gigi
+#   Best Picture 1960: {template: {name: BestPicture, year: 1960}}                 # Ben-Hur
+#   Best Picture 1961: {template: {name: BestPicture, year: 1961}}                 # The Apartment
+#   Best Picture 1962: {template: {name: BestPicture, year: 1962}}                 # West Side Story
+#   Best Picture 1963: {template: {name: BestPicture, year: 1963}}                 # Lawrence of Arabia
+#   Best Picture 1964: {template: {name: BestPicture, year: 1964}}                 # Tom Jones
+#   Best Picture 1965: {template: {name: BestPicture, year: 1965}}                 # My Fair Lady
+#   Best Picture 1966: {template: {name: BestPicture, year: 1966}}                 # The Sound of Music
+#   Best Picture 1967: {template: {name: BestPicture, year: 1967}}                 # A Man for All Seasons
+#   Best Picture 1968: {template: {name: BestPicture, year: 1968}}                 # In the Heat of the Night
+#   Best Picture 1969: {template: {name: BestPicture, year: 1969}}                 # Oliver!
+#   Best Picture 1970: {template: {name: BestPicture, year: 1970}}                 # Midnight Cowboy
+#   Best Picture 1971: {template: {name: BestPicture, year: 1971}}                 # Patton
+#   Best Picture 1972: {template: {name: BestPicture, year: 1972}}                 # The French Connection
+#   Best Picture 1973: {template: {name: BestPicture, year: 1973}}                 # The Godfather
+#   Best Picture 1974: {template: {name: BestPicture, year: 1974}}                 # The Sting
+#   Best Picture 1975: {template: {name: BestPicture, year: 1975}}                 # The Godfather Part II
+#   Best Picture 1976: {template: {name: BestPicture, year: 1976}}                 # One Flew Over the Cuckoo's Nest
+#   Best Picture 1977: {template: {name: BestPicture, year: 1977}}                 # Rocky
+#   Best Picture 1978: {template: {name: BestPicture, year: 1978}}                 # Annie Hall
+#   Best Picture 1979: {template: {name: BestPicture, year: 1979}}                 # The Deer Hunter
+#   Best Picture 1980: {template: {name: BestPicture, year: 1980}}                 # Kramer vs. Kramer
+#   Best Picture 1981: {template: {name: BestPicture, year: 1981}}                 # Ordinary People
+#   Best Picture 1982: {template: {name: BestPicture, year: 1982}}                 # Chariots of Fire
+#   Best Picture 1983: {template: {name: BestPicture, year: 1983}}                 # Gandhi
+#   Best Picture 1984: {template: {name: BestPicture, year: 1984}}                 # Terms of Endearment
+#   Best Picture 1985: {template: {name: BestPicture, year: 1985}}                 # Amadeus
+#   Best Picture 1986: {template: {name: BestPicture, year: 1986}}                 # Out of Africa
+#   Best Picture 1987: {template: {name: BestPicture, year: 1987}}                 # Platoon
+#   Best Picture 1988: {template: {name: BestPicture, year: 1988}}                 # The Last Emperor
+#   Best Picture 1989: {template: {name: BestPicture, year: 1989}}                 # Rain Man
+#   Best Picture 1990: {template: {name: BestPicture, year: 1990}}                 # Driving Miss Daisy
+#   Best Picture 1991: {template: {name: BestPicture, year: 1991}}                 # Dances with Wolves
+#   Best Picture 1992: {template: {name: BestPicture, year: 1992}}                 # The Silence of the Lambs
+#   Best Picture 1993: {template: {name: BestPicture, year: 1993}}                 # Unforgiven
+#   Best Picture 1994: {template: {name: BestPicture, year: 1994}}                 # Schindler's List
+#   Best Picture 1995: {template: {name: BestPicture, year: 1995}}                 # Forrest Gump
+#   Best Picture 1996: {template: {name: BestPicture, year: 1996}}                 # Braveheart
+#   Best Picture 1997: {template: {name: BestPicture, year: 1997}}                 # The English Patient
+#   Best Picture 1998: {template: {name: BestPicture, year: 1998}}                 # Titanic
+#   Best Picture 1999: {template: {name: BestPicture, year: 1999}}                 # Shakespeare in Love
+#   Best Picture 2000: {template: {name: BestPicture, year: 2000}}                 # American Beauty
+#   Best Picture 2001: {template: {name: BestPicture, year: 2001}}                 # Gladiator
+#   Best Picture 2002: {template: {name: BestPicture, year: 2002}}                 # A Beautiful Mind
+#   Best Picture 2003: {template: {name: BestPicture, year: 2003}}                 # Chicago
+#   Best Picture 2004: {template: {name: BestPicture, year: 2004}}                 # The Lord of the Rings: The Return of the King
+#   Best Picture 2005: {template: {name: BestPicture, year: 2005}}                 # Million Dollar Baby
+#   Best Picture 2006: {template: {name: BestPicture, year: 2006}}                 # Crash
+#   Best Picture 2007: {template: {name: BestPicture, year: 2007}}                 # The Departed
+#   Best Picture 2008: {template: {name: BestPicture, year: 2008}}                 # No Country for Old Men
+#   Best Picture 2009: {template: {name: BestPicture, year: 2009}}                 # Slumdog Millionaire
+#   Best Picture 2010: {template: {name: BestPicture, year: 2010}}                 # The Hurt Locker
+#   Best Picture 2011: {template: {name: BestPicture, year: 2011}}                 # The King's Speech
+#   Best Picture 2012: {template: {name: BestPicture, year: 2012}}                 # The Artist
+#   Best Picture 2013: {template: {name: BestPicture, year: 2013}}                 # Argo
+#   Best Picture 2014: {template: {name: BestPicture, year: 2014}}                 # 12 Years a Slave
+#   Best Picture 2015: {template: {name: BestPicture, year: 2015}}                 # Birdman
+#   Best Picture 2016: {template: {name: BestPicture, year: 2016}}                 # Spotlight
+#   Best Picture 2017: {template: {name: BestPicture, year: 2017}}                 # Moonlight
+#   Best Picture 2018: {template: {name: BestPicture, year: 2018}}                 # The Shape of Water
+#   Best Picture 2019: {template: {name: BestPicture, year: 2019}}                 # Green Book
+#   Best Picture 2020: {template: {name: BestPicture, year: 2020}}                 # Parasite
+#   Best Picture 2021: {template: {name: BestPicture, year: 2021}}                 # Nomadland
+#   Best Picture 2022: {template: {name: BestPicture, year: 2022}}                 # CODA
+#   Best Picture 2023: {template: {name: BestPicture, year: 2023}}                 # Everything Everywhere All at Once
+#   Best Picture 2024: {template: {name: BestPicture, year: 2024}}                 # Oppenheimer
+#   Best Picture 2025: {template: {name: BestPicture, year: 2025}}                 # Anora
+#   Best Picture 2026: {template: {name: BestPicture, year: 2026}}                 # One Battle After Another
