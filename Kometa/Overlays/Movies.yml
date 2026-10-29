@@ -65,7 +65,7 @@ templates:
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Movies/<<file>>_White.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_White.png
       group: studio
       weight: <<weight>>0
     tmdb_company: <<company>>
@@ -81,7 +81,7 @@ templates:
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Movies/<<file>>_Black.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_Black.png
       group: studio
       weight: <<weight>>1
     tmdb_company: <<company>>
@@ -92,6 +92,18 @@ templates:
       collection.regex: <<collection>>
       title: <<titles>>
       genre: <<genre>>
+
+  # The Recently Added label (see the MOVIES section): a red pill with the
+  # words, centred at the bottom under the studio logo. The images are full-size
+  # 1000x1500 PNGs made by Overlays/Status/build.py in three sizes, and size
+  # picks the folder: change it here (and in Overlays/Shows.yml) to swap every
+  # label at once.
+  StatusLabel:
+    default:
+      size: 100           # 100, 115 or 130
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Status/<<size>>/<<file>>.png
 
 overlays:
   ######################################################
@@ -125,9 +137,6 @@ overlays:
   #   Dark        the black logo, for light posters (white parts inside a
   #               coloured shape stay white, like MARVEL in its red box)
   #   No Studio   no logo, for posters that already show it
-  # This section comes before Recently Added on purpose: Kometa draws overlays
-  # in the order they're listed, so in a movie's first week the Recently Added
-  # tab goes over the logo instead of under it.
   # New logo: put the original in Overlays/Studios/<Studio>/Source/, add it to
   # build.py there and run it (see the README), then add a pair of lines.
 
@@ -192,9 +201,7 @@ overlays:
   # 🔵 MOVIES
   ######################################################
   Recently Added:
-    overlay:
-      name: Recently Added
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/recently_added2.png
+    template: {name: StatusLabel, file: RecentlyAdded}
     plex_search:
       all:
         added: 7

@@ -133,10 +133,10 @@ templates:
       weight: 3000
     tvdb_show: <<tvdb>>
 
-  # Studio logos (see the STUDIOS section), centred at the bottom just above
-  # the Airing/Returning tab. The images are full-size 1000x1500 PNGs with the
-  # logo already placed. Label a show Dark for the black logo, or No Studio if
-  # its poster already shows the logo.
+  # Studio logos (see the STUDIOS section), centred at the bottom under the
+  # title, the same images and spot as on movies. The images are full-size
+  # 1000x1500 PNGs with the logo already placed. Label a show Dark for the
+  # black logo, or No Studio if its poster already shows the logo.
   #   company:  TMDb company ids (themoviedb.org/company/<id>)
   #   tmdb:     shows by TMDb id (themoviedb.org/tv/<id>)
   #   genre:    only shows in this Plex genre
@@ -145,7 +145,7 @@ templates:
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Shows/<<file>>_White.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_White.png
       group: studio
       weight: <<weight>>0
     tmdb_company: <<company>>
@@ -159,7 +159,7 @@ templates:
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Shows/<<file>>_Black.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_Black.png
       group: studio
       weight: <<weight>>1
     tmdb_company: <<company>>
@@ -168,6 +168,20 @@ templates:
       label: Dark
       label.not: No Studio
       genre: <<genre>>
+
+  # Status labels (see the STATUS OVERLAYS section): a coloured pill with the
+  # word, centred at the bottom under the studio logo. The images are full-size
+  # 1000x1500 PNGs made by Overlays/Status/build.py in three sizes, and size
+  # picks the folder: change it here (and in Overlays/Movies.yml) to swap
+  # every label at once.
+  StatusLabel:
+    default:
+      size: 100           # 100, 115 or 130
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Status/<<size>>/<<file>>.png
+      group: STATUS
+      weight: <<weight>>
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
@@ -233,10 +247,7 @@ overlays:
   # new one is one more line in its list.
   #   Dark        the black logo, for light posters
   #   No Studio   no logo, for posters that already show it
-  # The logos are the movies' ones (Overlays/Studios), placed a little higher.
-  # This section comes before the status overlays on purpose: Kometa draws
-  # overlays in the order they're listed, so the New Season tab goes over the
-  # logo instead of under it.
+  # The logos are the same as the movies' ones (Overlays/Studios).
 
   # MARVEL ANIMATION: Marvel's animated shows. That's these, plus any show TMDb
   # has under Marvel Studios that's in the Animation genre.
@@ -321,12 +332,11 @@ overlays:
 #     ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒    ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒      ▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒    ║
 #╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
+  # One label per show, the highest weight in the group wins. New Season
+  # weighs the most, so it takes the status label's place for its weeks.
+
   NewSeason:
-    overlay:
-      name: NewSeason
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/new_season2.png
-      group: FRESH
-      weight: 980
+    template: {name: StatusLabel, file: NewSeason, weight: 980}
     plex_all: true
     filters:
       added.not: 30
@@ -336,19 +346,11 @@ overlays:
         title.not: Specials
 
   Airing:
-    overlay:
-      name: airing
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/airing_small.png
-      group: STATUS
-      weight: 950
+    template: {name: StatusLabel, file: Airing, weight: 950}
     tmdb_on_the_air: 2000
 
   Returning:
-    overlay:
-      name: returning
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/returning_small.png
-      group: STATUS
-      weight: 800
+    template: {name: StatusLabel, file: Returning, weight: 800}
     plex_all: true
     filters:
       tmdb_status:
@@ -357,21 +359,13 @@ overlays:
         - production
 
   Ended:
-    overlay:
-      name: ended
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
-      group: STATUS
-      weight: 700
+    template: {name: StatusLabel, file: Ended, weight: 700}
     plex_all: true
     filters:
       tmdb_status: ended
 
   EndedForced:
-    overlay:
-      name: endedForced
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
-      group: STATUS
-      weight: 700
+    template: {name: StatusLabel, file: Ended, weight: 700}
     plex_search:
       title:
        - The Haunting of Bly Manor
@@ -379,11 +373,7 @@ overlays:
        - The Haunting of Hill House
 
   Canceled:
-    overlay:
-      name: canceled
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/canceled_minimal.png
-      group: STATUS
-      weight: 600
+    template: {name: StatusLabel, file: Canceled, weight: 600}
     plex_all: true
     filters:
       tmdb_status: canceled

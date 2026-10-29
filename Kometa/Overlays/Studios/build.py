@@ -2,13 +2,12 @@
 """Make the studio logo overlays from the originals in each Source/ folder.
 
 Every image is Kometa's poster size, 1000x1500, with the logo centred at the
-bottom like the studio logos on MediUX posters. Per studio:
+bottom like the studio logos on MediUX posters: its middle at 500,1418, under
+the title. Movies and shows use the same images. Per studio:
 
   Source/<Name>.svg or .png    the logo, or its parts, white parts white (colours are kept)
-  Movies/<File>_White.png      the logo, its middle at 500,1418, under the title
-  Movies/<File>_Black.png      its white parts black, for light posters (Dark label)
-  Shows/<File>_White.png       the same, but with its bottom at y 1424, just above
-  Shows/<File>_Black.png       the Airing and Returning tab on show posters
+  Label/<File>_White.png       the logo
+  Label/<File>_Black.png       its white parts black, for light posters (Dark label)
 
 White parts inside a coloured shape stay white in both, like MARVEL in its
 red box. Logos are only ever scaled down: svgs are drawn 4x bigger first,
@@ -35,23 +34,13 @@ import cairosvg
 import numpy as np
 from PIL import Image, ImageDraw
 
-VERSION = "1.1.0"
+VERSION = "1.2.0"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+CX, CY = 500, 1418               # the logo's middle on the poster
 CANVAS = (1000, 1500)
 SS = 4                           # svgs are drawn this many times bigger, then scaled down
 WHITE, BLACK = (255, 255, 255), (0, 0, 0)
-
-
-def movies(w, h):                # the logo's middle at 500,1418, as on the posters
-    return round(500 - w / 2), round(1418 - h / 2)
-
-
-def shows(w, h):                 # its bottom 8px above the Airing/Returning tab (top at 1432)
-    return round(500 - w / 2), 1424 - h
-
-
-PLACES = {"Movies": movies, "Shows": shows}
 
 # studio folder: file name, then the logo's width (w) or height (h) in px on the
 # poster (sizes from MediUX posters: MARVEL STUDIOS 161 wide, MARVEL ANIMATION and
@@ -169,11 +158,11 @@ def master(folder, spec):
     return big, (spec["w"], round(spec["w"] * big.height / big.width))
 
 
-def save(logo, folder, place, name):
-    os.makedirs(os.path.join(HERE, folder, place), exist_ok=True)
+def save(logo, folder, name):
+    os.makedirs(os.path.join(HERE, folder, "Label"), exist_ok=True)
     canvas = Image.new("RGBA", CANVAS, (0, 0, 0, 0))
-    canvas.alpha_composite(logo, PLACES[place](logo.width, logo.height))
-    canvas.save(os.path.join(HERE, folder, place, name), optimize=True)
+    canvas.alpha_composite(logo, (round(CX - logo.width / 2), round(CY - logo.height / 2)))
+    canvas.save(os.path.join(HERE, folder, "Label", name), optimize=True)
 
 
 def build(folder, spec):
@@ -181,10 +170,8 @@ def build(folder, spec):
     big, (w, h) = master(folder, spec)
     if big.height < h:
         print(f"  warning: {folder}'s source is only {big.height}px high, drawn at {h}")
-    for colour, rgb in (("White", WHITE), ("Black", BLACK)):
-        logo = shrink(recolor(big, rgb), (w, h))
-        for place in PLACES:
-            save(logo, folder, place, f"{f}_{colour}.png")
+    save(shrink(recolor(big, WHITE), (w, h)), folder, f"{f}_White.png")
+    save(shrink(recolor(big, BLACK), (w, h)), folder, f"{f}_Black.png")
     print(f"{folder:<30} {w}x{h}")
 
 

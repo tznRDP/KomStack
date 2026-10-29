@@ -28,8 +28,8 @@ Kometa/
 │       ├── poster.png
 │       └── background.png
 └── Overlays/
-    ├── Shows.yml              # TV overlays, network and studio logos, episode badges
-    ├── Movies.yml             # movie overlays, studio logos, Oscars badges
+    ├── Shows.yml              # TV overlays, status labels, network and studio logos, episode badges
+    ├── Movies.yml             # movie overlays, Recently Added, studio logos, Oscars badges
     ├── Test.yml               # TVTestBench overlays
     ├── Awards/
     │   └── Oscars/
@@ -43,12 +43,15 @@ Kometa/
     │       ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
     │       ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
     │       └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
+    ├── Status/
+    │   ├── build.py           # makes 100/, 115/ and 130/
+    │   ├── Source/            # the Montserrat font and its licence
+    │   └── 100/ 115/ 130/     # <Name>.png, the status labels in three sizes
     └── Studios/
-        ├── build.py           # makes Movies/ and Shows/ from Source/
+        ├── build.py           # makes Label/ from Source/
         └── <Studio>/
             ├── Source/        # the original logo or its parts, .svg or .png
-            ├── Movies/        # <Name>_White.png and <Name>_Black.png, under the title
-            └── Shows/         # the same, a little higher
+            └── Label/         # <Name>_White.png and <Name>_Black.png
 ```
 
 ## Usage
@@ -138,9 +141,15 @@ Movies get the studio's logo centred at the bottom, under the title, as on their
 
 Kometa finds the studios' movies on TMDb, which lists every company behind a movie, so a Spider-Man made with Columbia still gets MARVEL STUDIOS even though Plex only shows one studio. Marvel and DC shows get theirs too, in the STUDIOS section of `Overlays/Shows.yml`: MARVEL ANIMATION on Marvel's animated shows (the listed ones, plus any Marvel Studios show in the Animation genre) and MARVEL TELEVISION on all the others, from WandaVision and Daredevil: Born Again to the Netflix ones and Agents of S.H.I.E.L.D., then DC STUDIOS on the DCU and the DC roundel on every other DC show. Those lists are by TMDb id, from `themoviedb.org/tv/<id>`, so a new show is one more line.
 
-Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. The logo is always on: for the few days a movie has the Recently Added tab or a show the New Season tab, the tab covers part of it. That's why the STUDIOS sections come first in both overlay files, since Kometa draws overlays in the order they're listed.
+Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. The status labels sit under the logo, so nothing covers it.
 
-The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. On movies the logo's middle is at 500,1418; on shows its bottom is at y 1424, just above the Airing and Returning tab. `Overlays/Studios/build.py` makes both sets from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
+The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. The logo's middle is at 500,1418, on movies and shows alike. `Overlays/Studios/build.py` makes them from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
+
+## Status labels
+
+Shows get a label at the very bottom, under the studio logo: a coloured pill with AIRING (blue), RETURNING (green), NEW SEASON (red), ENDED (grey) or CANCELED (red). It's one label per show, so in the weeks after a new season comes in, NEW SEASON takes the place of the status. Movies get a red RECENTLY ADDED in their first week. The STATUS OVERLAYS section of `Overlays/Shows.yml` decides which show gets which, and the MOVIES section of `Overlays/Movies.yml` does Recently Added.
+
+The labels come in three sizes, 100, 115 and 130 (percent). The `StatusLabel` template at the top of both overlay files has `size: 100`; change it to 115 or 130 in both to swap every label on the next Kometa run. `Overlays/Status/build.py` makes all three sets, `<size>/<Name>.png`, in Montserrat ExtraBold, which is in `Status/Source/` with its licence (needs Pillow). The pill's middle is at y 1472, halfway between the bottom of the tallest studio logo and the poster's edge.
 
 ## Episode badges
 
