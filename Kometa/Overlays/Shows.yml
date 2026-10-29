@@ -176,7 +176,7 @@ templates:
   # every label at once.
   StatusLabel:
     default:
-      size: 100           # 100, 115 or 130
+      size: 130           # 100, 115 or 130
     overlay:
       name: <<overlay_name>>
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Status/<<size>>/<<file>>.png
