@@ -28,7 +28,7 @@ import cairosvg
 import numpy as np
 from PIL import Image, ImageDraw
 
-VERSION = "1.1.0"
+VERSION = "1.2.0"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 X0, Y0 = 43, 43                  # the logo's top-left corner on the poster
@@ -41,6 +41,7 @@ WHITE, BLACK = (255, 255, 255), (0, 0, 0)
 #   color:      True = Source/<file>_Color.*, "#hex" = the logo in that colour
 #   color_dark: also make _ColorDark, for colour logos with white text
 LOGOS = {
+    "ABC":              dict(file="ABC", h=58),
     "Acorn TV":         dict(file="AcornTV", h=30),
     "Adult Swim":       dict(file="AdultSwim", h=45),
     "AMC":              dict(file="AMC", h=47),
@@ -50,12 +51,16 @@ LOGOS = {
     "BritBox":          dict(file="BritBox", h=33),
     "C More":           dict(file="CMore", h=31),
     "Cartoon Network":  dict(file="CartoonNetwork", h=45),
+    "CBS":              dict(file="CBS", h=32),
+    "Comedy Central":   dict(file="ComedyCentral", h=38, color=True, color_dark=True),
     "Crave":            dict(file="Crave", h=30),
     "Crunchyroll":      dict(file="Crunchyroll", h=58, color=True),
     "Curiosity Stream": dict(file="CuriosityStream", h=40),
     "DAZN":             dict(file="DAZN", h=58),
     "discovery+":       dict(file="discoveryPlus", h=32),
     "Disney Plus":      dict(file="DisneyPlus", w=140),
+    "FOX":              dict(file="FOX", h=37),
+    "Freeform":         dict(file="Freeform", h=30, color=True),
     "FX":               dict(file="FX", h=44),
     "fubo":             dict(file="fubo", h=36, color="#eb3401"),
     "HBO":              dict(file="HBO", h=45),
@@ -63,11 +68,13 @@ LOGOS = {
     "Hulu":             dict(file="Hulu", h=33, color=True),
     "ITVX":             dict(file="ITVX", h=34),
     "MGM+":             dict(file="MGMPlus", h=46),
+    "NBC":              dict(file="NBC", h=34, color=True, color_dark=True),
     "Netflix":          dict(file="NSeries", h=47),
     "Nickelodeon":      dict(file="Nickelodeon", h=26),
     "Paramount Plus":   dict(file="ParamountPlus", h=58, color=True),
     "Peacock":          dict(file="Peacock", h=50, color=True, color_dark=True),
     "Prime Video":      dict(file="PrimeVideo", h=53, color=True, color_dark=True),
+    "Quibi":            dict(file="Quibi", h=38, color=True),
     "Rakuten TV":       dict(file="RakutenTV", h=58, color="#842ecb"),
     "Showtime":         dict(file="Showtime", h=48),
     "Shudder":          dict(file="Shudder", h=28),
@@ -75,8 +82,11 @@ LOGOS = {
     "Stan":             dict(file="Stan", h=36),
     "Starz":            dict(file="Starz", h=30),
     "SVT1":             dict(file="SVT1", h=42),
+    "The CW":           dict(file="TheCW", h=39, color=True),
     "TV4":              dict(file="TV4", h=58),
+    "TVING":            dict(file="TVING", h=31, color=True),
     "Viaplay":          dict(file="Viaplay", h=58, color=True),
+    "Youku":            dict(file="Youku", h=31, color=True),
 }
 
 # One show's logo in its own colours, usually its poster title's. Per network,

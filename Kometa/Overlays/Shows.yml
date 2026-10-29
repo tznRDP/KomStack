@@ -290,8 +290,9 @@ overlays:
 #    ██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗███████║  ║
 #    ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝  ║
 #╚═══════════════════════════════════════════════════════════════════════════╝
-  # One logo per show, top left. Plex's network field picks the logo, and
-  # when a show has more than one network, the highest weight wins.
+  # One logo per show, top left. Plex's network field picks the logo, a line
+  # can also add shows by title or TVDB id, and when a show matches more than
+  # one line, the highest weight wins.
   # Shows labelled Dark get the black logo, shows labelled Color the colour
   # one where the network has a Color line, and shows labelled both the Color
   # Dark one (see the templates at the top).
@@ -308,11 +309,14 @@ overlays:
   BBC Earth Dark:
     template: {name: NetworkLogoDark, folder: BBC Earth, file: BBCEarth, weight: 200, tvdb: *bbcearth}
 
-  # The N SERIES logo, plus a few Netflix shows Plex may list under another network.
+  # The N SERIES logo, plus a few Netflix shows Plex may list under another network,
+  # and anime Netflix streams outside Japan (Plex lists those under their Japanese
+  # channel, which gives them Crunchyroll otherwise). Monster (2004) goes by TVDB
+  # id, since other titles contain "Monster" too.
   Netflix:
-    template: {name: NetworkLogo, folder: Netflix, file: NSeries, weight: 190, network: &netflix [Netflix], add_titles: &netflix_add [The Haunting of Hill House, The Haunting of Bly Manor, Monster (2022), "The End of the F***ing World"], skip_titles: &netflix_skip [Our Planet (2019)]}
+    template: {name: NetworkLogo, folder: Netflix, file: NSeries, weight: 190, network: &netflix [Netflix], add_titles: &netflix_add [The Haunting of Hill House, The Haunting of Bly Manor, Monster (2022), "The End of the F***ing World", Neon Genesis Evangelion, Ranma1/2], skip_titles: &netflix_skip [Our Planet (2019)], tvdb: &netflix_tvdb [74599]}
   Netflix Dark:
-    template: {name: NetworkLogoDark, folder: Netflix, file: NSeries, weight: 190, network: *netflix, add_titles: *netflix_add, skip_titles: *netflix_skip}
+    template: {name: NetworkLogoDark, folder: Netflix, file: NSeries, weight: 190, network: *netflix, add_titles: *netflix_add, skip_titles: *netflix_skip, tvdb: *netflix_tvdb}
 
   HBO:
     template: {name: NetworkLogo, folder: HBO, file: HBO, weight: 100, network: &hbo [HBO, HBO Canada, HBO Europe, HBO Nordic, HBO Asia, HBO Latin America, HBO España, HBO Brasil, HBO Family, HBO Mundi]}
@@ -334,14 +338,16 @@ overlays:
   Disney+ Dark:
     template: {name: NetworkLogoDark, folder: Disney Plus, file: DisneyPlus, weight: 97, network: *disney}
 
+  # Plus shows Prime Video streams worldwide that Plex lists under their home
+  # channel: an anime (Japanese channel) and a Korean drama (KBS2).
   Prime Video:
-    template: {name: NetworkLogo, folder: Prime Video, file: PrimeVideo, weight: 96, network: &primevideo [Prime Video, Amazon, Amazon Prime Video, Amazon Freevee]}
+    template: {name: NetworkLogo, folder: Prime Video, file: PrimeVideo, weight: 96, network: &primevideo [Prime Video, Amazon, Amazon Prime Video, Amazon Freevee], add_titles: &primevideo_add [THE GHOST IN THE SHELL, A Love Other Than Yours]}
   Prime Video Dark:
-    template: {name: NetworkLogoDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
+    template: {name: NetworkLogoDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo, add_titles: *primevideo_add}
   Prime Video Color:
-    template: {name: NetworkLogoColor, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
+    template: {name: NetworkLogoColor, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo, add_titles: *primevideo_add}
   Prime Video Color Dark:
-    template: {name: NetworkLogoColorDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo}
+    template: {name: NetworkLogoColorDark, folder: Prime Video, file: PrimeVideo, weight: 96, network: *primevideo, add_titles: *primevideo_add}
 
   Hulu:
     template: {name: NetworkLogo, folder: Hulu, file: Hulu, weight: 95, network: &hulu [Hulu]}
@@ -436,8 +442,13 @@ overlays:
   Acorn TV Dark:
     template: {name: NetworkLogoDark, folder: Acorn TV, file: AcornTV, weight: 79, network: *acorntv}
 
+  # Plex lists anime under the Japanese channel that first aired them, never
+  # Crunchyroll, so those channels get this logo too. Anime that streams
+  # somewhere else goes on that line by title or TVDB id (Netflix, Prime Video),
+  # which weighs more. TBS is here for Japan's TBS: a show from the US channel
+  # of the same name would get Crunchyroll as well.
   Crunchyroll:
-    template: {name: NetworkLogo, folder: Crunchyroll, file: Crunchyroll, weight: 78, network: &crunchyroll [Crunchyroll]}
+    template: {name: NetworkLogo, folder: Crunchyroll, file: Crunchyroll, weight: 78, network: &crunchyroll [Crunchyroll, MBS, TBS, Nippon TV, Fuji TV, Tokyo MX, TV Tokyo, TV Asahi, AT-X, BS11, Teletama, Chiba TV, tvk, TV Kanagawa, Kansai TV, Yomiuri TV, KBS Kyoto, TV Osaka, TV Aichi, WOWOW, Animax, NHK General TV, NHK Educational TV, BS Fuji, BS-TBS, BS NTV, BS Asahi, BS TV Tokyo, ABEMA, AbemaTV]}
   Crunchyroll Dark:
     template: {name: NetworkLogoDark, folder: Crunchyroll, file: Crunchyroll, weight: 78, network: *crunchyroll}
   Crunchyroll Color:
@@ -465,8 +476,10 @@ overlays:
   Viaplay Color:
     template: {name: NetworkLogoColor, folder: Viaplay, file: Viaplay, weight: 74, network: *viaplay}
 
+  # SkyShowtime is where Sky's shows stream in Sweden, so Sky's own channels get
+  # its logo too (The Day of the Jackal and Domina are Sky Atlantic in Plex).
   SkyShowtime:
-    template: {name: NetworkLogo, folder: SkyShowtime, file: SkyShowtime, weight: 73, network: &skyshowtime [SkyShowtime]}
+    template: {name: NetworkLogo, folder: SkyShowtime, file: SkyShowtime, weight: 73, network: &skyshowtime [SkyShowtime, Sky Atlantic, Sky One, Sky1, Sky Max, Sky Showcase, Sky Witness, Sky Comedy, Sky Crime, Sky Documentaries, Sky Nature, Sky Arts, Sky Kids, Sky Italia, Sky Deutschland, Sky Cinema, NOW]}
   SkyShowtime Dark:
     template: {name: NetworkLogoDark, folder: SkyShowtime, file: SkyShowtime, weight: 73, network: *skyshowtime}
 
@@ -503,6 +516,77 @@ overlays:
     template: {name: NetworkLogo, folder: Showtime, file: Showtime, weight: 67, network: &showtime [Showtime, SHOWTIME, Showtime Anytime]}
   Showtime Dark:
     template: {name: NetworkLogoDark, folder: Showtime, file: Showtime, weight: 67, network: *showtime}
+
+  NBC:
+    template: {name: NetworkLogo, folder: NBC, file: NBC, weight: 66, network: &nbc [NBC]}
+  NBC Dark:
+    template: {name: NetworkLogoDark, folder: NBC, file: NBC, weight: 66, network: *nbc}
+  NBC Color:
+    template: {name: NetworkLogoColor, folder: NBC, file: NBC, weight: 66, network: *nbc}
+  NBC Color Dark:
+    template: {name: NetworkLogoColorDark, folder: NBC, file: NBC, weight: 66, network: *nbc}
+
+  ABC:
+    template: {name: NetworkLogo, folder: ABC, file: ABC, weight: 65, network: &abc [ABC]}
+  ABC Dark:
+    template: {name: NetworkLogoDark, folder: ABC, file: ABC, weight: 65, network: *abc}
+
+  CBS:
+    template: {name: NetworkLogo, folder: CBS, file: CBS, weight: 64, network: &cbs [CBS]}
+  CBS Dark:
+    template: {name: NetworkLogoDark, folder: CBS, file: CBS, weight: 64, network: *cbs}
+
+  # Fox Kids was FOX's block for kids (Spider-Man: The Animated Series)
+  FOX:
+    template: {name: NetworkLogo, folder: FOX, file: FOX, weight: 63, network: &fox [FOX, Fox Kids]}
+  FOX Dark:
+    template: {name: NetworkLogoDark, folder: FOX, file: FOX, weight: 63, network: *fox}
+
+  The CW:
+    template: {name: NetworkLogo, folder: The CW, file: TheCW, weight: 62, network: &thecw [The CW]}
+  The CW Dark:
+    template: {name: NetworkLogoDark, folder: The CW, file: TheCW, weight: 62, network: *thecw}
+  The CW Color:
+    template: {name: NetworkLogoColor, folder: The CW, file: TheCW, weight: 62, network: *thecw}
+
+  Comedy Central:
+    template: {name: NetworkLogo, folder: Comedy Central, file: ComedyCentral, weight: 61, network: &comedycentral [Comedy Central]}
+  Comedy Central Dark:
+    template: {name: NetworkLogoDark, folder: Comedy Central, file: ComedyCentral, weight: 61, network: *comedycentral}
+  Comedy Central Color:
+    template: {name: NetworkLogoColor, folder: Comedy Central, file: ComedyCentral, weight: 61, network: *comedycentral}
+  Comedy Central Color Dark:
+    template: {name: NetworkLogoColorDark, folder: Comedy Central, file: ComedyCentral, weight: 61, network: *comedycentral}
+
+  # ABC Family became Freeform in 2016 (Pretty Little Liars)
+  Freeform:
+    template: {name: NetworkLogo, folder: Freeform, file: Freeform, weight: 60, network: &freeform [Freeform, ABC Family]}
+  Freeform Dark:
+    template: {name: NetworkLogoDark, folder: Freeform, file: Freeform, weight: 60, network: *freeform}
+  Freeform Color:
+    template: {name: NetworkLogoColor, folder: Freeform, file: Freeform, weight: 60, network: *freeform}
+
+  # Quibi shut down in 2020; its shows now stream on The Roku Channel
+  Quibi:
+    template: {name: NetworkLogo, folder: Quibi, file: Quibi, weight: 59, network: &quibi [Quibi]}
+  Quibi Dark:
+    template: {name: NetworkLogoDark, folder: Quibi, file: Quibi, weight: 59, network: *quibi}
+  Quibi Color:
+    template: {name: NetworkLogoColor, folder: Quibi, file: Quibi, weight: 59, network: *quibi}
+
+  TVING:
+    template: {name: NetworkLogo, folder: TVING, file: TVING, weight: 58, network: &tving [TVING]}
+  TVING Dark:
+    template: {name: NetworkLogoDark, folder: TVING, file: TVING, weight: 58, network: *tving}
+  TVING Color:
+    template: {name: NetworkLogoColor, folder: TVING, file: TVING, weight: 58, network: *tving}
+
+  Youku:
+    template: {name: NetworkLogo, folder: Youku, file: Youku, weight: 57, network: &youku [Youku]}
+  Youku Dark:
+    template: {name: NetworkLogoDark, folder: Youku, file: Youku, weight: 57, network: *youku}
+  Youku Color:
+    template: {name: NetworkLogoColor, folder: Youku, file: Youku, weight: 57, network: *youku}
 
 #╔════════════════════════════════════════════════════╗
 #    ████████╗██╗███╗   ██╗████████╗███████╗██████╗   ║
