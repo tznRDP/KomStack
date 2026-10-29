@@ -52,12 +52,12 @@ templates:
   # title. The images are full-size 1000x1500 PNGs with the logo already placed.
   # Kometa finds the studio's movies on TMDb, which lists every company behind
   # a movie (Plex only shows one). Label a movie Dark in Plex for the black
-  # logo, or No Studio if its poster already shows the logo. In a movie's first
-  # week the Recently Added tab sits there instead, so the logo waits.
+  # logo, or No Studio if its poster already shows the logo.
   #   company:     TMDb company ids (themoviedb.org/company/<id>)
   #   tmdb:        movies by TMDb id (themoviedb.org/movie/<id>)
   #   collection:  only movies in a Plex collection whose name matches this
-  #                (a regex: ^MCU Phase is every name starting MCU Phase)
+  #                (a regex: ^MCU Phase is every name starting MCU Phase,
+  #                ^DC Universe$ just that one name)
   #   titles:      only movies with one of these in the title
   #   genre:       only movies in this Plex genre
   StudioLogo:          # white logo
@@ -72,7 +72,6 @@ templates:
     tmdb_movie: <<tmdb>>
     filters:
       label.not: No Studio
-      added.not: 7
       collection.regex: <<collection>>
       title: <<titles>>
       genre: <<genre>>
@@ -90,7 +89,6 @@ templates:
     filters:
       label: Dark
       label.not: No Studio
-      added.not: 7
       collection.regex: <<collection>>
       title: <<titles>>
       genre: <<genre>>
@@ -118,6 +116,77 @@ overlays:
   #  plex_search:
   #    all:
   #      resolution: 4K
+
+  ######################################################
+  # 🟣 STUDIOS
+  ######################################################
+  # The studio's logo at the bottom, as on the posters: one per movie, and when
+  # a movie matches more than one line, the highest weight wins.
+  #   Dark        the black logo, for light posters (white parts inside a
+  #               coloured shape stay white, like MARVEL in its red box)
+  #   No Studio   no logo, for posters that already show it
+  # This section comes before Recently Added on purpose: Kometa draws overlays
+  # in the order they're listed, so in a movie's first week the Recently Added
+  # tab goes over the logo instead of under it.
+  # New logo: put the original in Overlays/Studios/<Studio>/Source/, add it to
+  # build.py there and run it (see the README), then add a pair of lines.
+
+  # MARVEL TELEVISION on Marvel Television's specials
+  Marvel Television:
+    template:
+      name: StudioLogo
+      folder: Marvel Television
+      file: MarvelTelevision
+      weight: 59
+      tmdb: &marvel_tv
+        - 1439930   # The Punisher: One Last Kill (2026)
+  Marvel Television Dark:
+    template: {name: StudioLogoDark, folder: Marvel Television, file: MarvelTelevision, weight: 59, tmdb: *marvel_tv}
+
+  # MARVEL STUDIOS on the MCU: Marvel Studios' movies that are in one of the
+  # MCU Phase collections (Collections/Movies.yml), so a new phase counts too
+  Marvel Studios:
+    template: {name: StudioLogo, folder: Marvel Studios, file: MarvelStudios, weight: 58, company: &marvel [420], collection: &mcu "^MCU Phase"}
+  Marvel Studios Dark:
+    template: {name: StudioLogoDark, folder: Marvel Studios, file: MarvelStudios, weight: 58, company: *marvel, collection: *mcu}
+
+  # DC STUDIOS on the DCU: DC's movies that are in the DC Universe collection
+  # (Collections/Movies.yml), so a new DCU movie only needs adding there.
+  # DC's movies on TMDb: DC Studios, and the names DC made its movies under
+  # before (DC Films, DC Entertainment, DC Comics).
+  DC Studios:
+    template: {name: StudioLogo, folder: DC Studios, file: DCStudios, weight: 57, company: &dc [184898, 128064, 9993, 429], collection: &dcu "^DC Universe$"}
+  DC Studios Dark:
+    template: {name: StudioLogoDark, folder: DC Studios, file: DCStudios, weight: 57, company: *dc, collection: *dcu}
+
+  # The DC roundel on every other DC movie, the DCEU among them
+  DC:
+    template: {name: StudioLogo, folder: DC, file: DC, weight: 56, company: *dc}
+  DC Dark:
+    template: {name: StudioLogoDark, folder: DC, file: DC, weight: 56, company: *dc}
+
+  # LUCASFILM on Star Wars: Lucasfilm's movies with one of these in the title
+  # (Episodes V and VI are just The Empire Strikes Back and Return of the Jedi),
+  # so Indiana Jones and the rest go without
+  Lucasfilm:
+    template: {name: StudioLogo, folder: Lucasfilm, file: Lucasfilm, weight: 55, company: &lucasfilm [1], titles: &star_wars [Star Wars, Empire Strikes Back, Return of the Jedi, Mandalorian]}
+  Lucasfilm Dark:
+    template: {name: StudioLogoDark, folder: Lucasfilm, file: Lucasfilm, weight: 55, company: *lucasfilm, titles: *star_wars}
+
+  # The Disney · PIXAR logo the Pixar posters carry
+  Pixar:
+    template: {name: StudioLogo, folder: Pixar, file: DisneyPixar, weight: 54, company: &pixar [3]}
+  Pixar Dark:
+    template: {name: StudioLogoDark, folder: Pixar, file: DisneyPixar, weight: 54, company: *pixar}
+
+  # The Disney logo, on Walt Disney Animation Studios' movies and the earlier
+  # ones made as Walt Disney Feature Animation, Walt Disney Animation and Walt
+  # Disney Productions. The Animation genre keeps Walt Disney Productions'
+  # live-action movies out.
+  Walt Disney Animation Studios:
+    template: {name: StudioLogo, folder: Walt Disney Animation Studios, file: Disney, weight: 53, company: &wdas [6125, 171656, 177000, 3166], genre: &wdas_genre Animation}
+  Walt Disney Animation Studios Dark:
+    template: {name: StudioLogoDark, folder: Walt Disney Animation Studios, file: Disney, weight: 53, company: *wdas, genre: *wdas_genre}
 
   ######################################################
   # 🔵 MOVIES
@@ -153,81 +222,6 @@ overlays:
     plex_search:
       all:
         collection: Festival de Cannes Palme d'Or
-
-  ######################################################
-  # 🟣 STUDIOS
-  ######################################################
-  # The studio's logo at the bottom, as on the posters: one per movie, and when
-  # a movie matches more than one line, the highest weight wins.
-  #   Dark        the black logo, for light posters (white parts inside a
-  #               coloured shape stay white, like MARVEL in its red box)
-  #   No Studio   no logo, for posters that already show it
-  # New logo: put the original in Overlays/Studios/<Studio>/Source/, add it to
-  # build.py there and run it (see the README), then add a pair of lines.
-
-  # MARVEL TELEVISION on Marvel Television's specials
-  Marvel Television:
-    template:
-      name: StudioLogo
-      folder: Marvel Television
-      file: MarvelTelevision
-      weight: 59
-      tmdb: &marvel_tv
-        - 1439930   # The Punisher: One Last Kill (2026)
-  Marvel Television Dark:
-    template: {name: StudioLogoDark, folder: Marvel Television, file: MarvelTelevision, weight: 59, tmdb: *marvel_tv}
-
-  # MARVEL STUDIOS on the MCU: Marvel Studios' movies that are in one of the
-  # MCU Phase collections (Collections/Movies.yml), so a new phase counts too
-  Marvel Studios:
-    template: {name: StudioLogo, folder: Marvel Studios, file: MarvelStudios, weight: 58, company: &marvel [420], collection: &mcu "^MCU Phase"}
-  Marvel Studios Dark:
-    template: {name: StudioLogoDark, folder: Marvel Studios, file: MarvelStudios, weight: 58, company: *marvel, collection: *mcu}
-
-  # DC STUDIOS on the DCU, the universe that started with Superman (2025).
-  # Add new DCU movies here by TMDb id.
-  DC Studios:
-    template:
-      name: StudioLogo
-      folder: DC Studios
-      file: DCStudios
-      weight: 57
-      tmdb: &dcu
-        - 1061474   # Superman (2025)
-        - 1081003   # Supergirl (2026)
-        - 1400940   # Clayface (2026)
-  DC Studios Dark:
-    template: {name: StudioLogoDark, folder: DC Studios, file: DCStudios, weight: 57, tmdb: *dcu}
-
-  # The DC roundel on every other DC movie: DC Studios, and the names DC made
-  # its movies under before (DC Films, DC Entertainment, DC Comics)
-  DC:
-    template: {name: StudioLogo, folder: DC, file: DC, weight: 56, company: &dc [184898, 128064, 9993, 429]}
-  DC Dark:
-    template: {name: StudioLogoDark, folder: DC, file: DC, weight: 56, company: *dc}
-
-  # LUCASFILM on Star Wars: Lucasfilm's movies with one of these in the title
-  # (Episodes V and VI are just The Empire Strikes Back and Return of the Jedi),
-  # so Indiana Jones and the rest go without
-  Lucasfilm:
-    template: {name: StudioLogo, folder: Lucasfilm, file: Lucasfilm, weight: 55, company: &lucasfilm [1], titles: &star_wars [Star Wars, Empire Strikes Back, Return of the Jedi, Mandalorian]}
-  Lucasfilm Dark:
-    template: {name: StudioLogoDark, folder: Lucasfilm, file: Lucasfilm, weight: 55, company: *lucasfilm, titles: *star_wars}
-
-  # The Disney · PIXAR logo the Pixar posters carry
-  Pixar:
-    template: {name: StudioLogo, folder: Pixar, file: DisneyPixar, weight: 54, company: &pixar [3]}
-  Pixar Dark:
-    template: {name: StudioLogoDark, folder: Pixar, file: DisneyPixar, weight: 54, company: *pixar}
-
-  # The Disney logo, on Walt Disney Animation Studios' movies and the earlier
-  # ones made as Walt Disney Feature Animation, Walt Disney Animation and Walt
-  # Disney Productions. The Animation genre keeps Walt Disney Productions'
-  # live-action movies out.
-  Walt Disney Animation Studios:
-    template: {name: StudioLogo, folder: Walt Disney Animation Studios, file: Disney, weight: 53, company: &wdas [6125, 171656, 177000, 3166], genre: &wdas_genre Animation}
-  Walt Disney Animation Studios Dark:
-    template: {name: StudioLogoDark, folder: Walt Disney Animation Studios, file: Disney, weight: 53, company: *wdas, genre: *wdas_genre}
 
   ######################################################
   # 🟡 OSCARS

@@ -130,15 +130,15 @@ Movies get the studio's logo centred at the bottom, under the title, as on their
 | --- | --- |
 | MARVEL STUDIOS | the MCU: Marvel Studios' movies that are in an MCU Phase collection |
 | MARVEL TELEVISION | Marvel Television's specials, by TMDb id |
-| DC STUDIOS | the DCU, from Superman (2025) on, by TMDb id |
+| DC STUDIOS | the DCU: DC's movies that are in the DC Universe collection |
 | DC roundel | every other DC movie |
 | LUCASFILM | Star Wars: Lucasfilm's movies with Star Wars, Empire Strikes Back, Return of the Jedi or Mandalorian in the title |
 | Disney · PIXAR | Pixar |
 | Disney | Walt Disney Animation Studios, and its older names in the Animation genre |
 
-Kometa finds the studios' movies on TMDb, which lists every company behind a movie, so a Spider-Man made with Columbia still gets MARVEL STUDIOS even though Plex only shows one studio. Marvel and DC shows get theirs too, in the STUDIOS section of `Overlays/Shows.yml`: MARVEL TELEVISION on Marvel's live-action shows from 2024 on and the Marvel Television shows before them (the Netflix ones, Agents of S.H.I.E.L.D. and so on), MARVEL ANIMATION on the animated ones, MARVEL STUDIOS on the rest of Marvel Studios' shows, DC STUDIOS on the DCU and the DC roundel on every other DC show. The lists are by TMDb id, from `themoviedb.org/movie/<id>` or `themoviedb.org/tv/<id>`, so a new DCU movie or Marvel show is one more line.
+Kometa finds the studios' movies on TMDb, which lists every company behind a movie, so a Spider-Man made with Columbia still gets MARVEL STUDIOS even though Plex only shows one studio. Marvel and DC shows get theirs too, in the STUDIOS section of `Overlays/Shows.yml`: MARVEL ANIMATION on Marvel's animated shows (the listed ones, plus any Marvel Studios show in the Animation genre) and MARVEL TELEVISION on all the others, from WandaVision and Daredevil: Born Again to the Netflix ones and Agents of S.H.I.E.L.D., then DC STUDIOS on the DCU and the DC roundel on every other DC show. Those lists are by TMDb id, from `themoviedb.org/tv/<id>`, so a new show is one more line.
 
-Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. A movie in its first week has the Recently Added tab in that spot, so its logo goes on after that, and the same goes for a show while it has the New Season tab.
+Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. The logo is always on: for the few days a movie has the Recently Added tab or a show the New Season tab, the tab covers part of it. That's why the STUDIOS sections come first in both overlay files, since Kometa draws overlays in the order they're listed.
 
 The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. On movies the logo's middle is at 500,1418; on shows its bottom is at y 1424, just above the Airing and Returning tab. `Overlays/Studios/build.py` makes both sets from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
 
@@ -149,6 +149,10 @@ Title cards get a badge on premieres and finales: Series Premiere, Season Premie
 ## MCU phases
 
 `Collections/Movies.yml` has a collection for each MCU phase, Phase One to Phase Six, with the movies in release order, Marvel's specials like Werewolf by Night included. They sit right after Marvel Cinematic Universe in the Collections tab. Movies are listed by TMDb id, so the ones still to come (Avengers: Doomsday, Avengers: Secret Wars) join by themselves once they're in the library. Phase Seven is one more entry like the others.
+
+## DC universes
+
+`Collections/Movies.yml` also has DC Universe, the DCU from Superman (2025) on, and DC Extended Universe, from Man of Steel to Aquaman and the Lost Kingdom, with the movies by TMDb id in release order and Kometa's default posters. Movies in DC Universe get the DC STUDIOS logo, so a new DCU movie only needs adding to that collection.
 
 ## Oscars badge
 

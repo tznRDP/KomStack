@@ -136,37 +136,38 @@ templates:
   # Studio logos (see the STUDIOS section), centred at the bottom just above
   # the Airing/Returning tab. The images are full-size 1000x1500 PNGs with the
   # logo already placed. Label a show Dark for the black logo, or No Studio if
-  # its poster already shows the logo. They share the FRESH group with New
-  # Season, whose tab sits higher, so a show's logo steps aside while it has
-  # that tab and comes back after.
+  # its poster already shows the logo.
   #   company:  TMDb company ids (themoviedb.org/company/<id>)
   #   tmdb:     shows by TMDb id (themoviedb.org/tv/<id>)
+  #   genre:    only shows in this Plex genre
   StudioLogo:           # white logo
-    optional: [company, tmdb]
+    optional: [company, tmdb, genre]
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Shows/<<file>>_White.png
-      group: FRESH
+      group: studio
       weight: <<weight>>0
     tmdb_company: <<company>>
     tmdb_show: <<tmdb>>
     filters:
       label.not: No Studio
+      genre: <<genre>>
 
   StudioLogoDark:       # black logo, shows labelled Dark
-    optional: [company, tmdb]
+    optional: [company, tmdb, genre]
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
       url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Shows/<<file>>_Black.png
-      group: FRESH
+      group: studio
       weight: <<weight>>1
     tmdb_company: <<company>>
     tmdb_show: <<tmdb>>
     filters:
       label: Dark
       label.not: No Studio
+      genre: <<genre>>
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
@@ -217,6 +218,97 @@ overlays:
   #  plex_search:
   #    all:
   #      resolution: 4K
+
+#╔═════════════════════════════════════════════════════════════╗
+#    ███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗ ███████╗   ║
+#    ██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗██╔════╝   ║
+#    ███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║███████╗   ║
+#    ╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║╚════██║   ║
+#    ███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝███████║   ║
+#    ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚══════╝   ║
+#╚═════════════════════════════════════════════════════════════╝
+  # The studio's logo at the bottom, as on the posters of the Marvel and DC
+  # shows: one per show, and when a show matches more than one line, the
+  # highest weight wins. Shows go by TMDb id (themoviedb.org/tv/<id>), so a
+  # new one is one more line in its list.
+  #   Dark        the black logo, for light posters
+  #   No Studio   no logo, for posters that already show it
+  # The logos are the movies' ones (Overlays/Studios), placed a little higher.
+  # This section comes before the status overlays on purpose: Kometa draws
+  # overlays in the order they're listed, so the New Season tab goes over the
+  # logo instead of under it.
+
+  # MARVEL ANIMATION: Marvel's animated shows. That's these, plus any show TMDb
+  # has under Marvel Studios that's in the Animation genre.
+  Marvel Animation:
+    template:
+      name: StudioLogo
+      folder: Marvel Animation
+      file: MarvelAnimation
+      weight: 59
+      company: &marvel [420]
+      genre: &animation Animation
+      tmdb: &marvel_animation
+        - 91363     # What If...? (2021)
+        - 232125    # I Am Groot (2022)
+        - 138502    # X-Men '97 (2024)
+        - 138503    # Your Friendly Neighborhood Spider-Man (2025)
+        - 241388    # Eyes of Wakanda (2025)
+        - 138505    # Marvel Zombies (2025)
+  Marvel Animation Dark:
+    template: {name: StudioLogoDark, folder: Marvel Animation, file: MarvelAnimation, weight: 59, company: *marvel, genre: *animation, tmdb: *marvel_animation}
+
+  # MARVEL TELEVISION: every other Marvel show. That's these, plus any show
+  # TMDb has under Marvel Studios (WandaVision, Loki, Hawkeye and so on).
+  Marvel Television:
+    template:
+      name: StudioLogo
+      folder: Marvel Television
+      file: MarvelTelevision
+      weight: 58
+      company: *marvel
+      tmdb: &marvel_tv
+        - 1403      # Marvel's Agents of S.H.I.E.L.D. (2013)
+        - 61550     # Marvel's Agent Carter (2015)
+        - 61889     # Marvel's Daredevil (2015)
+        - 38472     # Marvel's Jessica Jones (2015)
+        - 62126     # Marvel's Luke Cage (2016)
+        - 62127     # Marvel's Iron Fist (2017)
+        - 62285     # Marvel's The Defenders (2017)
+        - 67178     # Marvel's The Punisher (2017)
+        - 68716     # Marvel's Inhumans (2017)
+        - 67466     # Marvel's Runaways (2017)
+        - 66190     # Marvel's Cloak & Dagger (2018)
+        - 88987     # Helstrom (2020)
+        - 122226    # Echo (2024)
+        - 138501    # Agatha All Along (2024)
+        - 202555    # Daredevil: Born Again (2025)
+        - 114471    # Ironheart (2025)
+        - 198178    # Wonder Man (2026)
+        - 213375    # VisionQuest (2026)
+  Marvel Television Dark:
+    template: {name: StudioLogoDark, folder: Marvel Television, file: MarvelTelevision, weight: 58, company: *marvel, tmdb: *marvel_tv}
+
+  # DC STUDIOS: the DCU
+  DC Studios:
+    template:
+      name: StudioLogo
+      folder: DC Studios
+      file: DCStudios
+      weight: 57
+      tmdb: &dcu
+        - 110492    # Peacemaker (2022)
+        - 219543    # Creature Commandos (2024)
+        - 95350     # Lanterns (2026)
+  DC Studios Dark:
+    template: {name: StudioLogoDark, folder: DC Studios, file: DCStudios, weight: 57, tmdb: *dcu}
+
+  # The DC roundel on every other DC show, found on TMDb by DC Studios and
+  # the names DC worked under before (DC Films, DC Entertainment, DC Comics)
+  DC:
+    template: {name: StudioLogo, folder: DC, file: DC, weight: 56, company: &dc [184898, 128064, 9993, 429]}
+  DC Dark:
+    template: {name: StudioLogoDark, folder: DC, file: DC, weight: 56, company: *dc}
 
 #╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 #      █████████  ███████████   █████████   ███████████ █████  █████  █████████        ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
@@ -670,96 +762,6 @@ overlays:
     template: {name: TintedLogo, folder: Peacock, file: Peacock_crystallake, tvdb: 426669}
   Showtime Dexter:
     template: {name: TintedLogo, folder: Showtime, file: Showtime_dexter, tvdb: 79349}
-
-#╔═════════════════════════════════════════════════════════════╗
-#    ███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗ ███████╗   ║
-#    ██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗██╔════╝   ║
-#    ███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║███████╗   ║
-#    ╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║╚════██║   ║
-#    ███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝███████║   ║
-#    ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚══════╝   ║
-#╚═════════════════════════════════════════════════════════════╝
-  # The studio's logo at the bottom, as on the posters of the Marvel and DC
-  # shows: one per show, and when a show matches more than one line, the
-  # highest weight wins. Shows go by TMDb id (themoviedb.org/tv/<id>), so a
-  # new one is one more line in its list.
-  #   Dark        the black logo, for light posters
-  #   No Studio   no logo, for posters that already show it
-  # The logos are the movies' ones (Overlays/Studios), placed a little higher.
-
-  # MARVEL TELEVISION: Marvel's live-action shows from 2024 on, and the
-  # Marvel Television shows before them
-  Marvel Television:
-    template:
-      name: StudioLogo
-      folder: Marvel Television
-      file: MarvelTelevision
-      weight: 59
-      tmdb: &marvel_tv
-        - 122226    # Echo (2024)
-        - 138501    # Agatha All Along (2024)
-        - 202555    # Daredevil: Born Again (2025)
-        - 114471    # Ironheart (2025)
-        - 198178    # Wonder Man (2026)
-        - 213375    # VisionQuest (2026)
-        - 1403      # Marvel's Agents of S.H.I.E.L.D. (2013)
-        - 61550     # Marvel's Agent Carter (2015)
-        - 61889     # Marvel's Daredevil (2015)
-        - 38472     # Marvel's Jessica Jones (2015)
-        - 62126     # Marvel's Luke Cage (2016)
-        - 62127     # Marvel's Iron Fist (2017)
-        - 62285     # Marvel's The Defenders (2017)
-        - 67178     # Marvel's The Punisher (2017)
-        - 68716     # Marvel's Inhumans (2017)
-        - 67466     # Marvel's Runaways (2017)
-        - 66190     # Marvel's Cloak & Dagger (2018)
-        - 88987     # Helstrom (2020)
-  Marvel Television Dark:
-    template: {name: StudioLogoDark, folder: Marvel Television, file: MarvelTelevision, weight: 59, tmdb: *marvel_tv}
-
-  # MARVEL ANIMATION: Marvel's animated shows
-  Marvel Animation:
-    template:
-      name: StudioLogo
-      folder: Marvel Animation
-      file: MarvelAnimation
-      weight: 58
-      tmdb: &marvel_animation
-        - 91363     # What If...? (2021)
-        - 138502    # X-Men '97 (2024)
-        - 138503    # Your Friendly Neighborhood Spider-Man (2025)
-        - 241388    # Eyes of Wakanda (2025)
-        - 138505    # Marvel Zombies (2025)
-  Marvel Animation Dark:
-    template: {name: StudioLogoDark, folder: Marvel Animation, file: MarvelAnimation, weight: 58, tmdb: *marvel_animation}
-
-  # MARVEL STUDIOS: the rest of Marvel Studios' shows (WandaVision, Loki,
-  # Hawkeye, Moon Knight, She-Hulk and so on), found on TMDb
-  Marvel Studios:
-    template: {name: StudioLogo, folder: Marvel Studios, file: MarvelStudios, weight: 57, company: &marvel [420]}
-  Marvel Studios Dark:
-    template: {name: StudioLogoDark, folder: Marvel Studios, file: MarvelStudios, weight: 57, company: *marvel}
-
-  # DC STUDIOS: the DCU
-  DC Studios:
-    template:
-      name: StudioLogo
-      folder: DC Studios
-      file: DCStudios
-      weight: 56
-      tmdb: &dcu
-        - 219543    # Creature Commandos (2024)
-        - 110492    # Peacemaker (2022)
-        - 95350     # Lanterns (2026)
-  DC Studios Dark:
-    template: {name: StudioLogoDark, folder: DC Studios, file: DCStudios, weight: 56, tmdb: *dcu}
-
-  # The DC roundel on every other DC show, found on TMDb by DC Studios and
-  # the names DC worked under before (DC Films, DC Entertainment, DC Comics)
-  DC:
-    template: {name: StudioLogo, folder: DC, file: DC, weight: 55, company: &dc [184898, 128064, 9993, 429]}
-  DC Dark:
-    template: {name: StudioLogoDark, folder: DC, file: DC, weight: 55, company: *dc}
 
 
 #╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
