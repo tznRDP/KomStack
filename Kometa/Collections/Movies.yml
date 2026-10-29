@@ -2,8 +2,8 @@
 #  Movie collections, loaded by the Movies library                      #
 #  Lives at: Kometa/Collections/Movies.yml                              #
 #-----------------------------------------------------------------------#
-#  Sections: home rows / collections / MCU phases / franchises /        #
-#            directors                                                  #
+#  Sections: home rows / collections / MCU phases / DC universes /      #
+#            franchises / directors                                     #
 #  Collection art lives in Kometa/Collections/<Collection Name>/.       #
 #=======================================================================#
 
@@ -301,6 +301,47 @@ collections:
         - 1003596   # Avengers: Doomsday (Dec 2026)
         - 1003598   # Avengers: Secret Wars (Dec 2027)
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/MCU%20Phase%20Six/poster.png
+
+######################################################
+#                   DC UNIVERSES                     #
+######################################################
+# The DCU, the universe that started with Superman (2025), and the DCEU
+# before it, with the movies by TMDb id: themoviedb.org/movie/<id>. Movies in
+# DC Universe get the DC STUDIOS logo (Overlays/Movies.yml), so a new DCU
+# movie only needs adding here. The posters are Kometa's defaults.
+
+  DC Universe:
+    tmdb_movie:
+      - 1061474   # Superman (2025)
+      - 1081003   # Supergirl (2026)
+      - 1400940   # Clayface (2026)
+    collection_order: release
+    sync_mode: sync
+    summary: The movies of the DC Universe (DCU), from Superman on, in release order.
+    url_poster: https://raw.githubusercontent.com/Kometa-Team/Default-Images/master/universe/dcu.jpg
+
+  DC Extended Universe:
+    tmdb_movie:
+      - 49521     # Man of Steel (2013)
+      - 209112    # Batman v Superman: Dawn of Justice (2016)
+      - 297761    # Suicide Squad (2016)
+      - 297762    # Wonder Woman (2017)
+      - 141052    # Justice League (2017)
+      - 297802    # Aquaman (2018)
+      - 287947    # Shazam! (2019)
+      - 495764    # Birds of Prey (2020)
+      - 464052    # Wonder Woman 1984 (2020)
+      - 791373    # Zack Snyder's Justice League (2021)
+      - 436969    # The Suicide Squad (2021)
+      - 436270    # Black Adam (2022)
+      - 594767    # Shazam! Fury of the Gods (2023)
+      - 298618    # The Flash (2023)
+      - 565770    # Blue Beetle (2023)
+      - 572802    # Aquaman and the Lost Kingdom (2023)
+    collection_order: release
+    sync_mode: sync
+    summary: The movies of the DC Extended Universe (DCEU), from Man of Steel to Aquaman and the Lost Kingdom, in release order.
+    url_poster: https://raw.githubusercontent.com/Kometa-Team/Default-Images/master/universe/dceu.jpg
 
 ######################################################
 #              FRANCHISES (Plex's own)               #

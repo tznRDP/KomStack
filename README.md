@@ -28,8 +28,8 @@ Kometa/
 │       ├── poster.png
 │       └── background.png
 └── Overlays/
-    ├── Shows.yml              # TV overlays, network logos, episode badges
-    ├── Movies.yml             # movie overlays, Oscars badges
+    ├── Shows.yml              # TV overlays, status labels, network and studio logos, episode badges
+    ├── Movies.yml             # movie overlays, Recently Added, studio logos, Oscars badges
     ├── Test.yml               # TVTestBench overlays
     ├── Awards/
     │   └── Oscars/
@@ -37,12 +37,21 @@ Kometa/
     │       ├── Source/        # the badge's parts, taken from Best Picture posters
     │       └── BestPicture/   # <year>_Gold.png and <year>_Dark.png, 1929 to 2035
     ├── Episodes/              # premiere and finale badges, 1920x1080
-    └── Networks/
-        ├── build.py           # makes Label/ and Tinted/ from Source/
-        └── <Network>/
-            ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
-            ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
-            └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
+    ├── Networks/
+    │   ├── build.py           # makes Label/ and Tinted/ from Source/
+    │   └── <Network>/
+    │       ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
+    │       ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
+    │       └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
+    ├── Status/
+    │   ├── build.py           # makes 100/, 115/ and 130/
+    │   ├── Source/            # the Montserrat font and its licence
+    │   └── 100/ 115/ 130/     # <Name>.png, the status labels in three sizes
+    └── Studios/
+        ├── build.py           # makes Label/ from Source/
+        └── <Studio>/
+            ├── Source/        # the original logo or its parts, .svg or .png
+            └── Label/         # <Name>_White.png and <Name>_Black.png
 ```
 
 ## Usage
@@ -104,7 +113,7 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`, or add them by TVDB id with `tvdb`.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies get a studio logo at the bottom instead, and Marvel and DC shows get one as well (see Studio logos). BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`, or add them by TVDB id with `tvdb`.
 
 Plex lists anime under the Japanese channel that first aired them (MBS, Nippon TV, Fuji TV and so on), so those channels are on Crunchyroll's line. A show that streams somewhere else is added by title or TVDB id to that network's line, which weighs more: Neon Genesis Evangelion, Ranma1/2 and Monster on Netflix's, The Ghost in the Shell and the Korean drama A Love Other Than Yours on Prime Video's. Sky's channels are on SkyShowtime's line, since that's where Sky's shows stream in Sweden.
 
@@ -116,6 +125,32 @@ The images are 1000x1500 with the logo's top-left corner at 43,43, sized like th
 
 Kometa keeps its own copy of each overlay image and reuses it for up to 60 days, so after changing a logo or badge image, delete those copies on the server before the next run: `sudo rm /home/plxsrv/docker/appdata/kometa/config/overlays/*.png`.
 
+## Studio logos
+
+Movies get the studio's logo centred at the bottom, under the title, as on their posters (the STUDIOS section of `Overlays/Movies.yml`):
+
+| Logo | Movies |
+| --- | --- |
+| MARVEL STUDIOS | the MCU: Marvel Studios' movies that are in an MCU Phase collection |
+| MARVEL TELEVISION | Marvel Television's specials, by TMDb id |
+| DC STUDIOS | the DCU: DC's movies that are in the DC Universe collection |
+| DC roundel | every other DC movie |
+| LUCASFILM | Star Wars: Lucasfilm's movies with Star Wars, Empire Strikes Back, Return of the Jedi or Mandalorian in the title |
+| Disney · PIXAR | Pixar |
+| Disney | Walt Disney Animation Studios, and its older names in the Animation genre |
+
+Kometa finds the studios' movies on TMDb, which lists every company behind a movie, so a Spider-Man made with Columbia still gets MARVEL STUDIOS even though Plex only shows one studio. Marvel and DC shows get theirs too, in the STUDIOS section of `Overlays/Shows.yml`: MARVEL ANIMATION on Marvel's animated shows (the listed ones, plus any Marvel Studios show in the Animation genre) and MARVEL TELEVISION on all the others, from WandaVision and Daredevil: Born Again to the Netflix ones and Agents of S.H.I.E.L.D., then DC STUDIOS on the DCU and the DC roundel on every other DC show. Those lists are by TMDb id, from `themoviedb.org/tv/<id>`, so a new show is one more line.
+
+Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. The status labels sit under the logo, so nothing covers it.
+
+The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. The logo's middle is at 500,1418, on movies and shows alike. `Overlays/Studios/build.py` makes them from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
+
+## Status labels
+
+Shows get a label at the very bottom, under the studio logo: a coloured pill with AIRING (blue), RETURNING (green), NEW SEASON (red), ENDED (grey) or CANCELED (red). It's one label per show, so in the weeks after a new season comes in, NEW SEASON takes the place of the status. Movies get a red RECENTLY ADDED in their first week. The STATUS OVERLAYS section of `Overlays/Shows.yml` decides which show gets which, and the MOVIES section of `Overlays/Movies.yml` does Recently Added.
+
+The labels come in three sizes, 100, 115 and 130 (percent). The `StatusLabel` template at the top of both overlay files has `size: 100`; change it to 115 or 130 in both to swap every label on the next Kometa run. `Overlays/Status/build.py` makes all three sets, `<size>/<Name>.png`, in Montserrat ExtraBold, which is in `Status/Source/` with its licence (needs Pillow). The pill's middle is at y 1472, halfway between the bottom of the tallest studio logo and the poster's edge.
+
 ## Episode badges
 
 Title cards get a badge on premieres and finales: Series Premiere, Season Premiere, Mid-Season Finale, Season Finale and Series Finale. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
@@ -123,6 +158,10 @@ Title cards get a badge on premieres and finales: Series Premiere, Season Premie
 ## MCU phases
 
 `Collections/Movies.yml` has a collection for each MCU phase, Phase One to Phase Six, with the movies in release order, Marvel's specials like Werewolf by Night included. They sit right after Marvel Cinematic Universe in the Collections tab. Movies are listed by TMDb id, so the ones still to come (Avengers: Doomsday, Avengers: Secret Wars) join by themselves once they're in the library. Phase Seven is one more entry like the others.
+
+## DC universes
+
+`Collections/Movies.yml` also has DC Universe, the DCU from Superman (2025) on, and DC Extended Universe, from Man of Steel to Aquaman and the Lost Kingdom, with the movies by TMDb id in release order and Kometa's default posters. Movies in DC Universe get the DC STUDIOS logo, so a new DCU movie only needs adding to that collection.
 
 ## Oscars badge
 

@@ -133,6 +133,56 @@ templates:
       weight: 3000
     tvdb_show: <<tvdb>>
 
+  # Studio logos (see the STUDIOS section), centred at the bottom under the
+  # title, the same images and spot as on movies. The images are full-size
+  # 1000x1500 PNGs with the logo already placed. Label a show Dark for the
+  # black logo, or No Studio if its poster already shows the logo.
+  #   company:  TMDb company ids (themoviedb.org/company/<id>)
+  #   tmdb:     shows by TMDb id (themoviedb.org/tv/<id>)
+  #   genre:    only shows in this Plex genre
+  StudioLogo:           # white logo
+    optional: [company, tmdb, genre]
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_White.png
+      group: studio
+      weight: <<weight>>0
+    tmdb_company: <<company>>
+    tmdb_show: <<tmdb>>
+    filters:
+      label.not: No Studio
+      genre: <<genre>>
+
+  StudioLogoDark:       # black logo, shows labelled Dark
+    optional: [company, tmdb, genre]
+    ignore_blank_results: true
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Studios/<<folder_encoded>>/Label/<<file>>_Black.png
+      group: studio
+      weight: <<weight>>1
+    tmdb_company: <<company>>
+    tmdb_show: <<tmdb>>
+    filters:
+      label: Dark
+      label.not: No Studio
+      genre: <<genre>>
+
+  # Status labels (see the STATUS OVERLAYS section): a coloured pill with the
+  # word, centred at the bottom under the studio logo. The images are full-size
+  # 1000x1500 PNGs made by Overlays/Status/build.py in three sizes, and size
+  # picks the folder: change it here (and in Overlays/Movies.yml) to swap
+  # every label at once.
+  StatusLabel:
+    default:
+      size: 100           # 100, 115 or 130
+    overlay:
+      name: <<overlay_name>>
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Status/<<size>>/<<file>>.png
+      group: STATUS
+      weight: <<weight>>
+
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
   # The badges are full-size 1920x1080 PNGs with the badge at the bottom.
@@ -183,6 +233,94 @@ overlays:
   #    all:
   #      resolution: 4K
 
+#╔═════════════════════════════════════════════════════════════╗
+#    ███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗ ███████╗   ║
+#    ██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗██╔════╝   ║
+#    ███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║███████╗   ║
+#    ╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║╚════██║   ║
+#    ███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝███████║   ║
+#    ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚══════╝   ║
+#╚═════════════════════════════════════════════════════════════╝
+  # The studio's logo at the bottom, as on the posters of the Marvel and DC
+  # shows: one per show, and when a show matches more than one line, the
+  # highest weight wins. Shows go by TMDb id (themoviedb.org/tv/<id>), so a
+  # new one is one more line in its list.
+  #   Dark        the black logo, for light posters
+  #   No Studio   no logo, for posters that already show it
+  # The logos are the same as the movies' ones (Overlays/Studios).
+
+  # MARVEL ANIMATION: Marvel's animated shows. That's these, plus any show TMDb
+  # has under Marvel Studios that's in the Animation genre.
+  Marvel Animation:
+    template:
+      name: StudioLogo
+      folder: Marvel Animation
+      file: MarvelAnimation
+      weight: 59
+      company: &marvel [420]
+      genre: &animation Animation
+      tmdb: &marvel_animation
+        - 91363     # What If...? (2021)
+        - 232125    # I Am Groot (2022)
+        - 138502    # X-Men '97 (2024)
+        - 138503    # Your Friendly Neighborhood Spider-Man (2025)
+        - 241388    # Eyes of Wakanda (2025)
+        - 138505    # Marvel Zombies (2025)
+  Marvel Animation Dark:
+    template: {name: StudioLogoDark, folder: Marvel Animation, file: MarvelAnimation, weight: 59, company: *marvel, genre: *animation, tmdb: *marvel_animation}
+
+  # MARVEL TELEVISION: every other Marvel show. That's these, plus any show
+  # TMDb has under Marvel Studios (WandaVision, Loki, Hawkeye and so on).
+  Marvel Television:
+    template:
+      name: StudioLogo
+      folder: Marvel Television
+      file: MarvelTelevision
+      weight: 58
+      company: *marvel
+      tmdb: &marvel_tv
+        - 1403      # Marvel's Agents of S.H.I.E.L.D. (2013)
+        - 61550     # Marvel's Agent Carter (2015)
+        - 61889     # Marvel's Daredevil (2015)
+        - 38472     # Marvel's Jessica Jones (2015)
+        - 62126     # Marvel's Luke Cage (2016)
+        - 62127     # Marvel's Iron Fist (2017)
+        - 62285     # Marvel's The Defenders (2017)
+        - 67178     # Marvel's The Punisher (2017)
+        - 68716     # Marvel's Inhumans (2017)
+        - 67466     # Marvel's Runaways (2017)
+        - 66190     # Marvel's Cloak & Dagger (2018)
+        - 88987     # Helstrom (2020)
+        - 122226    # Echo (2024)
+        - 138501    # Agatha All Along (2024)
+        - 202555    # Daredevil: Born Again (2025)
+        - 114471    # Ironheart (2025)
+        - 198178    # Wonder Man (2026)
+        - 213375    # VisionQuest (2026)
+  Marvel Television Dark:
+    template: {name: StudioLogoDark, folder: Marvel Television, file: MarvelTelevision, weight: 58, company: *marvel, tmdb: *marvel_tv}
+
+  # DC STUDIOS: the DCU
+  DC Studios:
+    template:
+      name: StudioLogo
+      folder: DC Studios
+      file: DCStudios
+      weight: 57
+      tmdb: &dcu
+        - 110492    # Peacemaker (2022)
+        - 219543    # Creature Commandos (2024)
+        - 95350     # Lanterns (2026)
+  DC Studios Dark:
+    template: {name: StudioLogoDark, folder: DC Studios, file: DCStudios, weight: 57, tmdb: *dcu}
+
+  # The DC roundel on every other DC show, found on TMDb by DC Studios and
+  # the names DC worked under before (DC Films, DC Entertainment, DC Comics)
+  DC:
+    template: {name: StudioLogo, folder: DC, file: DC, weight: 56, company: &dc [184898, 128064, 9993, 429]}
+  DC Dark:
+    template: {name: StudioLogoDark, folder: DC, file: DC, weight: 56, company: *dc}
+
 #╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 #      █████████  ███████████   █████████   ███████████ █████  █████  █████████        ███████    █████   █████ ██████████ ███████████   █████         █████████   █████ █████  █████████   ║
 #     ███▒▒▒▒▒███▒█▒▒▒███▒▒▒█  ███▒▒▒▒▒███ ▒█▒▒▒███▒▒▒█▒▒███  ▒▒███  ███▒▒▒▒▒███     ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███▒▒▒▒▒█▒▒███▒▒▒▒▒███ ▒▒███         ███▒▒▒▒▒███ ▒▒███ ▒▒███  ███▒▒▒▒▒███  ║
@@ -194,12 +332,11 @@ overlays:
 #     ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒    ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒      ▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒        ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒▒ ▒▒▒▒▒   ▒▒▒▒▒    ▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒    ║
 #╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
+  # One label per show, the highest weight in the group wins. New Season
+  # weighs the most, so it takes the status label's place for its weeks.
+
   NewSeason:
-    overlay:
-      name: NewSeason
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/new_season2.png
-      group: FRESH
-      weight: 980
+    template: {name: StatusLabel, file: NewSeason, weight: 980}
     plex_all: true
     filters:
       added.not: 30
@@ -209,19 +346,11 @@ overlays:
         title.not: Specials
 
   Airing:
-    overlay:
-      name: airing
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/airing_small.png
-      group: STATUS
-      weight: 950
+    template: {name: StatusLabel, file: Airing, weight: 950}
     tmdb_on_the_air: 2000
 
   Returning:
-    overlay:
-      name: returning
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Lower%20Small/returning_small.png
-      group: STATUS
-      weight: 800
+    template: {name: StatusLabel, file: Returning, weight: 800}
     plex_all: true
     filters:
       tmdb_status:
@@ -230,21 +359,13 @@ overlays:
         - production
 
   Ended:
-    overlay:
-      name: ended
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
-      group: STATUS
-      weight: 700
+    template: {name: StatusLabel, file: Ended, weight: 700}
     plex_all: true
     filters:
       tmdb_status: ended
 
   EndedForced:
-    overlay:
-      name: endedForced
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/ended_minimal.png
-      group: STATUS
-      weight: 700
+    template: {name: StatusLabel, file: Ended, weight: 700}
     plex_search:
       title:
        - The Haunting of Bly Manor
@@ -252,11 +373,7 @@ overlays:
        - The Haunting of Hill House
 
   Canceled:
-    overlay:
-      name: canceled
-      url: https://raw.githubusercontent.com/Entree3k/Plex/refs/heads/main/Plex%20Meta%20Manager%20Configs/Overlays/images/Status/Minimal/canceled_minimal.png
-      group: STATUS
-      weight: 600
+    template: {name: StatusLabel, file: Canceled, weight: 600}
     plex_all: true
     filters:
       tmdb_status: canceled
