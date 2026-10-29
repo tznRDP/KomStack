@@ -28,8 +28,8 @@ Kometa/
 │       ├── poster.png
 │       └── background.png
 └── Overlays/
-    ├── Shows.yml              # TV overlays, network logos, episode badges
-    ├── Movies.yml             # movie overlays, Oscars badges
+    ├── Shows.yml              # TV overlays, network and studio logos, episode badges
+    ├── Movies.yml             # movie overlays, studio logos, Oscars badges
     ├── Test.yml               # TVTestBench overlays
     ├── Awards/
     │   └── Oscars/
@@ -37,12 +37,18 @@ Kometa/
     │       ├── Source/        # the badge's parts, taken from Best Picture posters
     │       └── BestPicture/   # <year>_Gold.png and <year>_Dark.png, 1929 to 2035
     ├── Episodes/              # premiere and finale badges, 1920x1080
-    └── Networks/
-        ├── build.py           # makes Label/ and Tinted/ from Source/
-        └── <Network>/
-            ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
-            ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
-            └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
+    ├── Networks/
+    │   ├── build.py           # makes Label/ and Tinted/ from Source/
+    │   └── <Network>/
+    │       ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
+    │       ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
+    │       └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
+    └── Studios/
+        ├── build.py           # makes Movies/ and Shows/ from Source/
+        └── <Studio>/
+            ├── Source/        # the original logo or its parts, .svg or .png
+            ├── Movies/        # <Name>_White.png and <Name>_Black.png, under the title
+            └── Shows/         # the same, a little higher
 ```
 
 ## Usage
@@ -104,7 +110,7 @@ The HOME section at the top of each collections file builds Netflix-style rows o
 
 ## Network logos
 
-Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies don't get one. BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`, or add them by TVDB id with `tvdb`.
+Shows get a logo in the top-left corner from Plex's network field (`Overlays/Shows.yml`). Movies get a studio logo at the bottom instead, and Marvel and DC shows get one as well (see Studio logos). BBC Earth isn't a network in Plex, so its line lists the BBC Earth shows by TVDB id; add a new one's id there. Any network line can add or leave out single shows with `add_titles` and `skip_titles`, or add them by TVDB id with `tvdb`.
 
 Plex lists anime under the Japanese channel that first aired them (MBS, Nippon TV, Fuji TV and so on), so those channels are on Crunchyroll's line. A show that streams somewhere else is added by title or TVDB id to that network's line, which weighs more: Neon Genesis Evangelion, Ranma1/2 and Monster on Netflix's, The Ghost in the Shell and the Korean drama A Love Other Than Yours on Prime Video's. Sky's channels are on SkyShowtime's line, since that's where Sky's shows stream in Sweden.
 
@@ -115,6 +121,26 @@ A single show can have its logo in its own colour, usually its poster's title co
 The images are 1000x1500 with the logo's top-left corner at 43,43, sized like the network logos on MediUX posters: HBO is 108x45, hulu 99x33, prime video 172x53, STARZ 130x30 and square logos like abc 58x58. `Overlays/Networks/build.py` makes every one of them from the original in the network's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. A new network is a line in the `LOGOS` table and a new tint a line in `TINTS` (the effects are listed above it), then `python3 build.py` (needs Pillow, numpy and cairosvg) and the matching lines in `Overlays/Shows.yml`: a pair in NETWORKS plus one per colour version, or one in TINTED.
 
 Kometa keeps its own copy of each overlay image and reuses it for up to 60 days, so after changing a logo or badge image, delete those copies on the server before the next run: `sudo rm /home/plxsrv/docker/appdata/kometa/config/overlays/*.png`.
+
+## Studio logos
+
+Movies get the studio's logo centred at the bottom, under the title, as on their posters (the STUDIOS section of `Overlays/Movies.yml`):
+
+| Logo | Movies |
+| --- | --- |
+| MARVEL STUDIOS | the MCU: Marvel Studios' movies that are in an MCU Phase collection |
+| MARVEL TELEVISION | Marvel Television's specials, by TMDb id |
+| DC STUDIOS | the DCU, from Superman (2025) on, by TMDb id |
+| DC roundel | every other DC movie |
+| LUCASFILM | Star Wars: Lucasfilm's movies with Star Wars, Empire Strikes Back, Return of the Jedi or Mandalorian in the title |
+| Disney · PIXAR | Pixar |
+| Disney | Walt Disney Animation Studios, and its older names in the Animation genre |
+
+Kometa finds the studios' movies on TMDb, which lists every company behind a movie, so a Spider-Man made with Columbia still gets MARVEL STUDIOS even though Plex only shows one studio. Marvel and DC shows get theirs too, in the STUDIOS section of `Overlays/Shows.yml`: MARVEL TELEVISION on Marvel's live-action shows from 2024 on and the Marvel Television shows before them (the Netflix ones, Agents of S.H.I.E.L.D. and so on), MARVEL ANIMATION on the animated ones, MARVEL STUDIOS on the rest of Marvel Studios' shows, DC STUDIOS on the DCU and the DC roundel on every other DC show. The lists are by TMDb id, from `themoviedb.org/movie/<id>` or `themoviedb.org/tv/<id>`, so a new DCU movie or Marvel show is one more line.
+
+Label a movie or show `Dark` in Plex for the black logo, for light posters; white parts inside a coloured shape stay white, like MARVEL in its red box. Label it `No Studio` if its poster already shows the logo. A movie in its first week has the Recently Added tab in that spot, so its logo goes on after that, and the same goes for a show while it has the New Season tab.
+
+The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. On movies the logo's middle is at 500,1418; on shows its bottom is at y 1424, just above the Airing and Returning tab. `Overlays/Studios/build.py` makes both sets from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
 
 ## Episode badges
 
