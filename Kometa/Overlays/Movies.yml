@@ -83,7 +83,7 @@ templates:
       title: <<titles>>
       genre: <<genre>>
 
-  StudioLogoDark:      # black logo, movies labelled Dark
+  StudioLogoDark:      # black logo, movies labelled Dark or Dark Bottom (the same on movies)
     optional: [company, tmdb, collection, titles, genre]
     ignore_blank_results: true
     overlay:
@@ -95,7 +95,7 @@ templates:
     tmdb_movie: <<tmdb>>
     filters:
       validate: false
-      label: Dark
+      label: [Dark, Dark Bottom]
       label.not: No Studio
       collection.regex: <<collection>>
       title: <<titles>>

@@ -26,15 +26,16 @@ import zlib
 
 import cairosvg
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 X0, Y0 = 43, 43                  # the logo's top-left corner on the poster
 CANVAS = (1000, 1500)
 SS = 4                           # svgs are drawn this many times bigger, then scaled down
 WHITE, BLACK = (255, 255, 255), (0, 0, 0)
+SHADOW_BLUR, SHADOW_DROP = 3, 2  # a tint's shadow: blur and offset down, in poster px
 
 # network folder: file name, then the logo's height (h) or width (w) in px on
 # the poster (sizes from MediUX posters: HBO 45 high, hulu 33, square logos 58)
@@ -107,6 +108,7 @@ LOGOS = {
 #     chalk=True                  worn, speckled edges (chalk, dry brush)
 #     cracks=[(x, y, r), ...]     thin cuts along circles: centre and radius in logo
 #                                 heights, from the logo's top-left corner
+#     shadow=0.5                  a soft shadow under the logo, this dark (0 to 1)
 # The random parts (mottle, brush, chalk) come out the same on every run.
 TINTS = {
     "AMC": {
@@ -117,6 +119,16 @@ TINTS = {
     },
     "BritBox": {
         "whydidnttheyaskevans": dict(gradient=["#cd6502", "#dc8402", "#f6be15", "#fad322", "#fbd423"], angle=45),
+    },
+    "Disney Plus": {    # the Marvel shows, colours sampled from each title's own logo file
+        "hawkeye": dict(fill="#fee940", shadow=0.5),                           # yellow, a soft shadow
+        "ironheart": dict(gradient=["#d2a879", "#f0d7a8", "#c7b289"], angle=90),
+        "loki": dict(gradient=["#67766a", "#a17c52", "#8d9185", "#178618"]),   # the four letters: stone, gold, silver, green
+        "msmarvel": dict(gradient=["#fcb451", "#e39135", "#c87c24"], angle=90, bevel=["#c60209", "#ffe3ad"]),
+        "secretinvasion": dict(fill="#28623e"),                                # INVASION's emerald
+        # the shield's red and blue, punchier than the brushed metal, split down the middle
+        "thefalconandthewintersoldier": dict(gradient=["#b82525"] * 3 + ["#226099"] * 3),
+        "wandavision": dict(gradient=["#fbfafa", "#d4caca"], angle=90, outline="#f50707"),  # silver, the red glow
     },
     "FX": {
         "thebear": "#fcf6c9",
@@ -352,11 +364,22 @@ def tint(how, master, color_master, size, seed):
     return shrink(Image.fromarray((out * 255 + 0.5).astype(np.uint8), "RGBA"), size)
 
 
-def save(logo, folder, sub, name):
-    os.makedirs(os.path.join(HERE, folder, sub), exist_ok=True)
+def place(logo, shadow=0):
+    """The logo on a poster-size canvas, with a soft black shadow under it if shadow (0 to 1)."""
     canvas = Image.new("RGBA", CANVAS, (0, 0, 0, 0))
+    if shadow:
+        a = Image.new("L", CANVAS, 0)
+        a.paste(logo.getchannel("A"), (X0, Y0 + SHADOW_DROP))
+        sh = Image.new("RGBA", CANVAS, BLACK + (255,))
+        sh.putalpha(a.filter(ImageFilter.GaussianBlur(SHADOW_BLUR)).point(lambda v: round(v * shadow)))
+        canvas.alpha_composite(sh)
     canvas.alpha_composite(logo, (X0, Y0))
-    canvas.save(os.path.join(HERE, folder, sub, name), optimize=True)
+    return canvas
+
+
+def save(logo, folder, sub, name, shadow=0):
+    os.makedirs(os.path.join(HERE, folder, sub), exist_ok=True)
+    place(logo, shadow).save(os.path.join(HERE, folder, sub, name), optimize=True)
 
 
 def build(folder, spec):
@@ -390,7 +413,7 @@ def build(folder, spec):
             im = tint(how, master, c, (w, h), zlib.crc32(show.encode()))
         else:
             im = fill(label["White"], hexrgb(how))
-        save(im, folder, "Tinted", f"{f}_{show}.png")
+        save(im, folder, "Tinted", f"{f}_{show}.png", how.get("shadow", 0) if isinstance(how, dict) else 0)
 
     tinted = f", tints: {', '.join(tints)}" if tints else ""
     print(f"{folder:<17} {w}x{h:<4} {', '.join(label)}{tinted}")
