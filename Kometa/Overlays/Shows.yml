@@ -9,14 +9,20 @@ templates:
   # Network logos (see the NETWORKS section). The logo images are full-size
   # 1000x1500 PNGs with the logo already placed top left.
   #
-  # Every show on the network gets the white logo. Label a show Dark (light
-  # poster) for the black one, or Color for the colour one on networks that
-  # have a Color line. Both labels give the colour logo with black text where
+  # Every show on the network gets the white logo. Label a show Dark Top
+  # (light top of the poster) for the black one, or Color for the colour one
+  # on networks that have a Color line. Dark makes both logos black, this one
+  # and the studio logo at the bottom; Dark Bottom only the studio logo.
+  # Color with Dark or Dark Top gives the colour logo with black text where
   # there's a Color Dark line (Prime Video, Peacock), and the colour one
   # elsewhere. Each template adds a digit to the weight, so for weight 96:
   # 960 white, 961 Dark, 962 Color, 963 Color + Dark. A label always beats
   # the plain logo, and Color on a network with no colour logo just keeps the
   # plain one.
+  #
+  # validate: false in the label filters: Kometa skips the whole overlay when
+  # a filter names a label no show has yet (Dark Top), so without it no show
+  # would get the black logo.
   #
   # Optional, for logos that aren't a Plex network or need a few extra shows:
   #   tvdb:        shows by TVDB id
@@ -48,7 +54,7 @@ templates:
     filters:
       title.not: <<skip_titles>>
 
-  NetworkLogoDark:      # black logo, shows labelled Dark
+  NetworkLogoDark:      # black logo, shows labelled Dark or Dark Top
     optional: [network, tvdb, add_titles, skip_titles]
     conditionals:
       validate:
@@ -70,7 +76,8 @@ templates:
         title: <<add_titles>>
     tvdb_show: <<tvdb>>
     filters:
-      label: Dark
+      validate: false
+      label: [Dark, Dark Top]
       title.not: <<skip_titles>>
 
   NetworkLogoColor:     # colour logo, shows labelled Color
@@ -98,7 +105,7 @@ templates:
       label: Color
       title.not: <<skip_titles>>
 
-  NetworkLogoColorDark: # colour logo with black text, shows labelled Color and Dark
+  NetworkLogoColorDark: # colour logo with black text, shows labelled Color and Dark (or Dark Top)
     optional: [network, tvdb, add_titles, skip_titles]
     conditionals:
       validate:
@@ -120,8 +127,9 @@ templates:
         title: <<add_titles>>
     tvdb_show: <<tvdb>>
     filters:
+      validate: false
       label: Color
-      label.regex: ^Dark$   # and Dark (a filter can only name label once)
+      label.regex: ^Dark( Top)?$   # and Dark or Dark Top (a filter can only name label once)
       title.not: <<skip_titles>>
 
   TintedLogo:           # one show's logo in its own colour (see the TINTED section)
@@ -135,11 +143,12 @@ templates:
 
   # Studio logos (see the STUDIOS section), centred at the bottom under the
   # title, the same images and spot as on movies. The images are full-size
-  # 1000x1500 PNGs with the logo already placed. Label a show Dark for the
-  # black logo, or No Studio if its poster already shows the logo.
+  # 1000x1500 PNGs with the logo already placed. Label a show Dark Bottom for
+  # the black logo (Dark makes the network logo black too), or No Studio if
+  # its poster already shows the logo.
   # validate: false in the filters: Kometa skips the whole overlay when a
-  # filter names a label no show has yet (No Studio), so without it no show
-  # gets a logo.
+  # filter names a label no show has yet (No Studio, Dark Bottom), so without
+  # it no show gets a logo.
   #   company:  TMDb company ids (themoviedb.org/company/<id>)
   #   tmdb:     shows by TMDb id (themoviedb.org/tv/<id>)
   #   genre:    only shows in this Plex genre
@@ -158,7 +167,7 @@ templates:
       label.not: No Studio
       genre: <<genre>>
 
-  StudioLogoDark:       # black logo, shows labelled Dark
+  StudioLogoDark:       # black logo, shows labelled Dark or Dark Bottom
     optional: [company, tmdb, genre]
     ignore_blank_results: true
     overlay:
@@ -170,7 +179,7 @@ templates:
     tmdb_show: <<tmdb>>
     filters:
       validate: false
-      label: Dark
+      label: [Dark, Dark Bottom]
       label.not: No Studio
       genre: <<genre>>
 
@@ -732,6 +741,20 @@ overlays:
     template: {name: TintedLogo, folder: Apple TV, file: AppleTV_widowsbay, tvdb: 454109}
   BritBox Why Didn't They Ask Evans:
     template: {name: TintedLogo, folder: BritBox, file: BritBox_whydidnttheyaskevans, tvdb: 404602}
+  Disney Plus Hawkeye:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_hawkeye, tvdb: 367146}
+  Disney Plus Ironheart:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_ironheart, tvdb: 393204}
+  Disney Plus Loki:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_loki, tvdb: 362472}
+  Disney Plus Ms. Marvel:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_msmarvel, tvdb: 368612}
+  Disney Plus Secret Invasion:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_secretinvasion, tvdb: 393203}
+  Disney Plus The Falcon and the Winter Soldier:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_thefalconandthewintersoldier, tvdb: 362496}
+  Disney Plus WandaVision:
+    template: {name: TintedLogo, folder: Disney Plus, file: DisneyPlus_wandavision, tvdb: 362392}
   FX Fargo:
     template: {name: TintedLogo, folder: FX, file: FX_fargo, tvdb: 269613}
   FX Grotesquerie:

@@ -28,7 +28,7 @@ import cairosvg
 import numpy as np
 from PIL import Image, ImageDraw
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 X0, Y0 = 43, 43                  # the logo's top-left corner on the poster
@@ -117,6 +117,15 @@ TINTS = {
     },
     "BritBox": {
         "whydidnttheyaskevans": dict(gradient=["#cd6502", "#dc8402", "#f6be15", "#fad322", "#fbd423"], angle=45),
+    },
+    "Disney Plus": {
+        "hawkeye": dict(fill="#fdeb4e", outline="#4b3f9e"),                    # yellow, the target's purple rim
+        "ironheart": dict(gradient=["#d8ae7c", "#f0dcb4", "#cdb68e"], angle=90),
+        "loki": dict(gradient=["#6f8174", "#b8955f", "#a4a99c", "#2f9a3a"]),   # the four letters: stone, gold, silver, green
+        "msmarvel": dict(gradient=["#f4bd6a", "#e39c55", "#cf7b3c"], angle=90, bevel=["#a3241f", "#ffe3ad"]),
+        "secretinvasion": dict(gradient=["#4cc394", "#256e56"], angle=90),
+        "thefalconandthewintersoldier": dict(gradient=["#b8322f", "#2f5a96"]),  # the shield's red and blue
+        "wandavision": dict(fill="#efe4e4", outline="#d8232c"),                # white, red glow
     },
     "FX": {
         "thebear": "#fcf6c9",
