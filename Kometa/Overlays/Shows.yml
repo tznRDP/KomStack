@@ -169,29 +169,32 @@ templates:
       label.not: No Studio
       genre: <<genre>>
 
-  # Status labels (see the STATUS OVERLAYS section): a coloured pill with the
+  # Overlay labels (see the STATUS OVERLAYS section): a coloured pill with the
   # word, centred at the bottom under the studio logo. The images are full-size
-  # 1000x1500 PNGs made by Overlays/Status/build.py in three sizes, and size
-  # picks the folder: change it here (and in Overlays/Movies.yml) to swap
-  # every label at once.
-  StatusLabel:
+  # 1000x1500 PNGs made by Overlays/Labels/build.py in two sizes, and size
+  # picks the folder: change it here (and in Overlays/Movies.yml) to swap every
+  # label at once, the episode badges below included.
+  OverlayLabel:
     default:
-      size: 130           # 100, 115 or 130
+      size: &label_size 150     # 150 or 160
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Status/<<size>>/<<file>>.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Labels/<<size>>/<<file>>.png
       group: STATUS
       weight: <<weight>>
 
   # Episode badges (see the EPISODE OVERLAYS section). Bookends labels the
   # episodes; each overlay puts the badge for its label on the title card.
-  # The badges are full-size 1920x1080 PNGs with the badge at the bottom.
+  # The badges are the same pills as the labels above, as full-size 1920x1080
+  # PNGs with the badge at the bottom, in the size set above.
   EpisodeBadge:
+    default:
+      size: *label_size
     builder_level: episode
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
-      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Episodes/<<file>>.png
+      url: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Overlays/Labels/<<size>>/<<file>>.png
       group: episode_badge
       weight: <<weight>>
     plex_search:
@@ -336,7 +339,7 @@ overlays:
   # weighs the most, so it takes the status label's place for its weeks.
 
   NewSeason:
-    template: {name: StatusLabel, file: NewSeason, weight: 980}
+    template: {name: OverlayLabel, file: NewSeason, weight: 980}
     plex_all: true
     filters:
       added.not: 30
@@ -346,11 +349,11 @@ overlays:
         title.not: Specials
 
   Airing:
-    template: {name: StatusLabel, file: Airing, weight: 950}
+    template: {name: OverlayLabel, file: Airing, weight: 950}
     tmdb_on_the_air: 2000
 
   Returning:
-    template: {name: StatusLabel, file: Returning, weight: 800}
+    template: {name: OverlayLabel, file: Returning, weight: 800}
     plex_all: true
     filters:
       tmdb_status:
@@ -359,13 +362,13 @@ overlays:
         - production
 
   Ended:
-    template: {name: StatusLabel, file: Ended, weight: 700}
+    template: {name: OverlayLabel, file: Ended, weight: 700}
     plex_all: true
     filters:
       tmdb_status: ended
 
   EndedForced:
-    template: {name: StatusLabel, file: Ended, weight: 700}
+    template: {name: OverlayLabel, file: Ended, weight: 700}
     plex_search:
       title:
        - The Haunting of Bly Manor
@@ -373,7 +376,7 @@ overlays:
        - The Haunting of Hill House
 
   Canceled:
-    template: {name: StatusLabel, file: Canceled, weight: 600}
+    template: {name: OverlayLabel, file: Canceled, weight: 600}
     plex_all: true
     filters:
       tmdb_status: canceled
@@ -771,16 +774,16 @@ overlays:
   # If an episode somehow has two labels, the higher weight wins.
 
   Series Premiere:
-    template: {name: EpisodeBadge, file: series_premiere, weight: 40}
+    template: {name: EpisodeBadge, file: SeriesPremiere, weight: 40}
 
   Season Premiere:
-    template: {name: EpisodeBadge, file: season_premiere, weight: 30}
+    template: {name: EpisodeBadge, file: SeasonPremiere, weight: 30}
 
   Mid-Season Finale:
-    template: {name: EpisodeBadge, file: midseason_finale, weight: 10}
+    template: {name: EpisodeBadge, file: MidSeasonFinale, weight: 10}
 
   Season Finale:
-    template: {name: EpisodeBadge, file: season_finale, weight: 20}
+    template: {name: EpisodeBadge, file: SeasonFinale, weight: 20}
 
   Series Finale:
-    template: {name: EpisodeBadge, file: series_finale, weight: 50}
+    template: {name: EpisodeBadge, file: SeriesFinale, weight: 50}

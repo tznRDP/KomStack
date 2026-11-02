@@ -29,24 +29,23 @@ Kometa/
 │       └── background.png
 └── Overlays/
     ├── Shows.yml              # TV overlays, status labels, network and studio logos, episode badges
-    ├── Movies.yml             # movie overlays, Recently Added, studio logos, Oscars badges
+    ├── Movies.yml             # movie overlays, Recently Added and TOP labels, studio logos, Oscars badges
     ├── Test.yml               # TVTestBench overlays
     ├── Awards/
     │   └── Oscars/
     │       ├── build.py       # makes BestPicture/ from Source/
     │       ├── Source/        # the badge's parts, taken from Best Picture posters
     │       └── BestPicture/   # <year>_Gold.png and <year>_Dark.png, 1929 to 2035
-    ├── Episodes/              # premiere and finale badges, 1920x1080
+    ├── Labels/
+    │   ├── build.py           # makes 150/ and 160/
+    │   ├── Source/            # the Montserrat font, TOP's flame and their licences
+    │   └── 150/ 160/          # <Name>.png, every label and episode badge in two sizes
     ├── Networks/
     │   ├── build.py           # makes Label/ and Tinted/ from Source/
     │   └── <Network>/
     │       ├── Source/        # the original logo, <Name>.svg or .png (+ _Color)
     │       ├── Label/         # <Name>_White.png, _Black.png, _Color.png, _ColorDark.png
     │       └── Tinted/        # <Name>_<show>.png, one show's logo in its own colour
-    ├── Status/
-    │   ├── build.py           # makes 100/, 115/ and 130/
-    │   ├── Source/            # the Montserrat font and its licence
-    │   └── 100/ 115/ 130/     # <Name>.png, the status labels in three sizes
     └── Studios/
         ├── build.py           # makes Label/ from Source/
         └── <Studio>/
@@ -145,15 +144,15 @@ Label a movie or show `Dark` in Plex for the black logo, for light posters; whit
 
 The images are 1000x1500, sized like the studio logos on MediUX posters: MARVEL STUDIOS is 161x36, MARVEL ANIMATION and MARVEL TELEVISION as high, DC STUDIOS 176 wide, the DC roundel 54, Disney · PIXAR 182 and LUCASFILM 102. The logo's middle is at 500,1418, on movies and shows alike. `Overlays/Studios/build.py` makes them from the studio's `Source/` folder (an svg where there is one, otherwise a png bigger than the logo is drawn), so nothing is ever scaled up. DC STUDIOS is put together from the roundel and the STUDIOS letters, and MARVEL ANIMATION and MARVEL TELEVISION from Marvel's red box and the words off the X-Men '97 and Daredevil: Born Again posters. A new studio is a line in its `LOGOS` table, then `python3 build.py` (needs Pillow, numpy and cairosvg) and a pair of lines in the STUDIOS section.
 
-## Status labels
+## Overlay labels
 
-Shows get a label at the very bottom, under the studio logo: a coloured pill with AIRING (blue), RETURNING (green), NEW SEASON (red), ENDED (grey) or CANCELED (red). It's one label per show, so in the weeks after a new season comes in, NEW SEASON takes the place of the status. Movies get a red RECENTLY ADDED in their first week. The STATUS OVERLAYS section of `Overlays/Shows.yml` decides which show gets which, and the MOVIES section of `Overlays/Movies.yml` does Recently Added.
+Shows get a label at the very bottom, under the studio logo: a coloured pill with AIRING (blue), RETURNING (green), NEW SEASON (red), ENDED (grey) or CANCELED (red). It's one label per show, so in the weeks after a new season comes in, NEW SEASON takes the place of the status. Movies get a red RECENTLY ADDED in the same spot in their first week, and a yellow TOP with a flame in the top left corner while they're in the Trending Movies collection. The STATUS OVERLAYS section of `Overlays/Shows.yml` decides which show gets which, and the MOVIES section of `Overlays/Movies.yml` does Recently Added and TOP. The episode badges below are the same pills.
 
-The labels come in three sizes, 100, 115 and 130 (percent). The `StatusLabel` template at the top of both overlay files has `size: 100`; change it to 115 or 130 in both to swap every label on the next Kometa run. `Overlays/Status/build.py` makes all three sets, `<size>/<Name>.png`, in Montserrat ExtraBold, which is in `Status/Source/` with its licence (needs Pillow). The pill's middle is at y 1472, halfway between the bottom of the tallest studio logo and the poster's edge.
+The labels come in two sizes, 150 and 160 (percent of the first, smaller pill); 160 is the biggest that fits between the studio logo and the poster's edge. The `OverlayLabel` template at the top of both overlay files has `size: 150`; to swap every label, episode badges included, change it to 160 in both, then delete Kometa's saved copies as under Network logos before the next run. `Overlays/Labels/build.py` makes both sets, `<size>/<Name>.png`, in Montserrat ExtraBold with a soft shadow under the white letters (needs Pillow and cairosvg). The font and TOP's flame, from Bootstrap Icons, are in `Labels/Source/` with their licences. The pill's middle is at y 1472, halfway between the bottom of the tallest studio logo and the poster's edge.
 
 ## Episode badges
 
-Title cards get a badge on premieres and finales: Series Premiere, Season Premiere, Mid-Season Finale, Season Finale and Series Finale. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
+Title cards get a badge on premieres and finales: Series Premiere (blue), Season Premiere (green), Mid-Season Finale (orange), Season Finale (red) and Series Finale (purple), the same pills as the overlay labels, centred at the bottom. Bookends, a separate container, labels the episodes in Plex from TheTVDB or TMDb data, whichever the show's episode ordering in Plex uses, and the EPISODE OVERLAYS section of `Overlays/Shows.yml` puts the matching badge on each labelled episode. Specials and Beck get no labels.
 
 ## MCU phases
 
