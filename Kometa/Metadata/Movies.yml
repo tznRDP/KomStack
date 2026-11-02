@@ -10,7 +10,7 @@
 #  Back on after the review: Hope (2026), Talk to Me (2023),            #
 #  Superman (2025), Supergirl (2026),                                   #
 #  Spider-Man: No Way Home (2021),                                      #
-#  Black Panther: Wakanda Forever (2022).                               #
+#  Black Panther: Wakanda Forever (2022), Thunderbolts* (2025).         #
 #=======================================================================#
 
 metadata:
@@ -43,6 +43,9 @@ metadata:
 
   505642: # Black Panther: Wakanda Forever (2022) Poster made here from the textless poster, gold title low down like the official poster
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Movies/Black%20Panther%20Wakanda%20Forever%20(2022)/poster.png
+
+  986056: # Thunderbolts* (2025) Poster made here from the textless poster, THUNDERBOLTS* title between Ghost and MARVEL STUDIOS
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Movies/Thunderbolts%20(2025)/poster.png
 
 #   1316092: # "Wuthering Heights" (2026) Poster by willtong93 on MediUX. https://mediux.pro/sets/44139
 #     url_poster: https://api.mediux.pro/assets/a9679794-2981-4ee8-a1d9-643723401c78
