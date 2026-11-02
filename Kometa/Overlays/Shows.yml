@@ -739,6 +739,8 @@ overlays:
     template: {name: TintedLogo, folder: AMC, file: AMC_breakingbad, tvdb: 81189}
   Apple TV Widow's Bay:
     template: {name: TintedLogo, folder: Apple TV, file: AppleTV_widowsbay, tvdb: 454109}
+  Apple TV Your Friends & Neighbors:
+    template: {name: TintedLogo, folder: Apple TV, file: AppleTV_yourfriendsandneighbors, tvdb: 443433}
   BritBox Why Didn't They Ask Evans:
     template: {name: TintedLogo, folder: BritBox, file: BritBox_whydidnttheyaskevans, tvdb: 404602}
   Disney Plus Hawkeye:

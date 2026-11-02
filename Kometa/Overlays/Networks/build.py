@@ -28,7 +28,7 @@ import cairosvg
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
-VERSION = "1.3.1"
+VERSION = "1.3.2"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 X0, Y0 = 43, 43                  # the logo's top-left corner on the poster
@@ -116,6 +116,7 @@ TINTS = {
     },
     "Apple TV": {
         "widowsbay": "#9b1200",
+        "yourfriendsandneighbors": "#d8ad84",          # the copper of the title's & and its lines
     },
     "BritBox": {
         "whydidnttheyaskevans": dict(gradient=["#cd6502", "#dc8402", "#f6be15", "#fad322", "#fbd423"], angle=45),
