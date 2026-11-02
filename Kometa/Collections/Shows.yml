@@ -36,14 +36,18 @@ collections:
 #
 # Row-only collections get a ZZZ_ sort title. Plex can't hide a collection
 # from the Collections tab, so this puts them at the very bottom of it.
+#
+# Two rows of what's hot: Trending Shows Worldwide is TMDb's trending list,
+# what everyone everywhere is watching this week, and Most Watched Shows on
+# Plexflix is what's been watched here, from Tracearr.
 
-  Trending Series:
+  Trending Shows Worldwide:
     sort_title: "'*Trending"
     tmdb_trending_weekly: 40
     collection_order: custom
     sync_mode: sync
     collection_mode: hide
-    summary: Trending on TMDb this week.
+    summary: Trending worldwide on TMDb this week.
     url_poster: https://theposterdb.com/api/assets/259814
     visible_home: true
     visible_shared: true
@@ -78,14 +82,15 @@ collections:
     visible_shared: true
     hub_priority: 3
 
-  Most Popular Shows:
+  Most Watched Shows on Plexflix:
     tracearr_watched:
       list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
       list_size: 10
+      list_minimum: 0     # fewest plays to make the row; 0 is the default, set so Kometa stops warning
     collection_order: custom
     sync_mode: sync
     collection_mode: hide # keeps Home-only rows out of the library grid
-    sort_title: ZZZ_Most Popular Shows
+    sort_title: ZZZ_Most Watched Shows on Plexflix
     summary: The most watched shows on Plexflix over the last two weeks.
     visible_library: true
     visible_home: true
@@ -116,6 +121,7 @@ collections:
         - best comedy series
         - best comedy show
       winning: true
+    collection_order: release
     sync_mode: sync
     summary: Emmy winners for Outstanding Drama & Comedy Series
     url_poster: https://theposterdb.com/api/assets/579817
@@ -130,17 +136,25 @@ collections:
     url_poster: https://theposterdb.com/api/assets/18648
     url_background: https://image.tmdb.org/t/p/original/agmQLAo3mdp7bPe9vPrd1mqrYeM.jpg
 
+  # BBC Earth isn't a network in Plex, so the shows are listed by TVDB id
+  # (thetvdb.com), the same ones as the BBC Earth logo in Overlays/Shows.yml.
+  # A new show goes in both lists.
   BBC Earth:
-    imdb_list:
-      list_id: ls085429769
-      sort_by: custom.asc
-    plex_search:
-      any:
-        title:
-          - Prehistoric Planet
-    filters:
-      title.not:
-        - Cosmos (2014)
+    tvdb_show:
+      - 74372     # The Blue Planet (2001)
+      - 79257     # Planet Earth (2006)
+      - 251418    # Frozen Planet (2011)
+      - 318408    # Planet Earth II (2016)
+      - 330942    # Blue Planet II (2017)
+      - 352054    # Dynasties (2018)
+      - 355229    # Our Planet (2019)
+      - 359251    # Seven Worlds, One Planet (2019)
+      - 359365    # A Perfect Planet (2021)
+      - 359250    # The Green Planet (2022)
+      - 418505    # Prehistoric Planet (2022)
+      - 417395    # Frozen Planet II (2022)
+      - 413197    # Planet Earth III (2023)
+    collection_order: release
     sync_mode: sync
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/poster.png
     url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Collections/BBC%20Earth/background.png

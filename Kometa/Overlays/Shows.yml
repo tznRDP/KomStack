@@ -381,13 +381,21 @@ overlays:
     filters:
       tmdb_status: ended
 
+  # Shows whose TMDb status is wrong or missing, by TVDB id (thetvdb.com).
+  # Plex keeps an anthology as one show, like TheTVDB, but TMDb has one show
+  # per season, so Kometa may find no TMDb status for it (Monster gets none).
+  # 900 beats every TMDb status but not Airing or New Season, and a show that
+  # isn't in the library is just skipped.
   EndedForced:
-    template: {name: OverlayLabel, file: Ended, weight: 700}
-    plex_search:
-      title:
-       - The Haunting of Bly Manor
-       - The Stranger (2020)
-       - The Haunting of Hill House
+    template: {name: OverlayLabel, file: Ended, weight: 900}
+    tvdb_show:
+      - 345246    # The Haunting (Hill House and Bly Manor)
+      - 374977    # The Stranger (2020)
+
+  ReturningForced:
+    template: {name: OverlayLabel, file: Returning, weight: 900}
+    tvdb_show:
+      - 389492    # Monster (the Netflix anthology)
 
   Canceled:
     template: {name: OverlayLabel, file: Canceled, weight: 600}
@@ -435,6 +443,8 @@ overlays:
 
   # BBC Earth isn't a network in Plex (these are BBC One and friends there), so
   # it goes by TVDB id: the shows in the BBC Earth section of Metadata/Shows.yml.
+  # The BBC Earth collection in Collections/Shows.yml has the same list, so a
+  # new show goes in both.
   # A Perfect Planet, The Blue Planet, Blue Planet II, Dynasties, Frozen Planet,
   # Frozen Planet II, Our Planet, Planet Earth, Planet Earth II, Planet Earth III,
   # Prehistoric Planet, Seven Worlds One Planet, The Green Planet
