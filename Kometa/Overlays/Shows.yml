@@ -137,6 +137,9 @@ templates:
   # title, the same images and spot as on movies. The images are full-size
   # 1000x1500 PNGs with the logo already placed. Label a show Dark for the
   # black logo, or No Studio if its poster already shows the logo.
+  # validate: false in the filters: Kometa skips the whole overlay when a
+  # filter names a label no show has yet (No Studio), so without it no show
+  # gets a logo.
   #   company:  TMDb company ids (themoviedb.org/company/<id>)
   #   tmdb:     shows by TMDb id (themoviedb.org/tv/<id>)
   #   genre:    only shows in this Plex genre
@@ -151,6 +154,7 @@ templates:
     tmdb_company: <<company>>
     tmdb_show: <<tmdb>>
     filters:
+      validate: false
       label.not: No Studio
       genre: <<genre>>
 
@@ -165,6 +169,7 @@ templates:
     tmdb_company: <<company>>
     tmdb_show: <<tmdb>>
     filters:
+      validate: false
       label: Dark
       label.not: No Studio
       genre: <<genre>>

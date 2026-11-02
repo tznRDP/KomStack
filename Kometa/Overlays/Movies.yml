@@ -9,6 +9,10 @@ templates:
   # ceremony year and gold. Kometa finds that year's winner from IMDb's Oscars
   # data, and the movie's label in Plex picks the badge: Oscars for the gold
   # one, Oscars Dark for the darker gold (with both, the darker gold).
+  #
+  # validate: false in the filters, here and on the studio logos: Kometa
+  # skips the whole overlay when a filter names a label no movie has yet
+  # (Oscars Dark, No Studio), so without it nothing gets the badge or logo.
   BestPicture:
     default:
       event: <<year>>     # IMDb's name for the ceremony, if it isn't just the year
@@ -26,6 +30,7 @@ templates:
         - best picture, unique and artistic production
       winning: true
     filters:
+      validate: false
       label: Oscars
       label.not: Oscars Dark
 
@@ -46,6 +51,7 @@ templates:
         - best picture, unique and artistic production
       winning: true
     filters:
+      validate: false
       label: Oscars Dark
 
   # Studio logos (see the STUDIOS section), centred at the bottom under the
@@ -71,6 +77,7 @@ templates:
     tmdb_company: <<company>>
     tmdb_movie: <<tmdb>>
     filters:
+      validate: false     # see BestPicture above
       label.not: No Studio
       collection.regex: <<collection>>
       title: <<titles>>
@@ -87,6 +94,7 @@ templates:
     tmdb_company: <<company>>
     tmdb_movie: <<tmdb>>
     filters:
+      validate: false
       label: Dark
       label.not: No Studio
       collection.regex: <<collection>>
