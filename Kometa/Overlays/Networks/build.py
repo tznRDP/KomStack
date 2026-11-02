@@ -109,8 +109,6 @@ LOGOS = {
 #     cracks=[(x, y, r), ...]     thin cuts along circles: centre and radius in logo
 #                                 heights, from the logo's top-left corner
 #     shadow=0.5                  a soft shadow under the logo, this dark (0 to 1)
-#     shadow=(0.85, 6, 1)         the same with its own blur and offset down, in poster
-#                                 px: a wide one makes a halo round the logo
 # The random parts (mottle, brush, chalk) come out the same on every run.
 TINTS = {
     "AMC": {
@@ -118,9 +116,7 @@ TINTS = {
     },
     "Apple TV": {
         "widowsbay": "#9b1200",
-        # the copper of the title's & and its lines, a little deeper, with a soft halo
-        # so it reads on the pale sky
-        "yourfriendsandneighbors": dict(fill="#c08a5a", shadow=(0.85, 6, 1)),
+        "yourfriendsandneighbors": dict(fill="#d8ad84", shadow=0.85),  # the copper of the title's &, a shadow for the pale sky
     },
     "BritBox": {
         "whydidnttheyaskevans": dict(gradient=["#cd6502", "#dc8402", "#f6be15", "#fad322", "#fbd423"], angle=45),
@@ -370,15 +366,13 @@ def tint(how, master, color_master, size, seed):
 
 
 def place(logo, shadow=0):
-    """The logo on a poster-size canvas, with a soft black shadow under it if shadow: how
-    dark (0 to 1), or (how dark, blur, offset down) for a different size."""
+    """The logo on a poster-size canvas, with a soft black shadow under it if shadow (0 to 1)."""
     canvas = Image.new("RGBA", CANVAS, (0, 0, 0, 0))
     if shadow:
-        dark, blur, drop = shadow if isinstance(shadow, (tuple, list)) else (shadow, SHADOW_BLUR, SHADOW_DROP)
         a = Image.new("L", CANVAS, 0)
-        a.paste(logo.getchannel("A"), (X0, Y0 + drop))
+        a.paste(logo.getchannel("A"), (X0, Y0 + SHADOW_DROP))
         sh = Image.new("RGBA", CANVAS, BLACK + (255,))
-        sh.putalpha(a.filter(ImageFilter.GaussianBlur(blur)).point(lambda v: round(v * dark)))
+        sh.putalpha(a.filter(ImageFilter.GaussianBlur(SHADOW_BLUR)).point(lambda v: round(v * shadow)))
         canvas.alpha_composite(sh)
     canvas.alpha_composite(logo, (X0, Y0))
     return canvas
