@@ -392,7 +392,8 @@ collections:
 #                     DIRECTORS                      #
 ######################################################
 # key_name picks the poster, tmdb is the TMDb person id
-# (themoviedb.org/person/<id>). One line per director.
+# (themoviedb.org/person/<id>). One line per director. A url_poster line
+# under one gives that director your own poster instead (see Makoto Shinkai).
 
   David Fincher:
     template: {name: Director, key_name: David Fincher, tmdb: 7467}
@@ -420,3 +421,4 @@ collections:
     template: {name: Director, key_name: Yorgos Lanthimos, tmdb: 122423}
   Makoto Shinkai:
     template: {name: Director, key_name: Makoto Shinkai, tmdb: 74091}
+    url_poster: https://theposterdb.com/api/assets/433619   # his own poster instead of the template's
