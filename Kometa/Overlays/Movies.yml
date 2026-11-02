@@ -13,9 +13,29 @@ templates:
   # validate: false in the filters, here and on the studio logos: Kometa
   # skips the whole overlay when a filter names a label no movie has yet
   # (Oscars Dark, No Studio), so without it nothing gets the badge or logo.
+  #
+  # IMDb's name for the category depends on the year: best motion picture of
+  # the year from 2005, best picture from 1930 to 2004, and 1929 had two
+  # (Wings won Production, Sunrise Unique and Artistic Production). category
+  # picks the right one for the line's year, so Kometa doesn't warn about the
+  # other names on every line. A new year gets the 2005 name by itself.
   BestPicture:
     default:
       event: <<year>>     # IMDb's name for the ceremony, if it isn't just the year
+    conditionals: &best_picture_category
+      category:
+        conditions:
+          - year: 1929
+            value:
+              - best picture, production
+              - best picture, unique and artistic production
+          - year: [1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944,
+                   1945, 1946, 1947, 1948, 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959,
+                   1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974,
+                   1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989,
+                   1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004]
+            value: best picture
+        default: best motion picture of the year
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
@@ -23,11 +43,7 @@ templates:
     imdb_award:
       event_id: ev0000003
       event_year: <<event>>
-      category_filter:
-        - best motion picture of the year
-        - best picture
-        - best picture, production
-        - best picture, unique and artistic production
+      category_filter: <<category>>
       winning: true
     filters:
       validate: false
@@ -37,6 +53,7 @@ templates:
   BestPictureDark:
     default:
       event: <<year>>
+    conditionals: *best_picture_category
     ignore_blank_results: true
     overlay:
       name: <<overlay_name>>
@@ -44,11 +61,7 @@ templates:
     imdb_award:
       event_id: ev0000003
       event_year: <<event>>
-      category_filter:
-        - best motion picture of the year
-        - best picture
-        - best picture, production
-        - best picture, unique and artistic production
+      category_filter: <<category>>
       winning: true
     filters:
       validate: false
@@ -219,7 +232,7 @@ overlays:
     template: {name: OverlayLabel, file: Trending}
     plex_search:
       all:
-        collection: Trending Movies
+        collection: Trending Movies Worldwide   # the row in Collections/Movies.yml
 
 #  Oscar:
 #    overlay:

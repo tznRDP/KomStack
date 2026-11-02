@@ -17,7 +17,9 @@
 #  SWITCHED OFF FOR A POSTER REVIEW: every entry line starts with "# ". #
 #  To switch an entry back on, remove those two characters: select its  #
 #  lines, then Ctrl+/ in GitHub's editor or Ctrl+Shift+K in Notepad++.  #
-#  Back on after the review: Crystal Lake (2026).                       #
+#  Back on after the review: everything hosted in this repo (Crystal    #
+#  Lake, The Terror, Beck, Thin Blue Line, Monster) and the BBC Earth   #
+#  posters.                                                             #
 #=======================================================================#
 
 external_templates:
@@ -43,310 +45,307 @@ metadata:
   426669: # TVDB id for Crystal Lake (2026). Poster made here from the original key art.
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Crystal%20Lake%20(2026)/poster.png
 
-#   322191: # TVDB id for The Terror (2018). 3 seasons: The Terror, Infamy, Devil in Silver.
-#     template: {name: Seasons3, folder: "The Terror (2018)"}
+  322191: # TVDB id for The Terror (2018). 3 seasons: The Terror, Infamy, Devil in Silver.
+    template: {name: Seasons3, folder: "The Terror (2018)"}
 
-#   82506: # TVDB id for Beck (1999). Show and episode art from this repo.
-#     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/poster.png
-#     url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/background.png
-#     seasons:
-#       1:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E04_background.png
-#           5:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E05.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E05_background.png
-#           6:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E06.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E06_background.png
-#           7:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E07.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E07_background.png
-#           8:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E08.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E08_background.png
-#       2:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E04_background.png
-#           5:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E05.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E05_background.png
-#           6:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E06.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E06_background.png
-#           7:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E07.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E07_background.png
-#           8:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E08.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E08_background.png
-#       3:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E04_background.png
-#           5:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E05.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E05_background.png
-#           6:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E06.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E06_background.png
-#           7:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E07.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E07_background.png
-#           8:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E08.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E08_background.png
-#       4:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E02_background.png
-#       5:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E04_background.png
-#           5:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E05.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E05_background.png
-#           6:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E06.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E06_background.png
-#           7:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E07.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E07_background.png
-#           8:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E08.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E08_background.png
-#       6:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E04_background.png
-#       7:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E04_background.png
-#       8:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E04_background.png
-#       9:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E04_background.png
-#       10:
-#         episodes:
-#           1:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E01.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E01_background.png
-#           2:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E02.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E02_background.png
-#           3:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E03.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E03_background.png
-#           4:
-#             url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E04.png
-#             url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E04_background.png
+  82506: # TVDB id for Beck (1999). Show and episode art from this repo.
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/poster.png
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/background.png
+    seasons:
+      1:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E04_background.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E05.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E05_background.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E06.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E06_background.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E07.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E07_background.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E08.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S01E08_background.png
+      2:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E04_background.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E05.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E05_background.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E06.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E06_background.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E07.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E07_background.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E08.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S02E08_background.png
+      3:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E04_background.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E05.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E05_background.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E06.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E06_background.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E07.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E07_background.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E08.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S03E08_background.png
+      4:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S04E02_background.png
+      5:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E04_background.png
+          5:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E05.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E05_background.png
+          6:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E06.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E06_background.png
+          7:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E07.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E07_background.png
+          8:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E08.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S05E08_background.png
+      6:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S06E04_background.png
+      7:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S07E04_background.png
+      8:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S08E04_background.png
+      9:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S09E04_background.png
+      10:
+        episodes:
+          1:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E01.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E01_background.png
+          2:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E02.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E02_background.png
+          3:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E03.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E03_background.png
+          4:
+            url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E04.png
+            url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Beck%20(1999)/S10E04_background.png
 
-#   394341: # TVDB id for Thin Blue Line (2021). Background from this repo, season posters from MediUX.
-# #    url_poster: https://api.mediux.pro/assets/a55b7ee0-85ea-41d4-80f9-1671a970aa3d
-#     url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
-#     seasons:
-#       0:
-#         url_poster: https://api.mediux.pro/assets/13b22249-adef-4738-8f1b-78b07f14e5ef
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
-#       1:
-#         url_poster: https://api.mediux.pro/assets/67c98733-f33a-445e-bd4e-0b8c73c9e67d
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
-#       2:
-#         url_poster: https://api.mediux.pro/assets/77d64762-dd0e-4d8c-8f1a-52dca8bc70cf
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
-#       3:
-#         url_poster: https://api.mediux.pro/assets/5f616c3e-155f-436d-aa02-c30a2b847024
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+  394341: # TVDB id for Thin Blue Line (2021). Background from this repo, season posters from MediUX.
+#    url_poster: https://api.mediux.pro/assets/a55b7ee0-85ea-41d4-80f9-1671a970aa3d
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+    seasons:
+      0:
+        url_poster: https://api.mediux.pro/assets/13b22249-adef-4738-8f1b-78b07f14e5ef
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+      1:
+        url_poster: https://api.mediux.pro/assets/67c98733-f33a-445e-bd4e-0b8c73c9e67d
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+      2:
+        url_poster: https://api.mediux.pro/assets/77d64762-dd0e-4d8c-8f1a-52dca8bc70cf
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+      3:
+        url_poster: https://api.mediux.pro/assets/5f616c3e-155f-436d-aa02-c30a2b847024
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Thin%20Blue%20Line%20(2021)/background.png
+
+  389492: # TVDB id for Monster (2022). Season art and background from this repo, show poster and title cards from willtong93's MediUX set: https://mediux.pro/sets/38579
+    url_poster: https://api.mediux.pro/assets/8ce40ba0-cc10-4b02-8fbf-dd6e64564385
+    url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/background.png
+    seasons:
+      1:
+        url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season01.png
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season01_background.png
+        episodes:
+          1:
+            url_poster: https://api.mediux.pro/assets/634eeb60-78c7-40cb-9529-34336b823bce
+          2:
+            url_poster: https://api.mediux.pro/assets/456bb932-0dd9-4b1f-946e-3560f9b5e3d4
+          3:
+            url_poster: https://api.mediux.pro/assets/eff2c114-97fa-4ad5-8df4-9d30b5ab5e93
+          4:
+            url_poster: https://api.mediux.pro/assets/8c9f61d8-b518-4f07-8983-6a9c0674905f
+          5:
+            url_poster: https://api.mediux.pro/assets/ee7b83a1-9f2f-48a5-ab3b-87c01d2a2a99
+          6:
+            url_poster: https://api.mediux.pro/assets/62b8a1ac-239f-4684-83f8-e445968051c5
+          7:
+            url_poster: https://api.mediux.pro/assets/cf5f5a77-8e20-407e-8e66-f7b6d891f192
+          8:
+            url_poster: https://api.mediux.pro/assets/00016986-73f6-40c3-8b4d-601c908320eb
+          9:
+            url_poster: https://api.mediux.pro/assets/e75c375a-768d-477a-a845-cacbc1992b76
+          10:
+            url_poster: https://api.mediux.pro/assets/b2213179-c928-4407-af03-ed614cd541f0
+      2:
+        url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season02.png
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season02_background.png
+        episodes:
+          1:
+            url_poster: https://api.mediux.pro/assets/c3d66507-489c-49d2-a65c-11cbaa3b722f
+          2:
+            url_poster: https://api.mediux.pro/assets/65d2a6ea-cb44-4d01-972b-8abf7381fd9d
+          3:
+            url_poster: https://api.mediux.pro/assets/6463124c-382d-4c9a-93ed-7fe4685b9f0d
+          4:
+            url_poster: https://api.mediux.pro/assets/8ac118a5-dc6c-4f18-a568-2d713df43562
+          5:
+            url_poster: https://api.mediux.pro/assets/fa00b474-756c-463b-a3b7-2d0779a5f287
+          6:
+            url_poster: https://api.mediux.pro/assets/41b662e9-df5e-49df-a599-6373acbecb67
+          7:
+            url_poster: https://api.mediux.pro/assets/f4dc39e7-d0d2-423c-bc7c-348f914ef571
+          8:
+            url_poster: https://api.mediux.pro/assets/0bebe79e-26ff-44d7-b455-df0824a81eb4
+          9:
+            url_poster: https://api.mediux.pro/assets/92a0a80b-1afc-4884-b38d-7b2e978ab4b3
+      3:
+        url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season03.png
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season03_background.png
+        episodes:
+          1:
+            url_poster: https://api.mediux.pro/assets/f6213712-a4a2-48b4-ac2f-0cb66317a71e
+          2:
+            url_poster: https://api.mediux.pro/assets/df25cbd5-a3f5-4e37-9d2c-86e921acb5f4
+          3:
+            url_poster: https://api.mediux.pro/assets/e5736e60-e42f-4ec8-aabc-1a5208192ca4
+          4:
+            url_poster: https://api.mediux.pro/assets/cd248baa-f6ee-48be-826c-5b8ab51f7e9c
+          5:
+            url_poster: https://api.mediux.pro/assets/11001cac-b389-44a1-a2dc-ef5858daa8b9
+          6:
+            url_poster: https://api.mediux.pro/assets/c2896411-e024-493e-bc50-e5157c8daea6
+          7:
+            url_poster: https://api.mediux.pro/assets/55ee07f3-3a5d-4919-b377-d03c1ab706a7
+          8:
+            url_poster: https://api.mediux.pro/assets/a43dbb59-b9b4-4abc-b9c7-5de800f266e8
+      4:
+        url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season04.png
+        url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season04_background.png
+        episodes:
+          1:
+            url_poster: https://api.mediux.pro/assets/c01eaf32-906b-485d-a147-2d4567a59336
+          2:
+            url_poster: https://api.mediux.pro/assets/cb983806-401e-493f-afd6-7e3c97c8b733
+          3:
+            url_poster: https://api.mediux.pro/assets/4afaf534-5be7-4c09-93d9-5db3aa522885
+          4:
+            url_poster: https://api.mediux.pro/assets/d97081a7-ea24-438d-878a-f10cc27fa181
+          5:
+            url_poster: https://api.mediux.pro/assets/30445c22-eef8-4804-b337-ef0bf6ffe844
+          6:
+            url_poster: https://api.mediux.pro/assets/93e4792f-2ba7-48ed-a38b-ef07e26c749a
+          7:
+            url_poster: https://api.mediux.pro/assets/8ca4f9fa-dfb0-4d92-92d9-c18062ab64f9
+          8:
+            url_poster: https://api.mediux.pro/assets/342d9f8e-514a-4767-b6e6-3acb5a9d08ee
 
 #-----------------------------------------------------------------------#
 #  MediUX and ThePosterDB sets                                          #
 #-----------------------------------------------------------------------#
-
-#   389492: # TVDB id for Monster (2022). Set by willtong93 on MediUX. https://mediux.pro/sets/38579
-#     url_poster: https://api.mediux.pro/assets/8ce40ba0-cc10-4b02-8fbf-dd6e64564385
-#     url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/background.png
-#     seasons:
-#       1:
-#         url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season01.png
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season01_background.png
-#         episodes:
-#           1:
-#             url_poster: https://api.mediux.pro/assets/634eeb60-78c7-40cb-9529-34336b823bce
-#           2:
-#             url_poster: https://api.mediux.pro/assets/456bb932-0dd9-4b1f-946e-3560f9b5e3d4
-#           3:
-#             url_poster: https://api.mediux.pro/assets/eff2c114-97fa-4ad5-8df4-9d30b5ab5e93
-#           4:
-#             url_poster: https://api.mediux.pro/assets/8c9f61d8-b518-4f07-8983-6a9c0674905f
-#           5:
-#             url_poster: https://api.mediux.pro/assets/ee7b83a1-9f2f-48a5-ab3b-87c01d2a2a99
-#           6:
-#             url_poster: https://api.mediux.pro/assets/62b8a1ac-239f-4684-83f8-e445968051c5
-#           7:
-#             url_poster: https://api.mediux.pro/assets/cf5f5a77-8e20-407e-8e66-f7b6d891f192
-#           8:
-#             url_poster: https://api.mediux.pro/assets/00016986-73f6-40c3-8b4d-601c908320eb
-#           9:
-#             url_poster: https://api.mediux.pro/assets/e75c375a-768d-477a-a845-cacbc1992b76
-#           10:
-#             url_poster: https://api.mediux.pro/assets/b2213179-c928-4407-af03-ed614cd541f0
-#       2:
-#         url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season02.png
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season02_background.png
-#         episodes:
-#           1:
-#             url_poster: https://api.mediux.pro/assets/c3d66507-489c-49d2-a65c-11cbaa3b722f
-#           2:
-#             url_poster: https://api.mediux.pro/assets/65d2a6ea-cb44-4d01-972b-8abf7381fd9d
-#           3:
-#             url_poster: https://api.mediux.pro/assets/6463124c-382d-4c9a-93ed-7fe4685b9f0d
-#           4:
-#             url_poster: https://api.mediux.pro/assets/8ac118a5-dc6c-4f18-a568-2d713df43562
-#           5:
-#             url_poster: https://api.mediux.pro/assets/fa00b474-756c-463b-a3b7-2d0779a5f287
-#           6:
-#             url_poster: https://api.mediux.pro/assets/41b662e9-df5e-49df-a599-6373acbecb67
-#           7:
-#             url_poster: https://api.mediux.pro/assets/f4dc39e7-d0d2-423c-bc7c-348f914ef571
-#           8:
-#             url_poster: https://api.mediux.pro/assets/0bebe79e-26ff-44d7-b455-df0824a81eb4
-#           9:
-#             url_poster: https://api.mediux.pro/assets/92a0a80b-1afc-4884-b38d-7b2e978ab4b3
-#       3:
-#         url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season03.png
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season03_background.png
-#         episodes:
-#           1:
-#             url_poster: https://api.mediux.pro/assets/f6213712-a4a2-48b4-ac2f-0cb66317a71e
-#           2:
-#             url_poster: https://api.mediux.pro/assets/df25cbd5-a3f5-4e37-9d2c-86e921acb5f4
-#           3:
-#             url_poster: https://api.mediux.pro/assets/e5736e60-e42f-4ec8-aabc-1a5208192ca4
-#           4:
-#             url_poster: https://api.mediux.pro/assets/cd248baa-f6ee-48be-826c-5b8ab51f7e9c
-#           5:
-#             url_poster: https://api.mediux.pro/assets/11001cac-b389-44a1-a2dc-ef5858daa8b9
-#           6:
-#             url_poster: https://api.mediux.pro/assets/c2896411-e024-493e-bc50-e5157c8daea6
-#           7:
-#             url_poster: https://api.mediux.pro/assets/55ee07f3-3a5d-4919-b377-d03c1ab706a7
-#           8:
-#             url_poster: https://api.mediux.pro/assets/a43dbb59-b9b4-4abc-b9c7-5de800f266e8
-#       4:
-#         url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season04.png
-#         url_background: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Shows/Monster%20(2022)/Season04_background.png
-#         episodes:
-#           1:
-#             url_poster: https://api.mediux.pro/assets/c01eaf32-906b-485d-a147-2d4567a59336
-#           2:
-#             url_poster: https://api.mediux.pro/assets/cb983806-401e-493f-afd6-7e3c97c8b733
-#           3:
-#             url_poster: https://api.mediux.pro/assets/4afaf534-5be7-4c09-93d9-5db3aa522885
-#           4:
-#             url_poster: https://api.mediux.pro/assets/d97081a7-ea24-438d-878a-f10cc27fa181
-#           5:
-#             url_poster: https://api.mediux.pro/assets/30445c22-eef8-4804-b337-ef0bf6ffe844
-#           6:
-#             url_poster: https://api.mediux.pro/assets/93e4792f-2ba7-48ed-a38b-ef07e26c749a
-#           7:
-#             url_poster: https://api.mediux.pro/assets/8ca4f9fa-dfb0-4d92-92d9-c18062ab64f9
-#           8:
-#             url_poster: https://api.mediux.pro/assets/342d9f8e-514a-4767-b6e6-3acb5a9d08ee
-
-
-
 
 #   267440: # TVDB id for Attack on Titan. Set by OhItsStefan on MediUX. https://mediux.pro/sets/6494
 #     url_poster: https://api.mediux.pro/assets/660760e7-f211-495c-9273-f8fd30c4d463
@@ -2525,85 +2524,45 @@ metadata:
 #             url_poster: https://api.mediux.pro/assets/81251a2c-31c5-447e-b33a-eec575b8dbd4
 
 #-----------------------------------------------------------------------#
-#  BBC Earth posters (ThePosterDB set, was BBC_Earth.yml)               #
+#  BBC Earth posters: fwlolx's Planet Collection on ThePosterDB, plus   #
+#  his separate Dynasties poster. Show posters only.                    #
 #-----------------------------------------------------------------------#
 
-#   359365: # TVDB id for A Perfect Planet (2021)
-#     url_poster: https://theposterdb.com/api/assets/238230
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238230
+  359365: # TVDB id for A Perfect Planet (2021)
+    url_poster: https://theposterdb.com/api/assets/238230
 
-#   74372: # TVDB id for The Blue Planet (2001)
-#     url_poster: https://theposterdb.com/api/assets/238240
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238240
+  74372: # TVDB id for The Blue Planet (2001)
+    url_poster: https://theposterdb.com/api/assets/238240
 
-#   330942: # TVDB id for Blue Planet II (2017)
-#     url_poster: https://theposterdb.com/api/assets/238231
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238231
+  330942: # TVDB id for Blue Planet II (2017)
+    url_poster: https://theposterdb.com/api/assets/238231
 
-#   352054: # TVDB id for Dynasties (2018)
-#     url_poster: https://theposterdb.com/api/assets/238156
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238156
+  352054: # TVDB id for Dynasties (2018)
+    url_poster: https://theposterdb.com/api/assets/238156
 
-#   251418: # TVDB id for Frozen Planet (2011)
-#     url_poster: https://theposterdb.com/api/assets/238232
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238232
+  251418: # TVDB id for Frozen Planet (2011)
+    url_poster: https://theposterdb.com/api/assets/238232
 
-#   417395: # TVDB id for Frozen Planet II (2022)
-#     url_poster: https://theposterdb.com/api/assets/238233
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238233
+  417395: # TVDB id for Frozen Planet II (2022)
+    url_poster: https://theposterdb.com/api/assets/238233
 
-#   355229: # TVDB id for Our Planet (2019)
-#     url_poster: https://theposterdb.com/api/assets/238234
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238211
-#       2:
-#         url_poster: https://theposterdb.com/api/assets/372126
+  355229: # TVDB id for Our Planet (2019)
+    url_poster: https://theposterdb.com/api/assets/238234
 
-#   79257: # TVDB id for Planet Earth (2006)
-#     url_poster: https://theposterdb.com/api/assets/238235
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238235
+  79257: # TVDB id for Planet Earth (2006)
+    url_poster: https://theposterdb.com/api/assets/238235
 
-#   318408: # TVDB id for Planet Earth II (2016)
-#     url_poster: https://theposterdb.com/api/assets/238236
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238236
+  318408: # TVDB id for Planet Earth II (2016)
+    url_poster: https://theposterdb.com/api/assets/238236
 
-#   413197: # TVDB id for Planet Earth III (2023)
-#     url_poster: https://theposterdb.com/api/assets/238237
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238237
+  413197: # TVDB id for Planet Earth III (2023)
+    url_poster: https://theposterdb.com/api/assets/238237
 
-#   418505: # TVDB id for Prehistoric Planet (2022)
-#     url_poster: https://theposterdb.com/api/assets/238238
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238238
+  418505: # TVDB id for Prehistoric Planet (2022)
+    url_poster: https://theposterdb.com/api/assets/238238
 
-#   359251: # TVDB id for Seven Worlds, One Planet (2019)
-#     url_poster: https://theposterdb.com/api/assets/238239
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238239
+  359251: # TVDB id for Seven Worlds, One Planet (2019)
+    url_poster: https://theposterdb.com/api/assets/238239
 
-#   359250: # TVDB id for The Green Planet (2022)
-#     url_poster: https://theposterdb.com/api/assets/238241
-#     seasons:
-#       1:
-#         url_poster: https://theposterdb.com/api/assets/238241
+  359250: # TVDB id for The Green Planet (2022)
+    url_poster: https://theposterdb.com/api/assets/238241

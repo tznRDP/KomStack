@@ -31,6 +31,7 @@ templates:
       any:
         collection: <<collection_name>>
     ignore_blank_results: true
+    collection_order: release
 
   Director:
     default:
@@ -62,6 +63,10 @@ collections:
 #
 # Row-only collections get a ZZZ_ sort title. Plex can't hide a collection
 # from the Collections tab, so this puts them at the very bottom of it.
+#
+# Two rows of what's hot: Trending Movies Worldwide is TMDb's trending list,
+# what everyone everywhere is watching this week, and Most Watched Movies on
+# Plexflix is what's been watched here, from Tracearr.
 
   New Releases:
     tmdb_discover:
@@ -80,13 +85,13 @@ collections:
     visible_shared: true
     hub_priority: 1
 
-  Trending Movies:
+  Trending Movies Worldwide:   # the TOP overlay in Overlays/Movies.yml goes by this name
     sort_title: "'*Trending"
     tmdb_trending_weekly: 40
     collection_order: custom
     sync_mode: sync
     collection_mode: hide
-    summary: Trending on TMDb this week.
+    summary: Trending worldwide on TMDb this week.
     url_poster: https://theposterdb.com/api/assets/259815
     visible_home: true
     visible_shared: true
@@ -106,14 +111,15 @@ collections:
   Sunday Family Movies:
     template: {name: DailyRow, genre: Family, day: sunday}
 
-  Most Popular Movies:
+  Most Watched Movies on Plexflix:
     tracearr_watched:
       list_days: 14       # two weeks, so a quiet week is topped up with last week's picks
       list_size: 10
+      list_minimum: 0     # fewest plays to make the row; 0 is the default, set so Kometa stops warning
     collection_order: custom
     sync_mode: sync
     collection_mode: hide
-    sort_title: ZZZ_Most Popular Movies
+    sort_title: ZZZ_Most Watched Movies on Plexflix
     summary: The most watched movies on Plexflix over the last two weeks.
     visible_library: true
     visible_home: true
@@ -185,6 +191,7 @@ collections:
       event_year: all
       award_filter: palme d'or
       winning: true
+    collection_order: release
     summary: "The Palme d'Or is the highest prize awarded at the Cannes Film Festival. It was introduced in 1955 by the festival's organizing committee.Previously, from 1939 to 1954, the highest prize at the festival was the Grand Prix du Festival International du Film. In 1964, The Palme d'Or was replaced again by the Grand Prix, before being reintroduced in 1975.The Palme d'Or is widely considered to be one of the most prestigious awards in the film industry"
     url_poster: https://theposterdb.com/api/assets/579819
 
@@ -385,7 +392,8 @@ collections:
 #                     DIRECTORS                      #
 ######################################################
 # key_name picks the poster, tmdb is the TMDb person id
-# (themoviedb.org/person/<id>). One line per director.
+# (themoviedb.org/person/<id>). One line per director. A url_poster line
+# under one gives that director your own poster instead (see Makoto Shinkai).
 
   David Fincher:
     template: {name: Director, key_name: David Fincher, tmdb: 7467}
@@ -411,8 +419,6 @@ collections:
     template: {name: Director, key_name: Greta Gerwig, tmdb: 45400}
   Yorgos Lanthimos:
     template: {name: Director, key_name: Yorgos Lanthimos, tmdb: 122423}
-
   Makoto Shinkai:
-    tmdb_director: https://www.themoviedb.org/person/74091
-    summary: Movies directed by Makoto Shinkai
-    url_poster: https://theposterdb.com/api/assets/433619
+    template: {name: Director, key_name: Makoto Shinkai, tmdb: 74091}
+    url_poster: https://theposterdb.com/api/assets/433619   # his own poster instead of the template's
