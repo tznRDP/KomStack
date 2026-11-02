@@ -28,7 +28,7 @@ import cairosvg
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
-VERSION = "1.3.0"
+VERSION = "1.3.1"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 X0, Y0 = 43, 43                  # the logo's top-left corner on the poster
@@ -123,9 +123,9 @@ TINTS = {
     "Disney Plus": {    # the Marvel shows, colours sampled from each title's own logo file
         "hawkeye": dict(fill="#fee940", shadow=0.5),                           # yellow, a soft shadow
         "ironheart": dict(gradient=["#d2a879", "#f0d7a8", "#c7b289"], angle=90),
-        "loki": dict(gradient=["#67766a", "#a17c52", "#8d9185", "#178618"]),   # the four letters: stone, gold, silver, green
+        "loki": dict(fill="#1f7a24", bevel=["#0b3d0e", "#e0b072"]),           # the I's green, edges lit gold like the O
         "msmarvel": dict(gradient=["#fcb451", "#e39135", "#c87c24"], angle=90, bevel=["#c60209", "#ffe3ad"]),
-        "secretinvasion": dict(fill="#28623e"),                                # INVASION's emerald
+        "secretinvasion": dict(fill="#1c4b34", bevel=["#042c1f", "#4f9a62"]),  # INVASION's dark green glass, lit edges
         # the shield's red and blue, punchier than the brushed metal, split down the middle
         "thefalconandthewintersoldier": dict(gradient=["#b82525"] * 3 + ["#226099"] * 3),
         "wandavision": dict(gradient=["#fbfafa", "#d4caca"], angle=90, outline="#f50707"),  # silver, the red glow
