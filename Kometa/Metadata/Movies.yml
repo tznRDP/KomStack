@@ -8,7 +8,8 @@
 #  To switch an entry back on, remove those two characters: select its  #
 #  lines, then Ctrl+/ in GitHub's editor or Ctrl+Shift+K in Notepad++.  #
 #  Back on after the review: Hope (2026), Talk to Me (2023),            #
-#  Superman (2025) and Supergirl (2026).                                #
+#  Superman (2025), Supergirl (2026),                                   #
+#  Spider-Man: No Way Home (2021).                                      #
 #=======================================================================#
 
 metadata:
@@ -35,6 +36,9 @@ metadata:
 
   1081003: # Supergirl (2026) Poster made here from the textless poster, SUPERGIRL title
     url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Movies/Supergirl%20(2026)/poster.png
+
+  634649: # Spider-Man: No Way Home (2021) Poster made here from the textless poster, cropped like the official one, SPIDER-MAN No Way Home logo
+    url_poster: https://raw.githubusercontent.com/tznRDP/KomStack/main/Kometa/Metadata/Movies/Spider-Man%20No%20Way%20Home%20(2021)/poster.png
 
 #   1316092: # "Wuthering Heights" (2026) Poster by willtong93 on MediUX. https://mediux.pro/sets/44139
 #     url_poster: https://api.mediux.pro/assets/a9679794-2981-4ee8-a1d9-643723401c78
