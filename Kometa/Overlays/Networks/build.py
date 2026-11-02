@@ -125,8 +125,9 @@ TINTS = {
         "ironheart": dict(gradient=["#d2a879", "#f0d7a8", "#c7b289"], angle=90),
         "loki": dict(gradient=["#67766a", "#a17c52", "#8d9185", "#178618"]),   # the four letters: stone, gold, silver, green
         "msmarvel": dict(gradient=["#fcb451", "#e39135", "#c87c24"], angle=90, bevel=["#c60209", "#ffe3ad"]),
-        "secretinvasion": dict(gradient=["#5a9a65", "#3a804e"], angle=90),    # INVASION's lit glass edges
-        "thefalconandthewintersoldier": dict(gradient=["#814444", "#485c6e"]),  # the shield's red and blue
+        "secretinvasion": dict(fill="#28623e"),                                # INVASION's emerald
+        # the shield's red and blue, punchier than the brushed metal, split down the middle
+        "thefalconandthewintersoldier": dict(gradient=["#b82525"] * 3 + ["#226099"] * 3),
         "wandavision": dict(gradient=["#fbfafa", "#d4caca"], angle=90, outline="#f50707"),  # silver, the red glow
     },
     "FX": {
